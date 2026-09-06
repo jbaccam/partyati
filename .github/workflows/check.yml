@@ -1,0 +1,25 @@
+name: Check and build Roblox place
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: CompeyDev/setup-rokit@1d9390883f7ebce19d48f5b8d006e11d387c92ab # v0.2.1
+        with:
+          version: v1.2.0
+      - name: Check Luau formatting and syntax
+        run: stylua --check src
+      - name: Build place
+        run: rojo build -o build/CopyTheScene.rbxlx
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: CopyTheScene-place
+          path: build/CopyTheScene.rbxlx

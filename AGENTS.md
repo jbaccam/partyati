@@ -1,0 +1,9 @@
+# Copy The Scene
+
+Roblox multiplayer memory game. Source files in this repository are authoritative. Use `rojo build -o build/CopyTheScene.rbxlx` to verify packaging and `rojo serve` to sync into Studio. Do not overwrite unrelated Studio content. Generated world is owned by Workspace.CopyTheSceneWorld.
+
+Use recognizable Roblox furniture/props, never Minecraft block building. Keep scenes and scoring on the server. Validate every remote action, inventory count, placement, ownership, and phase. Never award advantages for purchases. Studio practice must not award persistent currency or wins. Keep Studio DataStores disabled by default.
+
+Art and controls: approachable Roblox party game for ages 8–16, centered on middle-school tastes. Use a cohesive coastal competition pavilion with slate blue, warm wood, soft white, and restrained amber accents. No rainbow/preschool toy palette and no portfolio/dashboard visual style. Keep a readable 6x6 grid with larger cells; scenes should form intuitive setups and connected groups rather than scattered coordinates. Favor camping, skating, gaming, pizza, exploration, and adventure themes. Players move freely using normal first/third-person controls. No player-selected colors or rotations, and no manual height selector. Aim at a supporting prop to stack automatically. Score object identity and position only. Creator Store models are allowed; retain only reviewed static geometry and record provenance in ASSETS.md. The judge character and elimination spectacle are undecided; do not introduce a mascot or explosion choreography yet.
+
+Verify scoring invariants, scene validity, placement rejection, and the actual client play loop in Studio after gameplay changes. Document tests that require multiple real clients or published data-store access; never claim they passed without evidence. Keep this repository synchronized with Studio edits.

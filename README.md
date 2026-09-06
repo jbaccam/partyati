@@ -2,17 +2,19 @@
 
 A Roblox memory party game for 4–8 players, aimed at ages 8–16 with a middle-school sensibility. Remember a recognizable setup, rebuild it, and survive the elimination rounds. The prototype includes 20 grouped scenes across camping, skating, gaming, pizza, treasure, and expedition themes. Thirty prop definitions are available, including two adapted Creator Store props.
 
-The stage is a coastal competition pavilion: warm wood, slate blue, soft white, and amber accents. Textured cliff and tree assets surround the waterfront arena. The grid is **6×6 with four-stud cells**, reduced from 144 possible floor positions to 36. Read [ASSETS.md](ASSETS.md) for model provenance. The judge character and elimination spectacle remain undecided.
+The stage is a coastal competition pavilion: warm wood, slate blue, soft white, and restrained amber accents. Textured cliff and tree assets surround the waterfront arena. The grid is **6×6 with four-stud cells**, reduced from 144 possible floor positions to 36. Read [ASSETS.md](ASSETS.md) for model provenance.
+
+Players join the queue from a separate lobby with a jumping course. Four queued players start a countdown; up to eight enter in queue order. There are no bridges between match islands. All participants study one central scene through a shared camera view. After eight seconds, the camera returns to their character for free movement and building. A catapult replaces the central scene and fires a large rock at the lowest-scoring island during judging. Eliminated players can spectate or return to the lobby and queue for the next match.
 
 ## Try it in Studio
 
 1. Open the Copy The Scene place in Roblox Studio.
 2. Press **Play** (F5).
-3. Click **PLAY PRACTICE** for three solo rounds. Live matches wait for at least four players.
-4. Walk around during the eight-second preview. When the props disappear, rebuild the scene using the hotbar.
+3. Click **Practice** for three solo rounds, or **Join queue** for a match with at least four queued players. The lobby's queue pad also has a join/leave prompt.
+4. Memorize the central scene during the eight-second camera preview. When your camera returns to your character, rebuild the scene using the hotbar.
 5. Press **DONE** twice to submit, or let the timer finish. Stop the test with **Shift+F5**.
 
-Practice exists only in Studio and does not award saved coins or wins.
+Practice exists only in Studio and does not award saved coins or wins. Each practice round demonstrates the catapult on empty island 8; it does not eliminate the solo player. The demonstration is labeled on screen.
 
 | Action | PC | Touch | Controller |
 | --- | --- | --- | --- |
@@ -58,6 +60,8 @@ Commits use the local Git author identity. To show activity from this private re
 | `src/server/Scoring.luau` | Optimal duplicate matching and partial position scores |
 | `src/server/World.luau` | Lobby, eight islands, grid tiles, scenery, effects |
 | `src/server/Scenery.luau` | Static cliff and tree construction |
+| `src/server/Catapult.luau` | Catapult construction, arm animation, rock trajectory |
+| `src/server/Queue.luau` | Opt-in queue ordering and participant filtering |
 | `src/server/Persistence.luau` | Wins / coins, retries, idempotent save receipts |
 | `src/server/Tests.luau` | Engine-side rule and content checks |
 

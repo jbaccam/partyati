@@ -36,6 +36,7 @@ local types, cards = {}, {}
 local lastPhase, lastRound, inventoryKey = "", 0, ""
 local confirmUntil, toastUntil = 0, 0
 local spectateIndex, spectating = 1, false
+local cinematicFrom, cinematicStarted, wasCinematic = nil, 0, false
 local touchPoint
 local inputMode = UIS.TouchEnabled and not UIS.MouseEnabled and "Touch" or "Mouse"
 local render, updateAim, refreshGhost, place, remove, submit, cycleType, layout
@@ -139,15 +140,20 @@ currency.AnchorPoint = Vector2.new(1, 0)
 local coins = label(currency, "Coins", "0 coins", 19)
 local wins = label(root, "Wins", "0 wins", 16, palette.White, true)
 wins.AnchorPoint = Vector2.new(1, 0)
-local welcome = panel(root, "Welcome", palette.Paper)
+local welcome = Instance.new("Frame")
+welcome.Name, welcome.BackgroundTransparency, welcome.Parent = "QueueControls", 1, root
 welcome.AnchorPoint = Vector2.new(0.5, 1)
-local welcomeTitle = label(welcome, "Title", "Think fast. Build it back.", 28, palette.Blue)
-local welcomeCopy = label(welcome, "Copy", "Remember the setup. Rebuild it. Stay in the game.", 17)
-local waiting = label(welcome, "Waiting", "Waiting for players: 1 / 4", 18)
-local practice = button(welcome, "Practice", "PLAY PRACTICE", palette.Gold, function()
+local waiting = label(welcome, "Waiting", "0 / 4 queued", 15, palette.White, true)
+waiting.Font = Enum.Font.GothamMedium
+local queueButton = button(welcome, "JoinQueue", "Join queue", palette.Blue, function()
+	action:FireServer(state.Queued and "LeaveQueue" or "JoinQueue")
+end)
+local practice = button(welcome, "Practice", "Practice", palette.Paper, function()
 	action:FireServer("Practice")
 end)
-local practiceNote = label(welcome, "PracticeNote", "Try 3 rounds on your own", 13)
+local returnLobby = button(root, "ReturnLobby", "Back to lobby", palette.Blue, function()
+	action:FireServer("ReturnLobby")
+end)
 
 local build = Instance.new("Frame")
 build.Name = "Build"
@@ -170,7 +176,7 @@ local padding = Instance.new("UIPadding")
 padding.PaddingLeft = UDim.new(0, 4)
 padding.PaddingTop = UDim.new(0, 4)
 padding.Parent = hotbar
-local placeButton = button(build, "Place", "PLACE", palette.Gold, function()
+local placeButton = button(build, "Place", "PLACE", palette.Blue, function()
 	if deleteMode then
 		remove()
 	else
@@ -189,8 +195,7 @@ local crosshair = label(root, "Crosshair", "+", 28, palette.White, true)
 crosshair.AnchorPoint = Vector2.new(0.5, 0.5)
 crosshair.Position = UDim2.fromScale(0.5, 0.5)
 crosshair.Size = UDim2.fromOffset(32, 32)
-local previewHint =
-	label(root, "PreviewHint", "Walk around and remember where everything goes!", 20, palette.White, true)
+local previewHint = label(root, "PreviewHint", "Memorize the positions", 20, palette.White, true)
 previewHint.AnchorPoint = Vector2.new(0.5, 1)
 local toast = panel(root, "Toast", palette.Paper)
 toast.AnchorPoint = Vector2.new(0.5, 0)
@@ -249,17 +254,17 @@ layout = function()
 	coins.TextSize = phone and 17 or 20
 	wins.Position = UDim2.new(1, -14, 0, w < 540 and 123 or 51)
 	wins.Size = UDim2.fromOffset(130, 25)
-	local ww = math.min(phone and 355 or 425, w - 30)
-	local wh = phone and 180 or 225
-	welcome.Size = UDim2.fromOffset(ww, wh)
-	welcome.Position = UDim2.new(0.5, 0, 1, -16)
-	rect(welcomeTitle, 10, 8, ww - 20, 34)
-	welcomeTitle.TextSize = phone and 25 or 30
-	rect(welcomeCopy, 18, 46, ww - 36, phone and 36 or 44)
-	welcomeCopy.TextSize = phone and 15 or 18
-	rect(waiting, 10, phone and 85 or 99, ww - 20, 26)
-	rect(practice, 25, phone and 113 or 135, ww - 50, 46)
-	rect(practiceNote, 10, phone and 160 or 189, ww - 20, 22)
+	local ww = math.min(310, w - 160)
+	welcome.Size = UDim2.fromOffset(ww, 82)
+	welcome.Position = UDim2.new(0.5, 0, 1, -18)
+	rect(waiting, 0, 0, ww, 28)
+	local queueW = practice.Visible and math.floor(ww * 0.57) or ww
+	rect(queueButton, 0, 34, queueW, 44)
+	rect(practice, queueW + 8, 34, ww - queueW - 8, 44)
+	queueButton.TextSize, practice.TextSize = 17, 17
+	returnLobby.Size = UDim2.fromOffset(132, 40)
+	returnLobby.Position = UDim2.new(1, -144, 0, phone and 90 or 102)
+	returnLobby.TextSize = 16
 	local cardW, cardH = phone and 74 or 92, phone and 78 or 96
 	local barW = math.min(#types * (cardW + 8) + 8, phone and math.max(140, w - 265) or math.max(200, w - 425))
 	hotbar.Size = UDim2.fromOffset(barW, cardH + 12)
@@ -537,26 +542,36 @@ local function rebuild()
 	layout()
 end
 render = function()
-	local lobby = state.Phase == "Lobby" or state.Phase == "Countdown" or state.Phase == "Loading"
+	local lobby = not state.Participating
 	currency.Visible = lobby or state.Phase == "Results" or state.Phase == "Winner"
 	wins.Visible = currency.Visible
 	welcome.Visible = lobby
 	build.Visible = building()
-	previewHint.Visible = state.Phase == "Preview"
-	results.Visible = state.Phase == "Results" or state.Phase == "Winner"
-	spectator.Visible = not lobby and not results.Visible and (not state.Alive or state.Submitted)
+	previewHint.Visible = not lobby and (state.Phase == "Preview" or state.Phase == "Judging")
+	results.Visible = not lobby and (state.Phase == "Results" or state.Phase == "Winner")
+	spectator.Visible = not lobby and state.Phase == "Build" and (not state.Alive or state.Submitted)
 	crosshair.Visible = building() and (inputMode == "Gamepad" or (UIS.MouseBehavior == Enum.MouseBehavior.LockCenter))
 	practice.Visible = state.PracticeAvailable == true
-	practiceNote.Visible = practice.Visible
-	waiting.Text = state.Phase == "Countdown" and "A match is starting!"
-		or string.format("Waiting for players: %d / %d", state.Players or 1, state.Minimum or 4)
+	queueButton.Text = state.Queued and "Leave queue" or "Join queue"
+	waiting.Text = string.format("%d / %d queued", state.QueuedCount or 0, state.Minimum or 4)
+	if state.Queued and state.Phase ~= "Lobby" and state.Phase ~= "Countdown" then
+		waiting.Text = "Queued for next match"
+	elseif state.Queued and state.Phase == "Countdown" then
+		waiting.Text = "Match starting soon"
+	end
+	returnLobby.Visible = not lobby and not state.Alive and state.Phase ~= "Judging"
+	header.Visible = not lobby or (state.Queued and state.Phase == "Countdown")
+	previewHint.Text = state.Phase == "Judging"
+			and (state.Judging and state.Judging.Demo and "Practice demo • empty island" or ((state.Judging and state.Judging.Name or "") .. " • lowest score"))
+		or "Memorize the positions"
 	local titles = {
 		Lobby = "COPY THE SCENE",
 		Countdown = "Get ready",
 		Preview = "Remember the scene",
-		Build = "Build it back",
+		Build = "Rebuild the scene",
+		Judging = "Judging",
 		Results = "Round results",
-		Winner = "Last builder standing",
+		Winner = "Match winner",
 		Loading = "Loading...",
 	}
 	phaseLabel.Text = titles[state.Phase] or state.Phase
@@ -635,6 +650,7 @@ render = function()
 		resultRows.CanvasSize = UDim2.new()
 		resultFoot.Text = state.Practice and "Practice doesn't use saved coins or wins." or "+75 coins and a win!"
 	end
+	layout()
 	refreshGhost()
 end
 stateRemote.OnClientEvent:Connect(function(value)
@@ -644,24 +660,25 @@ stateRemote.OnClientEvent:Connect(function(value)
 		deleteMode = false
 		touchPoint = nil
 		if state.Phase == "Preview" then
-			spectating = false
-			candidate = nil
-			task.delay(0.25, function()
-				local origin = plotInfo(state.Plot)
-				if origin and state.Phase == "Preview" then
-					camera.CFrame = CFrame.lookAt(origin + Vector3.new(0, 19, 30), origin + Vector3.new(0, 2, 0))
-				end
-			end)
+			spectating, candidate = false, nil
 		end
 		if state.Phase == "Build" then
 			selected = nil
 		end
-		if state.Phase == "Lobby" then
+		if not state.Participating then
 			spectating = false
 		end
-		if not state.Alive and state.Phase ~= "Lobby" and state.Phase ~= "Countdown" then
+		if state.Participating and not state.Alive then
 			spectating = true
 		end
+		local center = state.Center or Vector3.new(0, 18, 0)
+		if state.Participating and state.Phase == "Preview" then
+			-- A short central dolly keeps the full eight seconds readable, even from the distant lobby.
+			cinematicFrom = CFrame.lookAt(center + Vector3.new(0, 28, 44), center + Vector3.new(0, 2, 0))
+		elseif state.Participating and state.Phase == "Judging" then
+			cinematicFrom = camera.CFrame
+		end
+		cinematicStarted = os.clock()
 		lastPhase = state.Phase
 		lastRound = state.Round
 	end
@@ -754,9 +771,9 @@ UIS.LastInputTypeChanged:Connect(function(t)
 end)
 local phaseDuration = 1
 local aimElapsed = 0
-RunService.RenderStepped:Connect(function(dt)
+RunService:BindToRenderStep("CopySceneCameraAndHUD", Enum.RenderPriority.Camera.Value + 1, function(dt)
 	camera = workspace.CurrentCamera
-	camera.CameraType = Enum.CameraType.Custom
+	local cinematic = state.Participating and (state.Phase == "Preview" or state.Phase == "Judging")
 	local subject = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
 	if spectating and spectator.Visible then
 		local targets = {}
@@ -774,16 +791,44 @@ RunService.RenderStepped:Connect(function(dt)
 	elseif spectator.Visible then
 		watched.Text = "Build locked! Watch friends >"
 	end
-	if subject then
-		camera.CameraSubject = subject
+	if cinematic then
+		camera.CameraType = Enum.CameraType.Scriptable
+		local center = state.Center or Vector3.new(0, 18, 0)
+		local goal = CFrame.lookAt(center + Vector3.new(0, 24, 35), center + Vector3.new(0, 2, 0))
+		if state.Phase == "Judging" and state.Judging then
+			local target = state.Judging.Target
+			local direction = (target - center).Unit
+			local side = Vector3.new(direction.Z, 0, -direction.X)
+			local middle = center:Lerp(target, 0.5)
+			goal = CFrame.lookAt(middle + side * 75 + Vector3.new(0, 52, 0), middle + Vector3.new(0, 10, 0))
+		end
+		local t = math.clamp((os.clock() - cinematicStarted) / 0.65, 0, 1)
+		t = t * t * (3 - 2 * t)
+		camera.CFrame = (cinematicFrom or goal):Lerp(goal, t)
+		camera.Focus = CFrame.new(center)
+	else
+		if subject then
+			camera.CameraSubject = subject
+		end
+		if wasCinematic then
+			local origin = state.Alive and plotInfo(state.Plot)
+			local characterRoot = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+			local focus = origin or (characterRoot and characterRoot.Position)
+			if focus then
+				camera.CFrame = CFrame.lookAt(focus + Vector3.new(0, 16, 24), focus + Vector3.new(0, 2, 0))
+				camera.Focus = CFrame.new(focus + Vector3.new(0, 2, 0))
+			end
+		end
+		camera.CameraType = Enum.CameraType.Custom
 	end
+	wasCinematic = cinematic
 	local left = state.Deadline and math.max(0, state.Deadline - workspace:GetServerTimeNow()) or 0
 	timer.Text = left > 0 and tostring(math.ceil(left)) or ""
 	timer.TextColor3 = left <= 10 and state.Phase == "Build" and palette.Danger or palette.Gold
 	phaseDuration = state.Phase == "Preview" and 8
 		or state.Phase == "Build" and (45 + math.min((state.Difficulty or 1) - 1, 5) * 3)
 		or 20
-	progress.Visible = left > 0
+	progress.Visible = left > 0 and header.Visible
 	progress.Size =
 		UDim2.fromOffset(math.max(0, (header.AbsoluteSize.X - 18) * math.clamp(left / phaseDuration, 0, 1)), 5)
 	submitButton.Text = os.clock() < confirmUntil and "SURE?" or "DONE"

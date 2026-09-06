@@ -8,6 +8,7 @@ function T.Run()
 	local Scenes = require(script.Parent.Scenes)
 	local Rules = require(script.Parent.RoundRules)
 	local Persistence = require(script.Parent.Persistence)
+	local Queue = require(script.Parent.Queue)
 	local checks = 0
 	local function check(ok, message)
 		checks += 1
@@ -18,6 +19,22 @@ function T.Run()
 	end
 	check(#Scenes == 20, "Expected 20 scenes")
 	local ids = {}
+	local a, b, c, d = { Parent = true }, { Parent = true }, { Parent = true }, { Parent = true }
+	local records = {
+		[a] = { Queued = false, QueueOrder = 1 },
+		[b] = { Queued = true, QueueOrder = 3 },
+		[c] = { Queued = true, QueueOrder = 2 },
+		[d] = { Queued = true, QueueOrder = 0, InMatch = true },
+	}
+	local queue = Queue.List(records)
+	check(
+		#queue == 2 and queue[1] == c and queue[2] == b,
+		"Queue requires opt-in, excludes participants, preserves arrival order"
+	)
+	records[c].Queued = false
+	check(#Queue.List(records) == 1, "Leaving queue removes entry")
+	b.Parent = nil
+	check(#Queue.List(records) == 0, "Disconnected players cannot enter match")
 	for _, scene in ipairs(Scenes) do
 		check(not ids[scene.ID], "Duplicate scene")
 		ids[scene.ID] = true
@@ -102,5 +119,53 @@ function T.Run()
 		"PASS: %d checks; 20 playful scenes, stacking, scoring, placement, save retry invariants",
 		checks
 	)
+end
+function T.World(world)
+	assert(not game:GetService("RunService"):IsRunning(), "World restoration checks require Edit mode")
+	assert(#world.Plots == 8, "Eight match islands required")
+	assert(not world.Root:FindFirstChild("Boardwalk", true), "Match islands must be disconnected")
+	assert((world.Spawn.Position - world.Center).Magnitude > 400, "Lobby must be separate from arena")
+	for _, plot in ipairs(world.Plots) do
+		local floor = plot.Model.Floor
+		assert(
+			floor.Transparency == 1 and floor.CanQuery and floor.CanCollide,
+			"Invisible placement and collision plane"
+		)
+		local tiles = 0
+		for _, tile in ipairs(plot.Model:GetChildren()) do
+			if tile.Name == "Tile" then
+				tiles += 1
+				assert(
+					math.abs(tile.Position.Y + tile.Size.Y / 2 - plot.Origin.Y) < 0.001,
+					"Tile top and placement plane agree"
+				)
+				local backing = plot.Model.GridBacking
+				assert(
+					tile.Position.Y + tile.Size.Y / 2 - backing.Position.Y - backing.Size.Y / 2 > 0.2,
+					"Visible backing cannot fight with tile top"
+				)
+			end
+		end
+		assert(tiles == 36, "Six by six visible tiles")
+	end
+	world.Eliminate(8)
+	for _, obj in ipairs(world.Plots[8].Model:GetDescendants()) do
+		if obj:IsA("BasePart") then
+			assert(obj.Transparency == 1 and not obj.CanCollide, "Impact removes entire island")
+		end
+	end
+	assert(
+		world.Plots[1].Base.Transparency == 0 and world.Plots[1].Model.Floor.CanCollide,
+		"Impact must not affect other islands"
+	)
+	world.Clear()
+	assert(
+		world.Plots[8].Base.Transparency == 0
+			and world.Plots[8].Model.Floor.Transparency == 1
+			and world.Plots[8].Model.Floor.CanCollide,
+		"Match reset restores island without exposing hidden floor"
+	)
+	assert(world.Plots[8].Label.Parent.Enabled, "Reset restores stage label")
+	return "PASS: world layout, tile depth separation, isolated destruction, and match restoration"
 end
 return T

@@ -6,6 +6,7 @@ local Catalog = require(Shared.Catalog)
 local Placement = require(Shared.Placement)
 local Scenes = require(script.Parent.Scenes)
 local Scoring = require(script.Parent.Scoring)
+local Queue = require(script.Parent.Queue)
 local Rules = require(script.Parent.RoundRules)
 local World = require(script.Parent.World)
 local Persistence = require(script.Parent.Persistence)
@@ -39,6 +40,10 @@ function Service.Start()
 	}
 	active = state
 	local random = Random.new()
+	local queueSequence = 0
+	local function queued()
+		return Queue.List(state.Records)
+	end
 	local function now()
 		return workspace:GetServerTimeNow()
 	end
@@ -71,6 +76,12 @@ function Service.Start()
 		end
 		stateEvent:FireClient(player, {
 			Phase = state.Phase,
+			PhaseStarted = state.PhaseStarted,
+			Participating = r.InMatch,
+			Queued = r.Queued,
+			QueuedCount = #queued(),
+			Center = World.Center,
+			Judging = state.Judging,
 			Deadline = state.Deadline,
 			Round = state.Round,
 			SceneName = state.Scene and state.Scene.Name or "",
@@ -98,6 +109,7 @@ function Service.Start()
 	end
 	local function phase(name, seconds)
 		state.Phase = name
+		state.PhaseStarted = now()
 		state.Deadline = seconds and now() + seconds or 0
 		broadcast()
 	end
@@ -112,11 +124,11 @@ function Service.Start()
 			return
 		end
 		local building = r.Alive and state.Phase ~= "Lobby" and state.Phase ~= "Countdown"
-		root.Anchored = false
+		root.Anchored = building and state.Phase == "Preview"
 		character:PivotTo(
 			CFrame.new(
 				building and (World.Plots[r.Plot].Origin + Vector3.new(0, 4, Config.Grid * Config.Cell / 2 + 2))
-					or Vector3.new(0, 22, 9)
+					or World.LobbyPosition
 			)
 		)
 	end
@@ -150,20 +162,25 @@ function Service.Start()
 		return model
 	end
 	local function clearToLobby()
-		state.Members = {}
+		state.Judging = nil
 		state.Results = {}
 		state.Scene = nil
 		state.Winner = nil
 		state.Practice = false
 		state.Round = 0
 		World.Clear()
-		for player, r in pairs(state.Records) do
-			r.Alive = false
-			r.Plot = nil
-			r.Placed = {}
-			r.Submitted = false
-			move(player)
+		for _, player in ipairs(state.Members) do
+			local r = state.Records[player]
+			if r then
+				local wasParticipant = r.InMatch
+				r.InMatch, r.Alive, r.Plot, r.Submitted = false, false, nil, false
+				r.Placed = {}
+				if wasParticipant then
+					move(player)
+				end
+			end
 		end
+		state.Members = {}
 		phase("Lobby")
 	end
 	local function playMatch(members, practice)
@@ -180,6 +197,7 @@ function Service.Start()
 		for i, p in ipairs(members) do
 			local r = state.Records[p]
 			r.Alive = true
+			r.InMatch, r.Queued = true, false
 			r.Plot = i
 			r.Total = 0
 			r.TieOrder = i
@@ -193,6 +211,11 @@ function Service.Start()
 				break
 			end
 			state.Round = round
+			state.Judging = nil
+			World.ShowReference()
+			if practice then
+				World.Restore(8)
+			end
 			state.Results = {}
 			local difficulty = practice and round or math.floor(1 + (round - 1) * 6 / math.max(1, rounds - 1))
 			local choices = {}
@@ -215,19 +238,20 @@ function Service.Start()
 				r.NextID = 0
 				local plot = World.Plots[r.Plot]
 				plot.Label.Text = player.DisplayName
-				for _, o in ipairs(state.Scene.RequiredObjects) do
-					makeProp(o, plot.Reference, plot.Origin)
-				end
+			end
+			for _, o in ipairs(state.Scene.RequiredObjects) do
+				makeProp(o, World.Reference, World.Center)
 			end
 			phase("Preview", state.Scene.PreviewSeconds)
 			for _, player in ipairs(alive()) do
 				move(player)
 			end
 			waitPhase()
-			for _, plot in ipairs(World.Plots) do
-				plot.Reference:ClearAllChildren()
-			end
+			World.ShowCatapult()
 			phase("Build", state.Scene.BuildSeconds)
+			for _, player in ipairs(alive()) do
+				move(player)
+			end
 			waitPhase()
 			state.Phase = "Scoring" -- Close action acceptance before calculating any scores.
 			local results = {}
@@ -252,18 +276,38 @@ function Service.Start()
 				end
 			end
 			results = Rules.Rank(results)
-			if not practice and #results > 1 then
-				local last = results[#results]
-				last.Eliminated = true
-				for _, p in ipairs(state.Members) do
-					if p.UserId == last.UserId then
-						state.Records[p].Alive = false
-						move(p)
+			state.Results = results
+			local last = not practice and #results > 1 and results[#results] or nil
+			if last or (practice and #alive() > 0) then
+				local targetPlot = last and last.Plot or 8
+				if last then
+					last.Eliminated = true
+				end
+				state.Judging = {
+					Plot = targetPlot,
+					Target = World.Plots[targetPlot].Origin,
+					Name = last and last.Name or "Empty island",
+					Demo = practice,
+				}
+				phase("Judging", 6)
+				World.FireAt(targetPlot, function()
+					if last then
+						for _, p in ipairs(state.Members) do
+							if p.UserId == last.UserId and state.Records[p] then
+								state.Records[p].Alive = false
+							end
+						end
+					end
+				end)
+				waitPhase()
+				if last then
+					for _, p in ipairs(state.Members) do
+						if p.UserId == last.UserId then
+							move(p)
+						end
 					end
 				end
-				World.Eliminate(last.Plot)
 			end
-			state.Results = results
 			phase("Results", Config.ResultsSeconds)
 			waitPhase()
 		end
@@ -298,8 +342,35 @@ function Service.Start()
 			send(player)
 			return
 		end
+		if verb == "JoinQueue" or verb == "LeaveQueue" or verb == "ToggleQueue" then
+			if r.InMatch then
+				return
+			end
+			local wantsQueue = verb == "JoinQueue" or (verb == "ToggleQueue" and not r.Queued)
+			if wantsQueue and not r.Queued then
+				queueSequence += 1
+				r.QueueOrder = queueSequence
+			end
+			r.Queued = wantsQueue
+			broadcast()
+			return
+		end
+		if verb == "ReturnLobby" then
+			if r.InMatch and not r.Alive and state.Phase ~= "Judging" then
+				r.InMatch = false
+				move(player)
+				send(player)
+			end
+			return
+		end
 		if verb == "Practice" then
-			if RunService:IsStudio() and Config.StudioPractice and state.Phase == "Lobby" then
+			if
+				RunService:IsStudio()
+				and Config.StudioPractice
+				and state.Phase == "Lobby"
+				and not r.InMatch
+				and #queued() < Config.MinPlayers
+			then
 				state.PracticeRequest = player
 			end
 			return
@@ -392,12 +463,20 @@ function Service.Start()
 		end
 	end
 	action.OnServerEvent:Connect(handle)
+	World.QueuePrompt.Triggered:Connect(function(player)
+		local root = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+		if root and (root.Position - World.QueuePrompt.Parent.Position).Magnitude <= 16 then
+			handle(player, "ToggleQueue")
+		end
+	end)
 	local function join(player)
 		if state.Records[player] then
 			return
 		end
 		state.Records[player] = {
 			Alive = false,
+			Queued = false,
+			InMatch = false,
 			Submitted = false,
 			Placed = {},
 			Total = 0,
@@ -440,7 +519,7 @@ function Service.Start()
 					if math.abs(delta.X) > edge or math.abs(delta.Z) > edge or delta.Y < -5 then
 						move(player)
 					end
-				elseif root and root.Position.Y < 4 then
+				elseif root and root.Position.Y < 12 and state.Phase ~= "Judging" then
 					move(player)
 				end
 			end
@@ -460,19 +539,20 @@ function Service.Start()
 				state.Deadline = now()
 				return true
 			end
-			if verb == "Hold" then
-				state.Deadline = now() + 600
-				broadcast()
-				return true
-			end
 			if verb == "Action" then
 				handle(player, payload.Verb, payload.Data)
 				return true
 			end
 			local records = {}
 			for p, r in pairs(state.Records) do
-				records[tostring(p.UserId)] =
-					{ Alive = r.Alive, Plot = r.Plot, Placed = r.Placed, Submitted = r.Submitted }
+				records[tostring(p.UserId)] = {
+					Alive = r.Alive,
+					Plot = r.Plot,
+					Placed = r.Placed,
+					Submitted = r.Submitted,
+					Queued = r.Queued,
+					InMatch = r.InMatch,
+				}
 			end
 			return {
 				Phase = state.Phase,
@@ -493,16 +573,13 @@ function Service.Start()
 				if p.Parent and state.Phase == "Lobby" then
 					playMatch({ p }, true)
 				end
-			elseif #Players:GetPlayers() >= Config.MinPlayers then
+			elseif #queued() >= Config.MinPlayers then
 				phase("Countdown", Config.LobbySeconds)
-				while now() < state.Deadline and #Players:GetPlayers() >= Config.MinPlayers do
+				while now() < state.Deadline and #queued() >= Config.MinPlayers do
 					task.wait(0.2)
 				end
-				if #Players:GetPlayers() >= Config.MinPlayers then
-					local members = Players:GetPlayers()
-					table.sort(members, function(a, b)
-						return state.Records[a].Joined < state.Records[b].Joined
-					end)
+				if #queued() >= Config.MinPlayers then
+					local members = queued()
 					while #members > Config.MaxPlayers do
 						table.remove(members)
 					end

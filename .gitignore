@@ -3,5 +3,7 @@ build/
 *.rbxlx
 *.rbxm
 *.rbxmx
+!facility-blockout/assets/*.rbxmx
+facility-blockout/production/blender/*.blend1
 .DS_Store
 *.log

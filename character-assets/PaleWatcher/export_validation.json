@@ -1,0 +1,16 @@
+{
+  "fbx_roundtrip": "PASS",
+  "meshes": 1,
+  "bones": 38,
+  "triangles": 18844,
+  "normalized_weights": "PASS",
+  "root_unweighted": "PASS",
+  "nonmanifold_edges": 0,
+  "finger_deformation": "PASS",
+  "finger_test_moved_vertices": 325,
+  "max_finger_displacement_import_units": 0.14157640263434507,
+  "roblox_studio_import": "NOT TESTED",
+  "roblox_animation_playback": "NOT TESTED",
+  "bone_hierarchy": "PASS",
+  "idle_animation_roundtrip": "PASS"
+}

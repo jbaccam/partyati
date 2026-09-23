@@ -1,0 +1,50 @@
+# Baby and mutant zombies
+
+## Current delivery state — September 22, 2026
+
+The corrected baby and rounded full-shirt mutant meshes are uploaded and installed in roguelite, place 107877054949326. `ServerStorage.RogueliteNPCs` contains `BabyZombie_NPC` and `MutantZombie_NPC`, each with 15 MeshParts, 15 Motor6Ds, Humanoid and Animator. Raw imports are preserved in `ServerStorage.ZombieRawImports`; non-colliding static review copies are in `Workspace.ZombieVariantPreviews`. Uploaded mesh/texture IDs and assembled sizes/CFrames are recorded in `../../baby-mutant-zombies/StudioAssetManifest.json`.
+
+The user explicitly approved limited Studio import-dialog UI control with “ye” after being asked. Both FBXs were imported through that dialog; assembly and testing used the Studio connector. The prior programmatic upload attempt was unavailable and produced no mesh assets.
+
+The single-client Play smoke test confirmed live baby/mutant spawns, correct MaxHealth and WalkSpeed, client joint motion, mutant hunched waist, and at least two mutant slam starts. Weapon damage reduced the mutant from 240 to 30 HP and it subsequently disappeared. Exact slam damage, dodge/wall/death cancellation cases, respawn, and multiple clients remain unverified. Console output showed Roblox CorePackages social/chat errors and an existing CardPresentation missing-showcase-child wait; no zombie error was observed. The test wave was Play-only and Studio was returned to Edit mode.
+
+## Starting balance
+
+| Type | HP | Speed | Damage | Behavior |
+| --- | ---: | ---: | ---: | --- |
+| Regular | 40 | 12 | 10 contact | Existing chaser |
+| Baby | 24 | 16 | 6 contact | Faster cadence and small bob, closer stopping distance |
+| Mutant | 240 | 9.5 | 26 slam | Permanently hunched idle/walk; no additional contact hit |
+
+Damage values precede character armor, dodge and first-hit blocking. The regular/baby contact cooldown remains the existing player-wide 0.8 seconds. Initial five-slot composition is regular, baby, regular, regular, mutant; the pattern repeats with one mutant per eight slots and two babies per eight. These are provisional tuning values requiring the actual Play check, not a demonstrated balanced encounter.
+
+The mutant raises its arms for 0.32 seconds, lands at 0.46 seconds, recovers by 1.0 second, and can start another slam after 2.15 seconds. Its orange ground warning becomes an impact flash. Target direction and circle are committed at attack start. The server validates current life, wave toggle, range, vertical separation, walls, and one impact per attack. Death/removal cancels damage. Player damage uses the existing authoritative `CharacterService.contact` path and red damage popup. There is no new client-to-server attack remote.
+
+The warning is a 5.2-stud radius circle centered 3.5 studs ahead. Characters above 4.5 studs relative to the impact ground are excluded. The published/mobile dodge window has not been playtested. The prototype still uses the existing server-owned Humanoid enemy implementation; this update does not claim to complete the separately planned record-based horde migration or prove large-population performance.
+
+## Sources
+
+- `ZombieTypes.luau`: stats, spawn composition and slam dimensions/timing.
+- `ZombieMotion.luau`: 15-joint bobbing, hunched locomotion, raise/slam/recovery poses.
+- `ZombieAttacks.luau`: server attack lifecycle and impact validation.
+- `ZombieSlamVisuals.luau`: local non-colliding warning/impact disc.
+- `../RogueliteZombieChase.server.luau`: selects templates, applies stats and runs attacks.
+- `../RogueliteZombieAnimation.client.luau`: applies locally evaluated poses using server timestamps.
+- `CharacterService.luau`: per-mob contact damage/range, while retaining existing defenses.
+- `../../baby-mutant-zombies/`: models, textures, FBX exports, Blender slam preview and importer.
+
+## Checks performed
+
+- 65,718 assertions over 363 sampled poses plus tuning/range checks passed in the actual Studio Luau environment using `ZombieTests.luau`.
+- Combat and root Rojo packaging succeeded.
+- Both final meshes passed Blender/FBX/GLB reimport checks for 15 sections, 16 bones, UV bounds, normalized weights, loaded textures, closed geometry and elbow movement with stable unrelated foot.
+- Both mesh-only import FBXs independently reopened with 15 mesh objects and no armature.
+- Actual runtime CFrames were transferred to the mutant Blender rig for the slam review. At impact, both fist bottoms are within 0.071 authoring units of ground, about 3.45 units forward. The raised fists exceed the head height; the rest torso remains hunched.
+- Corrected shirt yoke uses the torso's top surface itself, avoiding an additional floating shoulder plate. Full sleeves retain fabric under both upper arms.
+
+## Required follow-up after mesh import
+
+1. Assemble both uploaded models using `ServerStorage.ZombieVariantImportTools.InstallZombieVariants`; preserve the raw imports and record asset IDs.
+2. Verify faces, axes, dimensions, texture permission, root collision, feet, and all 15 Motor6Ds in Studio.
+3. In actual Play, verify the baby speed/bob and mutant hunched walk/raise/slam. Check stationary in-circle damage, leaving the circle, jumping, a wall, death during windup, stopping the wave, cooldown, one-hit-per-slam, normal weapon kills, and respawning the correct type.
+4. Confirm no errors and restore Edit mode/test state. Multiple real clients, device profiling, published asset access and DataStores remain untested. This feature adds no DataStore/persistent reward code.

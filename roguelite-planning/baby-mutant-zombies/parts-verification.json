@@ -1,0 +1,10 @@
+{
+  "Baby": {
+    "meshes": 15,
+    "armatures": 0
+  },
+  "Mutant": {
+    "meshes": 15,
+    "armatures": 0
+  }
+}

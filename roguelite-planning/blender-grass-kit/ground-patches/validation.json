@@ -1,0 +1,26 @@
+[
+  {
+    "name": "GroundPatch_Small",
+    "passed": true,
+    "sourceTriangles": 2601,
+    "importedTriangles": 2595
+  },
+  {
+    "name": "GroundPatch_Round",
+    "passed": true,
+    "sourceTriangles": 5715,
+    "importedTriangles": 5702
+  },
+  {
+    "name": "GroundPatch_Broad",
+    "passed": true,
+    "sourceTriangles": 8798,
+    "importedTriangles": 8761
+  },
+  {
+    "name": "GroundPatch_Long",
+    "passed": true,
+    "sourceTriangles": 7542,
+    "importedTriangles": 7520
+  }
+]

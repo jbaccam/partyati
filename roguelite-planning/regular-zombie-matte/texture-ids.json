@@ -1,0 +1,26 @@
+{
+  "Head": {
+    "old": "rbxassetid://117306049770322",
+    "new": "rbxassetid://97543481166969"
+  },
+  "Torso": {
+    "old": "rbxassetid://140609339752453",
+    "new": "rbxassetid://96501124394348"
+  },
+  "LeftArm": {
+    "old": "rbxassetid://104527573352654",
+    "new": "rbxassetid://103105933639828"
+  },
+  "RightArm": {
+    "old": "rbxassetid://74400295976437",
+    "new": "rbxassetid://113708131041008"
+  },
+  "LeftLeg": {
+    "old": "rbxassetid://139143564029844",
+    "new": "rbxassetid://102010131243863"
+  },
+  "RightLeg": {
+    "old": "rbxassetid://97498265662380",
+    "new": "rbxassetid://109554557437132"
+  }
+}

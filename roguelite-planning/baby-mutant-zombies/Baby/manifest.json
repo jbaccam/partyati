@@ -1,0 +1,225 @@
+{
+  "name": "BabyZombie",
+  "sections": [
+    "LowerTorso",
+    "UpperTorso",
+    "Head",
+    "LeftUpperArm",
+    "LeftLowerArm",
+    "LeftHand",
+    "LeftUpperLeg",
+    "LeftLowerLeg",
+    "LeftFoot",
+    "RightUpperArm",
+    "RightLowerArm",
+    "RightHand",
+    "RightUpperLeg",
+    "RightLowerLeg",
+    "RightFoot"
+  ],
+  "bones": 16,
+  "triangles": 2704,
+  "height": 3.5099997520446777,
+  "ground": 0.0,
+  "joints": {
+    "LowerTorso": {
+      "parent": "HumanoidRootPart",
+      "head": [
+        0,
+        0,
+        1.24
+      ],
+      "tail": [
+        0,
+        0,
+        1.51
+      ]
+    },
+    "UpperTorso": {
+      "parent": "LowerTorso",
+      "head": [
+        0,
+        0,
+        1.51
+      ],
+      "tail": [
+        0,
+        0,
+        2.2
+      ]
+    },
+    "Head": {
+      "parent": "UpperTorso",
+      "head": [
+        0,
+        0,
+        2.19
+      ],
+      "tail": [
+        0,
+        -0.03,
+        3.45
+      ]
+    },
+    "LeftUpperArm": {
+      "parent": "UpperTorso",
+      "head": [
+        0.72,
+        0,
+        2.06
+      ],
+      "tail": [
+        0.72,
+        0,
+        1.68
+      ]
+    },
+    "LeftLowerArm": {
+      "parent": "LeftUpperArm",
+      "head": [
+        0.72,
+        0,
+        1.68
+      ],
+      "tail": [
+        0.72,
+        0,
+        1.35
+      ]
+    },
+    "LeftHand": {
+      "parent": "LeftLowerArm",
+      "head": [
+        0.72,
+        0,
+        1.35
+      ],
+      "tail": [
+        0.72,
+        0,
+        1.12
+      ]
+    },
+    "LeftUpperLeg": {
+      "parent": "LowerTorso",
+      "head": [
+        0.26,
+        0,
+        1.26
+      ],
+      "tail": [
+        0.26,
+        0,
+        0.8
+      ]
+    },
+    "LeftLowerLeg": {
+      "parent": "LeftUpperLeg",
+      "head": [
+        0.26,
+        0,
+        0.8
+      ],
+      "tail": [
+        0.26,
+        0,
+        0.29
+      ]
+    },
+    "LeftFoot": {
+      "parent": "LeftLowerLeg",
+      "head": [
+        0.26,
+        0,
+        0.29
+      ],
+      "tail": [
+        0.26,
+        -0.3,
+        0.13
+      ]
+    },
+    "RightUpperArm": {
+      "parent": "UpperTorso",
+      "head": [
+        -0.72,
+        0,
+        2.06
+      ],
+      "tail": [
+        -0.72,
+        0,
+        1.68
+      ]
+    },
+    "RightLowerArm": {
+      "parent": "RightUpperArm",
+      "head": [
+        -0.72,
+        0,
+        1.68
+      ],
+      "tail": [
+        -0.72,
+        0,
+        1.35
+      ]
+    },
+    "RightHand": {
+      "parent": "RightLowerArm",
+      "head": [
+        -0.72,
+        0,
+        1.35
+      ],
+      "tail": [
+        -0.72,
+        0,
+        1.12
+      ]
+    },
+    "RightUpperLeg": {
+      "parent": "LowerTorso",
+      "head": [
+        -0.26,
+        0,
+        1.26
+      ],
+      "tail": [
+        -0.26,
+        0,
+        0.8
+      ]
+    },
+    "RightLowerLeg": {
+      "parent": "RightUpperLeg",
+      "head": [
+        -0.26,
+        0,
+        0.8
+      ],
+      "tail": [
+        -0.26,
+        0,
+        0.29
+      ]
+    },
+    "RightFoot": {
+      "parent": "RightLowerLeg",
+      "head": [
+        -0.26,
+        0,
+        0.29
+      ],
+      "tail": [
+        -0.26,
+        -0.3,
+        0.13
+      ]
+    }
+  },
+  "source_texture": "../source-art/BabyTexture.png",
+  "rig_status": "Provisional rigid 15-section rig; no production animations",
+  "studio_status": "Not imported or playtested",
+  "front": "Blender -Y; intended Roblox -Z"
+}

@@ -1,0 +1,16 @@
+{
+  "slamRadius": 3.5,
+  "slamTestDistanceFromImpact": 3.2,
+  "spinFps": 36,
+  "spinDurationSeconds": 1.8333333333333333,
+  "attacks": {
+    "Slam": {"earlyHits": 0, "hits": 1, "damageAfterDefense": 16.105262756347658},
+    "Swing": {"earlyHits": 0, "hits": 1, "damageAfterDefense": 12.078948974609375},
+    "Spin": {"earlyHits": 0, "hits": 1, "damageAfterDefense": 14.763160705566407}
+  },
+  "walk": {"distance": 18.02361297607422, "seconds": 4},
+  "client": {"samples": 87, "maxPositionError": 0.0032014416065067055, "ok": true},
+  "consoleOutput": "",
+  "singleClientStudio": true,
+  "multiClientTested": false
+}

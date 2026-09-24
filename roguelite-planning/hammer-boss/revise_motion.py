@@ -1,8 +1,10 @@
-import bpy,math,json
+import bpy,math,json,os
 from pathlib import Path
 from mathutils import Matrix,Vector
 HERE=Path(__file__).resolve().parent;OUT=HERE/'finished'
 bpy.ops.wm.open_mainfile(filepath=str(OUT/'HammerBoss.blend'))
+if os.environ.get('BOSS_MOTION_OUTPUT'):
+ OUT=Path(os.environ['BOSS_MOTION_OUTPUT']);OUT.mkdir(parents=True,exist_ok=True)
 scene=bpy.context.scene;rig=bpy.data.objects['HammerBoss_Rig'];rig.animation_data_clear()
 for action in list(bpy.data.actions):bpy.data.actions.remove(action)
 T=Matrix.Translation

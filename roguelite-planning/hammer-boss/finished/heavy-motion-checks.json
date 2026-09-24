@@ -1,15 +1,15 @@
 {
   "Slam": {
-    "minArmExtension": 0.9934960514782918,
-    "maxArmExtension": 0.9942926993878358
+    "minArmExtension": 0.993495817574557,
+    "maxArmExtension": 0.9942927746159268
   },
   "Swing": {
-    "minArmExtension": 0.9930892143092254,
-    "maxArmExtension": 0.9940163685751883
+    "minArmExtension": 0.9930891207094088,
+    "maxArmExtension": 0.994016243160169
   },
   "Spin": {
-    "minArmExtension": 0.993088390630537,
-    "maxArmExtension": 0.9939379419070878
+    "minArmExtension": 0.9930884374304809,
+    "maxArmExtension": 0.993938231241729
   },
   "Walk": {
     "plantedFootWorldDriftPerFrame": 1.4901161193847656e-07,

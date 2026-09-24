@@ -77,7 +77,9 @@ KEYS={
 def channels(clip,f):
  for (a,v),(b,w) in zip(KEYS[clip],KEYS[clip][1:]):
   if a<=f<=b:
-   t=(f-a)/(b-a);t=t*t*(3-2*t);return [x+(y-x)*t for x,y in zip(v,w)]
+   t=(f-a)/(b-a)
+   if not (clip=='Spin' and a>=21 and b<=37):t=t*t*(3-2*t)
+   return [x+(y-x)*t for x,y in zip(v,w)]
  return KEYS[clip][-1][1]
 def align(a,b,c,d):return T(c)@(b-a).rotation_difference(d-c).to_matrix().to_4x4()@T(-a)
 def ik(a,w,l1,l2,pole):
@@ -119,7 +121,10 @@ def pose(clip,f):
  D['Hammer']=weapon;errors=[]
  for side,s in [('Right',-1),('Left',1)]:
   a=joints[side+'UpperArm']['head'];b=joints[side+'LowerArm']['head'];w=joints[side+'Hand']['head'];shoulder=chest@a;handPose=weapon@handOffsets[side];wrist=handPose@w
-  elbow,err=ik(shoulder,wrist,(b-a).length,(w-b).length,chest@b);errors.append(err)
+  # Keep the bend plane outside and in front of the rib cage. The old pole
+  # pointed almost down the arm and flipped when the wrist passed under it.
+  pole=chest@(a+Vector((s*3.5,-2.5,-.7)))
+  elbow,err=ik(shoulder,wrist,(b-a).length,(w-b).length,pole);errors.append(err)
   D[side+'UpperArm']=align(a,b,shoulder,elbow);D[side+'LowerArm']=align(b,w,elbow,wrist);D[side+'Hand']=handPose
   a=joints[side+'UpperLeg']['head'];b=joints[side+'LowerLeg']['head'];w=joints[side+'Foot']['head'];foot=R(z=hip*.85)@w
   foot.y+=stride*s*.52;foot.z=.55+max(0,stride*s)*.22
@@ -155,12 +160,12 @@ for name,j in joints.items():
  data['parts'][name]={'center':list((lo+hi)/2),'size':list(hi-lo)}
 checks={};scene.render.fps=30
 for clip,last in {'Idle':96,'Walk':48,'Slam':50,'Swing':54,'Spin':66,'Hit':18,'Death':84}.items():
- rig.animation_data_clear();frames=[];maxerr=0
+ rig.animation_data_clear();frames=[];maxerr=0;scene.render.fps=36 if clip=='Spin' else 30
  for f in range(last+1):
   D,error=pose(clip,f);maxerr=max(maxerr,error);apply(D,f+1)
   frames.append({n:arr(C@T((0,0,-ROOT))@d@T((0,0,ROOT))@C.inverted()) for n,d in D.items()})
  action=rig.animation_data.action;action.name='Boss_'+clip;action.use_fake_user=True;scene.frame_start=1;scene.frame_end=last+1;scene.frame_set(1)
- export(clip+'.fbx',True);data['clips'][clip]={'fps':30,'lastFrame':last,'frames':frames};checks[clip]={'frames':last+1,'maxArmOverreach':maxerr}
+ export(clip+'.fbx',True);data['clips'][clip]={'fps':scene.render.fps,'lastFrame':last,'frames':frames};checks[clip]={'frames':last+1,'maxArmOverreach':maxerr}
 (OUT/'BossData.json').write_text(json.dumps(data,separators=(',',':')))
 (OUT/'BossData.luau').write_text('return game:GetService("HttpService"):JSONDecode([====['+json.dumps(data,separators=(',',':'))+']====])\n')
 clipdir=OUT/'clips';clipdir.mkdir(exist_ok=True)
@@ -171,7 +176,7 @@ for name,clip in data['clips'].items():
  loader+="D.clips."+name+"=require(script:WaitForChild('"+name+"'))\n"
 (OUT/'BossDataMain.luau').write_text(loader+'return D\n')
 (OUT/'authoring-checks.json').write_text(json.dumps(checks,indent=2))
-rig.animation_data_clear();apply(pose('Idle',0)[0]);scene.frame_set(1);scene.frame_end=97
+rig.animation_data_clear();apply(pose('Idle',0)[0]);scene.render.fps=30;scene.frame_set(1);scene.frame_end=97
 rig.animation_data_create();rig.animation_data.action=bpy.data.actions['Boss_Idle']
 rig['Reference']='User supplied boss image, September 23 2026';rig['Actions']='Idle, Walk, Slam, Swing, Spin, Hit, Death';rig['HandleLength']=9.05;rig['GripSeparation']=5.33
 scene.cycles.samples=32;scene.render.resolution_percentage=75

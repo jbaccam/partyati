@@ -49,7 +49,8 @@ local function impact(npc,kind)
  e.Lifetime=NumberRange.new(.35,.75);e.Speed=NumberRange.new(8,14);e.SpreadAngle=Vector2.new(85,85);e.Size=NumberSequence.new({NumberSequenceKeypoint.new(0,.5),NumberSequenceKeypoint.new(1,2.2)})
  e.Transparency=NumberSequence.new({NumberSequenceKeypoint.new(0,.30),NumberSequenceKeypoint.new(1,1)});e.Parent=host;e:Emit(22)
  local s=Instance.new('Sound');s.SoundId='rbxasset://sounds/impact_explosion_03.mp3';s.Volume=.55;s.PlaybackSpeed=.7;s.RollOffMaxDistance=75;s.Parent=host;s:Play()
- for i=1,12 do local angle=i*math.pi/6;local p=part(host,'ImpactChip',Vector3.new(.25,.14,.45),CFrame.new(pos+Vector3.new(math.sin(angle)*2,.03,math.cos(angle)*2))*CFrame.Angles(0,angle,0),.12);p.Material=Enum.Material.Slate;p.Color=Color3.fromRGB(137,125,100) end
+ local radius=Motion.Attacks.Slam.radius*.85
+ for i=1,12 do local angle=i*math.pi/6;local p=part(host,'ImpactChip',Vector3.new(.25,.14,.45),CFrame.new(pos+Vector3.new(math.sin(angle)*radius,.03,math.cos(angle)*radius))*CFrame.Angles(0,angle,0),.12);p.Material=Enum.Material.Slate;p.Color=Color3.fromRGB(137,125,100) end
  Debris:AddItem(host,1.0)
 end
 local function track(npc)
@@ -79,9 +80,11 @@ Run.PreSimulation:Connect(function(dt)
   end
   local poses=Motion.sample(clip,time)
   if state.lastClip~=clip and state.lastPose and clip~='Death' then state.blendFrom=state.lastPose;state.blendStart=now end
-  -- Locomotion changes blend; attack and impact clocks always stay exact.
-  if state.blendFrom and (clip=='Walk' or clip=='Idle') then
-   local weight=math.clamp((now-state.blendStart)/.16,0,1)
+  -- Ease out of the heavy walk during the attack's initial windup only.
+  -- All contact frames still use the exact authoritative pose.
+  if state.blendFrom then
+   local duration=(clip=='Walk' or clip=='Idle') and .16 or .12
+   local weight=math.clamp((now-state.blendStart)/duration,0,1)
    for name,p in poses do poses[name]=state.blendFrom[name]:Lerp(p,weight) end
    if weight==1 then state.blendFrom=nil end
   end

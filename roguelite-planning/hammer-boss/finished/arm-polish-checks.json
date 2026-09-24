@@ -1,0 +1,87 @@
+{
+  "Idle": {
+    "maxElbowStepInTorsoSpace": [
+      0.005027374449024275,
+      [
+        49,
+        "Left"
+      ]
+    ],
+    "minTorsoCoreClearanceSquared": [
+      2.7661745971858975,
+      [
+        72,
+        "Right",
+        5
+      ]
+    ]
+  },
+  "Walk": {
+    "maxElbowStepInTorsoSpace": [
+      0.049844716093643306,
+      [
+        44,
+        "Left"
+      ]
+    ],
+    "minTorsoCoreClearanceSquared": [
+      2.5258942743013497,
+      [
+        46,
+        "Right",
+        9
+      ]
+    ]
+  },
+  "Slam": {
+    "maxElbowStepInTorsoSpace": [
+      0.8063870500757045,
+      [
+        18,
+        "Right"
+      ]
+    ],
+    "minTorsoCoreClearanceSquared": [
+      1.2999966881228482,
+      [
+        10,
+        "Left",
+        10
+      ]
+    ]
+  },
+  "Swing": {
+    "maxElbowStepInTorsoSpace": [
+      0.667708062136019,
+      [
+        18,
+        "Right"
+      ]
+    ],
+    "minTorsoCoreClearanceSquared": [
+      1.3455489294378173,
+      [
+        25,
+        "Left",
+        3
+      ]
+    ]
+  },
+  "Spin": {
+    "maxElbowStepInTorsoSpace": [
+      0.5643935485603175,
+      [
+        11,
+        "Right"
+      ]
+    ],
+    "minTorsoCoreClearanceSquared": [
+      1.8829153572232384,
+      [
+        10,
+        "Left",
+        10
+      ]
+    ]
+  }
+}

@@ -13,7 +13,7 @@ def blend_frame(a,b,t):
 
 def attack_pose(clip,f,chest):
  last={'Slam':50,'Swing':54,'Spin':66}[clip]
- weight=ease(5,12,f)*(1-ease(last-11,last,f))
+ weight=ease(0,16,f)*(1-ease(last-18,last,f))
  gripWeight=ease(5,18,f)*(1-ease(last-10,last,f))
  grip={'Right':2.72+(6.55-2.72)*gripWeight,'Left':8.05+(8.05-8.05)*gripWeight}
  center=7.30
@@ -26,13 +26,23 @@ def attack_pose(clip,f,chest):
   if clip=='Swing':
    yaw=keyed([(0,[-65]),(13,[-72]),(18,[-72]),(21,[-28]),(23,[32]),(25,[88]),(31,[108]),(43,[45]),(54,[0])],f)[0]
   else:
-   yaw=keyed([(0,[-50]),(14,[-60]),(21,[-60]),(25,[30]),(29,[120]),(33,[210]),(37,[300]),(43,[334]),(55,[360]),(66,[360])],f)[0]
+   # A continuous revolution, without stopping at every quarter turn.
+   yaw=(-60+(f-21)*22.5) if 21<=f<=37 else keyed([(0,[-50]),(14,[-60]),(21,[-60]),(37,[300]),(43,[334]),(55,[360]),(66,[360])],f)[0]
   # Roll a quarter turn around the shaft: the long head's striking end leads
   # tangential travel, rather than sweeping with the broad side of the block.
   rotation=R(z=90+yaw,x=90)
   centerWorld=R(z=yaw)@Vector((0,-3.45,6.75))
  target=T(centerWorld)@rotation@T((-center,0,0))
  H=blend_frame(HT,target,weight)
+ # Interpolate authored angles, not the shortest quaternion arc. Crossing
+ # 180 degrees during a partial windup otherwise changes arcs in one frame.
+ if clip=='Slam':orientation=R(z=90*weight,y=-13+(pitch+13)*weight)
+ else:
+  unwind=yaw-360 if clip=='Spin' and f>=43 else yaw
+  orientation=R(z=(90+unwind)*weight,x=90*weight,y=-13*(1-weight))
+ # Rotate about the held end, rather than interpolating the distant head
+ # position and sweeping the wrists through a large unintended arc.
+ H=T((HT@Vector((center,0,0))).lerp(centerWorld,weight))@orientation@T((-center,0,0))
  weapon=H@HT.inverted()
  handOffsets={side:HT@T((g-({'Right':2.72,'Left':8.05}[side]),0,0))@HT.inverted() for side,g in grip.items()}
  # The two wrist targets lie on the intersection of the arms' reach spheres.
@@ -65,6 +75,28 @@ def attack_pose(clip,f,chest):
    a=joints[side+'UpperArm']['head'];b=joints[side+'LowerArm']['head'];w=joints[side+'Hand']['head']
    delta=weapon@handOffsets[side]@w-chest@a;limit=(b-a).length+(w-b).length-.035
    if delta.length>limit:weapon.translation-=delta.normalized()*(delta.length-limit)
+ if not (clip=='Slam' and 23<=f<=29):
+  # Project the paired grip out of the belly during windup/recovery. Moving
+  # the weapon and both hands together retains real contact with the shaft.
+  inv=chest.inverted();forward=chest.to_3x3()@Vector((0,-1,0))
+  for iteration in range(80):
+   push=0
+   for side,s in [('Right',-1),('Left',1)]:
+    a=joints[side+'UpperArm']['head'];b=joints[side+'LowerArm']['head'];w=joints[side+'Hand']['head']
+    shoulder=chest@a;wrist=weapon@handOffsets[side]@w
+    elbow,_=ik(shoulder,wrist,(b-a).length,(w-b).length,chest@(a+Vector((s*3.5,-2.5,-.7))))
+    for k in range(9):
+     p=inv@elbow.lerp(wrist,k/8)
+     section=1.3-(p.x/2.25)**2-((p.z-6.5)/2.15)**2
+     if section>0:
+      front=-.15-1.7*math.sqrt(section)
+      if p.y>front:push=max(push,p.y-front)
+   if push<.0001:break
+   weapon.translation+=forward*min(push,.15)
+   for side in ('Right','Left'):
+    a=joints[side+'UpperArm']['head'];b=joints[side+'LowerArm']['head'];w=joints[side+'Hand']['head']
+    delta=weapon@handOffsets[side]@w-chest@a;limit=(b-a).length+(w-b).length-.035
+    if delta.length>limit:weapon.translation-=delta.normalized()*(delta.length-limit)
  if clip=='Slam' and 23<=f<=29:
   bottom=min((weapon@HT@Vector((x,y,z))).z for x in [-1.55,1.55] for y in [-1.155,1.155] for z in [-2.21,2.21])
   weapon.translation.z+=.005-bottom

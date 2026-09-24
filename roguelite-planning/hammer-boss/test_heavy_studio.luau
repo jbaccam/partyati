@@ -19,9 +19,10 @@ local ok,err=xpcall(function()
   local before=npc:GetAttribute('BossHits') or 0
   assert(B.start(npc,kind,pr),'Attack start '..kind)
   local a=M.Attacks[kind]
-  local head=M.head(npc:GetAttribute('BossFrame'),kind,kind=='Slam' and a.active or (kind=='Swing' and 23/30 or 29/30))
+  local head=M.head(npc:GetAttribute('BossFrame'),kind,kind=='Slam' and a.active or (kind=='Swing' and 23/30 or 29/36))
   local pos=head.Position
-  pr.CFrame=CFrame.new(pos.X,base.Y,pos.Z)
+  -- The slam must now hit beyond its former 2.35-stud radius.
+  pr.CFrame=CFrame.new(pos.X+(kind=='Slam' and 3.2 or 0),base.Y,pos.Z)
   task.wait(a.active-.12)
   local early=npc:GetAttribute('BossHits') or 0
   assert(early==before,'Early hit '..kind)

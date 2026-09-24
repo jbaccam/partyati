@@ -162,3 +162,13 @@ Swing and Spin now lift the original separated carry grip toward the right shoul
 `validate_shoulder_sweeps.py` checks the unchanged grip through the shoulder lift, bent elbows, raised hammer, level active shaft, and sweep angles. These and all wrist, hinge, reach, grip, ground-contact and walking checks passed. The Studio pose regression passed 2,307 samples/transitions with a maximum joint gap of 0.00000267 studs. Both Rojo packages built. Damage timing and gameplay code are unchanged; multiplayer behavior was not tested in this revision.
 
 Client playback also passed all 87 pose samples (maximum position error 0.003913 studs, basis-vector error 0.001184). The initial Studio Play startup stalled; activating Studio and starting playback completed the test. Idle, Walk, Slam, Hit and Death clip data were compared with the preceding commit and are unchanged.
+
+## Direct carry recovery and larger runtime boss (September 24)
+
+Swing and Spin now recover directly in torso space around the held end of the hammer. The right hand slides from its attack grip back up the shaft; the left hand remains attached and takes the shortest roll back to its resting orientation. The old second pitch-down/handle-to-face motion is removed. Reach projection moves both hands with the weapon, and the final pose exactly matches carry. Wrist roll values are normalized before carry blending to prevent accidental full rotations.
+
+Runtime size is 1.15 times the authored size. BossMotion scales a private pose-data copy, and BossService scales each spawned model exactly once. Rest transforms, joint pivots, hammer collision, warning sweep width and ground offset use the same scale. Authored stride distance scales with the body while movement speed remains 4.5 studs/second; health, damage and the slam radius are unchanged.
+
+All authored checks passed. Recovery wrist height stays below 5.97 authored studs, and maximum left-grip rotation per frame is 12.68 degrees. Studio passed 2,307 interpolated joint samples (maximum gap 0.00000377 studs), plus 87 actual client poses (maximum position error 0.005043 studs). Both packages built. Updated normal/half-speed videos show the authored motion; the 15% enlargement is applied in-game. Multi-client behavior was not tested.
+
+Final single-client gameplay checks passed: one hit per attack, zero early hits, a miss at 7.5 studs outside the slam radius, and 18.015 studs of walking over four seconds at the unchanged speed of 4.5. Reapplying model preparation did not change its size. See `finished/recovery-scale-studio-checks.json`.

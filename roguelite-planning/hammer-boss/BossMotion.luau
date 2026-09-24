@@ -1,6 +1,18 @@
 -- The exported poses drive rendering AND authoritative weapon collision.
-local D=require(script.Parent.BossData)
-local M={Data=D,RootHeight=D.rootHeight,HeadSize=Vector3.new(table.unpack(D.hammerHeadSize))}
+local SCALE=1.15
+local function copy(value)
+ if type(value)~='table' then return value end
+ local result={};for k,v in value do result[k]=copy(v) end;return result
+end
+-- Scale a private copy so geometry, joint pivots, poses and collision agree.
+local D=copy(require(script.Parent.BossData))
+local function scale3(values) for i=1,3 do values[i]*=SCALE end end
+D.rootHeight*=SCALE;D.walkSpeed*=SCALE
+scale3(D.hammerHeadRest);scale3(D.hammerHeadSize)
+for _,joint in D.joints do scale3(joint.head) end
+for _,part in D.parts do scale3(part.center);scale3(part.size) end
+for _,clip in D.clips do for _,frame in clip.frames do for _,pose in frame do scale3(pose) end end end
+local M={Scale=SCALE,Data=D,RootHeight=D.rootHeight,HeadSize=Vector3.new(table.unpack(D.hammerHeadSize))}
 local headRest=CFrame.new(table.unpack(D.hammerHeadRest))
 local arms={}
 -- Must match ELBOW_MIN/ELBOW_MAX in wrist_motion.py, which authored the clips.
@@ -61,7 +73,7 @@ function M.duration(name) return clips[name].duration end
 -- Interpolate the held end of the tool, then the hands in tool space.
 -- Independently interpolating world-space hand matrices cuts across the
 -- swing arc and pulls the cuffs inward between otherwise extended frames.
-local gripPivot=headRest*CFrame.new(-7.3,0,0)
+local gripPivot=headRest*CFrame.new(-7.3*SCALE,0,0)
 function M.blend(a,b,alpha)
  local result={}
  for name,cf in a do result[name]=cf:Lerp(b[name],alpha) end
@@ -83,7 +95,7 @@ function M.sample(name,time,looped)
  end
  local attack=M.Attacks[name]
  if (name=='Swing' or name=='Spin') and time>=attack.active and time<=attack.finish then
-  local shift=Vector3.yAxis*(4.6-D.rootHeight-(result.Hammer*headRest).Y)
+  local shift=Vector3.yAxis*(4.6*SCALE-D.rootHeight-(result.Hammer*headRest).Y)
   for _,part in {'Hammer','RightHand','LeftHand'} do result[part]+=shift end
  end
  return M.constrainArms(result)
@@ -98,7 +110,18 @@ end
 function M.active(clip,time)
  local a=M.Attacks[clip];return a~=nil and time>=a.active and time<=a.finish
 end
+function M.prepare(npc)
+ if npc:GetAttribute('BossVisualScale')==SCALE then return end
+ local previous=npc:GetScale();local ratio=SCALE/previous
+ npc:ScaleTo(SCALE)
+ for name in D.parts do
+  local part=npc:FindFirstChild(name);local rest=part and part:GetAttribute('BossRest')
+  if rest then part:SetAttribute('BossRest',CFrame.new(rest.Position*ratio)*rest.Rotation) end
+ end
+ npc:SetAttribute('BossVisualScale',SCALE)
+end
 function M.apply(npc,poses)
+ M.prepare(npc)
  M.constrainArms(poses)
  local rest={HumanoidRootPart=CFrame.identity}
  for name in D.parts do
@@ -135,6 +158,6 @@ function M.warning(root,clip)
   local head=M.head(root,clip,math.min(a.finish,a.active+i/120))
   table.insert(points,head.Position)
  end
- return points,1.9
+ return points,1.9*SCALE
 end
 return M

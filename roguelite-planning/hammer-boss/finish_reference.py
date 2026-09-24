@@ -90,7 +90,7 @@ def ik(a,w,l1,l2,pole):
  side=pole-a;side-=u*side.dot(u)
  return a+u*along+side.normalized()*math.sqrt(max(0,l1*l1-along*along)),max(0,distance-l1-l2)
 def pose(clip,f):
- global carryBase,carryHeight
+ global carryBase,carryHeight,carryPose,recoveryPose
  if f==0:wristHistory.clear()
  sec=f/30;hip,torso,crouch,lean,yaw,pitch,lift=channels(clip,f) if clip in KEYS else neutral
  stride=math.sin(sec*2*math.pi/1.6) if clip=='Walk' else 0
@@ -135,10 +135,10 @@ def pose(clip,f):
   if clip in ('Swing','Spin'):
    start,end,last=(19,25,54) if clip=='Swing' else (21,37,66)
    fixedHeight=f>=start-7
-   heightTarget=keyed([(0,[carryHeight]),(start-7,[12.5]),(start,[4.6]),(end+5,[4.6]),(last,[carryHeight])],f)[0]
+   heightTarget=keyed([(0,[carryHeight]),(start-7,[12.5]),(start,[4.6]),(last-6,[4.6]),(last,[carryHeight])],f)[0]
    sweepWeight=ease(start-3,start,f)*(1-ease(end,end+5,f))
   extensionWeight=ease(5,12,f)*(1-ease(36,46,f)) if clip=='Slam' else (.5*ease(0,start-7,f)+.5*ease(start-7,start,f))*(1-ease(end+1,end+11,f))
-  weapon,gripSolutions=solve_grips(weapon,handOffsets,chest,wristHistory,fixedHeight,sweepWeight,extensionWeight,ease(0,8,f)*(1-ease({"Slam":40,"Swing":44,"Spin":56}[clip],{"Slam":50,"Swing":54,"Spin":66}[clip],f)),ease(5,17,f)*(1-ease(18,23,f)) if clip=="Slam" else 0,clip in ("Swing","Spin"),heightTarget,(1-ease(20,21,f)*(1-ease(29,41,f))) if clip=="Slam" else (1-ease(start-7,start,f)*(1-ease(end+6,last-6,f))),flightHeight,1 if clip in ('Swing','Spin') else 0,.8+.175*ease(start-7,start,f) if clip in ('Swing','Spin') else .975)
+  weapon,gripSolutions=solve_grips(weapon,handOffsets,chest,wristHistory,fixedHeight,sweepWeight,extensionWeight,ease(0,8,f)*(1-ease({"Slam":40,"Swing":44,"Spin":56}[clip],{"Slam":50,"Swing":54,"Spin":66}[clip],f)),ease(5,17,f)*(1-ease(18,23,f)) if clip=="Slam" else 0,clip in ("Swing","Spin"),heightTarget,(1-ease(20,21,f)*(1-ease(29,41,f))) if clip=="Slam" else (1-ease(start-7,start,f)*(1-ease(last-5,last,f))),flightHeight,1 if clip in ('Swing','Spin') else 0,.8+.175*ease(start-7,start,f) if clip in ('Swing','Spin') else .975)
  elif not death:
   weapon,gripSolutions=solve_grips(weapon,handOffsets,chest,wristHistory)
   if clip=='Idle' and f==0:carryBase=wristHistory['_values'].copy();carryHeight=(weapon@HT).translation.z
@@ -166,6 +166,11 @@ def pose(clip,f):
    foot.x=w.x
   knee,err=ik(hips@a,foot,(b-a).length,(w-b).length,R(z=legYaw)@Vector((s*2,-2.5,2)))
   D[side+'UpperLeg']=align(a,b,hips@a,knee);D[side+'LowerLeg']=align(b,w,knee,foot);D[side+'Foot']=T(foot)@R(z=0 if clip=='Walk' else legYaw)@T(-w)
+ if clip=='Idle' and f==0:carryPose={n:m.copy() for n,m in D.items()}
+ if clip in ('Swing','Spin'):
+  end,last=(25,54) if clip=='Swing' else (37,66)
+  if f==end+3:recoveryPose={n:m.copy() for n,m in D.items()}
+  if f>end+3:D=direct_carry_recovery(recoveryPose,carryPose,ease(end+3,last,f))
  return D,max(errors)
 def apply(D,frame=None):
  for name in joints:

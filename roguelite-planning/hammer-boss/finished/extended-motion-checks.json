@@ -12,14 +12,14 @@
   "Swing": {
     "minActiveExtension": 0.9660289739959325,
     "maxActiveExtension": 0.9796770381178672,
-    "minimumShaftTorsoDistanceSquared": 1.3574445132256225,
+    "minimumShaftTorsoDistanceSquared": 1.8278246248224463,
     "carryPoseMismatch": 1.000000000139778e-06,
     "overheadWristHeights": []
   },
   "Spin": {
     "minActiveExtension": 0.9660289739959325,
     "maxActiveExtension": 0.9796770381178672,
-    "minimumShaftTorsoDistanceSquared": 1.285047141298187,
+    "minimumShaftTorsoDistanceSquared": 1.8279504837025762,
     "carryPoseMismatch": 1.000000000139778e-06,
     "overheadWristHeights": []
   }

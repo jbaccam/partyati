@@ -36,7 +36,7 @@ function B.practice(player,action)
   if floor and floor.Normal.Y>.8 and not workspace:Raycast(root.Position,direction*20,params) then
    local pos=floor.Position+Vector3.yAxis*(Motion.RootHeight+.1)
    local overlap=OverlapParams.new();overlap.FilterType=Enum.RaycastFilterType.Exclude;overlap.FilterDescendantsInstances=exclude;overlap.RespectCanCollide=true
-   if #workspace:GetPartBoundsInBox(CFrame.new(pos+Vector3.yAxis*1.8),Vector3.new(10,11,7),overlap)==0 then
+   if #workspace:GetPartBoundsInBox(CFrame.new(pos+Vector3.yAxis*1.8),Vector3.new(10,11,7)*Motion.Scale,overlap)==0 then
     cf=CFrame.lookAt(pos,Vector3.new(root.Position.X,pos.Y,root.Position.Z));break
    end
   end
@@ -81,10 +81,10 @@ function B.spawn(cf,practice)
  assert(not practice or Run:IsStudio(),'Practice is Studio only')
  local template=game.ServerStorage.RogueliteNPCs:FindFirstChild('HammerBoss_NPC');if not template then return nil end
  local folder=workspace:FindFirstChild('RogueliteEnemies');if not folder then return nil end
- local npc=template:Clone();npc.Name='HammerBoss';npc:PivotTo(cf);npc:SetAttribute('BossPractice',practice==true)
- local root=npc.PrimaryPart;local h=npc.Humanoid
+ local npc=template:Clone();npc.Name='HammerBoss';Motion.prepare(npc);npc:PivotTo(cf);npc:SetAttribute('BossPractice',practice==true)
+ local root=npc.PrimaryPart;local h=npc.Humanoid;h.WalkSpeed=Motion.Data.walkSpeed/Motion.Scale
  npc:SetAttribute('IsBoss',true);npc:SetAttribute('IsHammerBoss',true);npc:SetAttribute('ZombieType','HammerBoss')
- npc:SetAttribute('ContactDamage',0);npc:SetAttribute('ContactRange',0);npc:SetAttribute('BaseMoveSpeed',Motion.Data.walkSpeed or 4.5)
+ npc:SetAttribute('ContactDamage',0);npc:SetAttribute('ContactRange',0);npc:SetAttribute('BaseMoveSpeed',h.WalkSpeed)
  for name in Motion.Data.parts do
   local part=npc:FindFirstChild(name)
   if part then part:SetAttribute('BossRest',root.CFrame:ToObjectSpace(part.CFrame)) end

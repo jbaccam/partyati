@@ -29,7 +29,7 @@ for _,clip in {'Swing','Spin'} do
  local a=M.Attacks[clip]
  for f=0,math.ceil((a.finish-a.active)*120) do
   local head=M.head(CFrame.identity,clip,math.min(a.finish,a.active+f/120))
-  assert(math.abs(head.Y+D.rootHeight-4.6)<.001,'Sweep lifted above avatar height: '..clip)
+  assert(math.abs(head.Y+D.rootHeight-4.6*M.Scale)<.001,'Sweep lifted above avatar height: '..clip)
   if clip=='Swing' then assert(math.abs(head.RightVector.Y)<.0001,'Swing handle tilted between frames') end
  end
 end

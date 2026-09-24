@@ -64,6 +64,7 @@ def solve_grips(weapon,offsets,chest,history,grounded=False,sweepWeight=0,extens
  baseline=globals().get("carryBase",[0.]*8)
  def evaluate(values):
   actual=[baseline[i]*(1-carryWeight)+values[i]*carryWeight for i in range(8)]
+  for i in (3,4):actual[i]=baseline[i]+((values[i]-baseline[i]+math.pi)%math.tau-math.pi)*carryWeight
   actual[7]*=float(tiltAllowed)
   W=weapon.copy();baseH=W@HT
   tiltAxis=baseH.to_3x3()@Vector((0,1-carryWeight,carryWeight)).normalized() if isSweep else baseH.to_3x3()@Vector((0,1,0))

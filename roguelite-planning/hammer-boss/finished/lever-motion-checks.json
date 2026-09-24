@@ -18,7 +18,7 @@
     "maxHeadGround": 0.0050002834759652615
   },
   "Swing": {
-    "maxRadialGripDrift": 4.882337021755272e-06,
+    "maxRadialGripDrift": 5.2409488781214244e-06,
     "activeGripPositions": [
       [
         6.5499982833862305,
@@ -56,7 +56,7 @@
     "maxHeadGround": null
   },
   "Spin": {
-    "maxRadialGripDrift": 5.38502123870885e-06,
+    "maxRadialGripDrift": 5.2866243224587076e-06,
     "activeGripPositions": [
       [
         6.5499982833862305,

@@ -1,0 +1,10 @@
+{
+  "Swing": {
+    "maxRecoveryWristHeight": 5.9669286727905275,
+    "maxLeftGripRotationStepDegrees": 11.697160845189458
+  },
+  "Spin": {
+    "maxRecoveryWristHeight": 5.966928434371948,
+    "maxLeftGripRotationStepDegrees": 12.673274278533382
+  }
+}

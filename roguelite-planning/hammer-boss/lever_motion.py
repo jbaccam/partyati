@@ -47,7 +47,7 @@ def attack_pose(clip,f,chest):
  if clip=='Slam':orientation=R(z=90*weight,y=-13+(pitch+13)*weight)
  else:
   unwind=yaw-360 if clip=='Spin' and f>=43 else yaw
-  orientation=R(z=(90+unwind)*weight,x=90*weight,y=-13*(1-weight)-(40*(1-ease(14,19,f)*(1-ease(31,48,f))) if clip=="Swing" else 40)*weight)
+  orientation=R(z=(90+unwind)*weight,x=90*(1-ease(end+3,last-8,f)),y=-13*(1-weight)-(40*(1-ease(14,19,f)*(1-ease(31,48,f))) if clip=="Swing" else 40)*weight)
  # Rotate about the held end, rather than interpolating the distant head
  # position and sweeping the wrists through a large unintended arc.
  H=T((HT@Vector((center,0,0))).lerp(centerWorld,weight))@orientation@T((-center,0,0))
@@ -126,7 +126,7 @@ def shoulder_sweep_pose(clip,f,chest):
  lift=ease(0,liftEnd,f)
  drive=ease(liftEnd,start,f)
  recover=ease(last-18,last,f)
- slide=drive*(1-ease(last-10,last,f))
+ slide=drive*(1-ease(end+5,last,f))
  grip={'Right':2.72+3.83*slide,'Left':8.05}
  center=(grip['Right']+grip['Left'])/2
  carryCenter=HT@Vector((5.385,0,0))
@@ -142,10 +142,48 @@ def shoulder_sweep_pose(clip,f,chest):
  H=T(held)@orientation@T((-center,0,0))
  if f>=end:
   weight=1-recover
-  orientation=R(z=(90+yaw)*weight,x=90*weight,y=-13*(1-weight)-40*ease(end+6,last-6,f)*weight)
+  orientation=R(z=(90+yaw)*weight,x=90*(1-ease(end+3,last-8,f)),y=-13*(1-weight))
   held=(HT@Vector((center,0,0))).lerp(activeCenter,weight)
   H=T(held)@orientation@T((-center,0,0))
  offsets={side:HT@T((g-({'Right':2.72,'Left':8.05}[side]),0,0))@HT.inverted() for side,g in grip.items()}
  return H@HT.inverted(),offsets
 
 
+
+
+
+def direct_carry_recovery(first,last,t):
+ if t>=1:return {n:m.copy() for n,m in last.items()}
+ # Recover in torso space around the held end, with a real axial hand slide.
+ D={n:blend_frame(m,last[n],t) for n,m in first.items()}
+ pivot=HT@T((8.05,0,0))
+ heldA=first['UpperTorso'].inverted()@first['Hammer']@pivot
+ heldB=last['UpperTorso'].inverted()@last['Hammer']@pivot
+ W=D['UpperTorso']@blend_frame(heldA,heldB,t)@pivot.inverted()
+ D['Hammer']=W
+ for side,g in [('Right',2.72),('Left',8.05)]:
+  A=HT.inverted()@first['Hammer'].inverted()@first[side+'Hand']@HT
+  B=HT.inverted()@last['Hammer'].inverted()@last[side+'Hand']@HT
+  ra=math.atan2(A[2][1],A[1][1]);rb=math.atan2(B[2][1],B[1][1]);roll=ra+((rb-ra+math.pi)%math.tau-math.pi)*t
+  ga=(A@Vector((g,0,0))).x;gb=(B@Vector((g,0,0))).x
+  hand=W@HT@T((ga+(gb-ga)*t,0,0))@Matrix.Rotation(roll,4,'X')@T((-g,0,0))@HT.inverted()
+  a,b,w=[joints[side+n]['head'] for n in ['UpperArm','LowerArm','Hand']]
+  shoulder=D['UpperTorso']@a;wrist=hand@w
+  elbow,_=elbow_hinge(side,shoulder,wrist,(b-a).length,(w-b).length,D['UpperTorso'])
+  D[side+'Hand']=hand
+ # Keep both hands on the shaft while projecting the pair into arm reach.
+ for iteration in range(80):
+  worst=0
+  for side in ['Right','Left']:
+   a,b,w=[joints[side+n]['head'] for n in ['UpperArm','LowerArm','Hand']]
+   v=D[side+'Hand']@w-D['UpperTorso']@a;l1=(b-a).length;l2=(w-b).length
+   low=math.sqrt(l1*l1+l2*l2+2*l1*l2*math.cos(ELBOW_MAX-.001));high=math.sqrt(l1*l1+l2*l2+2*l1*l2*math.cos(ELBOW_MIN+.001))
+   shift=v.normalized()*(max(low,min(high,v.length))-v.length);worst=max(worst,shift.length)
+   for n in ['Hammer','RightHand','LeftHand']:D[n].translation+=shift
+  if worst<1e-6:break
+ for side in ['Right','Left']:
+  a,b,w=[joints[side+n]['head'] for n in ['UpperArm','LowerArm','Hand']]
+  shoulder=D['UpperTorso']@a;wrist=D[side+'Hand']@w
+  elbow,_=elbow_hinge(side,shoulder,wrist,(b-a).length,(w-b).length,D['UpperTorso'])
+  D[side+'UpperArm'],D[side+'LowerArm']=hinge_frames(a,b,w,shoulder,elbow,wrist)
+ return D

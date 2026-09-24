@@ -1,0 +1,65 @@
+{
+  "sourceSize": 1254,
+  "uploadedSize": 1024,
+  "whiteAtlas": "rbxassetid://90006993019437",
+  "redAtlas": "rbxassetid://106280569442353",
+  "white": [
+    {
+      "name": "needle_diagonal",
+      "rect": [
+        30,
+        542,
+        94,
+        75
+      ],
+      "outwardAngle": 143.624
+    },
+    {
+      "name": "needle_short",
+      "rect": [
+        794,
+        1094,
+        41,
+        115
+      ],
+      "outwardAngle": 94.212
+    },
+    {
+      "name": "needle_long",
+      "rect": [
+        714,
+        1079,
+        44,
+        144
+      ],
+      "outwardAngle": 88.304
+    }
+  ],
+  "red": [
+    [
+      47,
+      57,
+      91,
+      88
+    ],
+    [
+      542,
+      78,
+      62,
+      62
+    ],
+    [
+      885,
+      68,
+      75,
+      73
+    ],
+    [
+      835,
+      182,
+      169,
+      156
+    ]
+  ],
+  "excluded": "Gold sheet, large slash clusters, stars and elongated blood streaks"
+}

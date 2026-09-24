@@ -1,0 +1,40 @@
+{
+  "source": "ChatGPT Image Sep 18, 2026, 12_09_04 AM (2).png",
+  "sourceSHA256": "dd541d9aa1dd19e4668e225e3a25cc1653bebba697465f0b34f77663d3157269",
+  "localAtlas": "bullet-impact-atlas.png",
+  "assetId": "131707953627421",
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "servedSize": [
+    1024,
+    1024
+  ],
+  "row": 1,
+  "rectangles": [
+    [
+      35,
+      75,
+      150,
+      170
+    ],
+    [
+      202,
+      79,
+      115,
+      163
+    ],
+    [
+      725,
+      83,
+      106,
+      157
+    ]
+  ],
+  "weapons": [
+    "00",
+    "07",
+    "09"
+  ]
+}

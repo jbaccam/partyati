@@ -1,0 +1,329 @@
+{
+  "before": [
+    {
+      "original_x": -2.55,
+      "triangle": 41,
+      "rgb": [
+        14,
+        15,
+        18
+      ],
+      "radius": 0.51
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 1331,
+      "rgb": [
+        102,
+        113,
+        56
+      ],
+      "radius": 0.45
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 1434,
+      "rgb": [
+        14,
+        15,
+        18
+      ],
+      "radius": 0.51
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 1435,
+      "rgb": [
+        14,
+        15,
+        18
+      ],
+      "radius": 0.51
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 1436,
+      "rgb": [
+        14,
+        15,
+        18
+      ],
+      "radius": 0.51
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 1437,
+      "rgb": [
+        14,
+        15,
+        18
+      ],
+      "radius": 0.51
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 1438,
+      "rgb": [
+        14,
+        15,
+        18
+      ],
+      "radius": 0.51
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 1439,
+      "rgb": [
+        14,
+        15,
+        18
+      ],
+      "radius": 0.51
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 1440,
+      "rgb": [
+        14,
+        15,
+        18
+      ],
+      "radius": 0.51
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 2504,
+      "rgb": [
+        100,
+        110,
+        55
+      ],
+      "radius": 0.45
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 2505,
+      "rgb": [
+        101,
+        111,
+        56
+      ],
+      "radius": 0.45
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 2506,
+      "rgb": [
+        102,
+        113,
+        56
+      ],
+      "radius": 0.45
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 2507,
+      "rgb": [
+        100,
+        110,
+        55
+      ],
+      "radius": 0.45
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 2508,
+      "rgb": [
+        104,
+        114,
+        57
+      ],
+      "radius": 0.45
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 2509,
+      "rgb": [
+        101,
+        111,
+        56
+      ],
+      "radius": 0.45
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 2510,
+      "rgb": [
+        100,
+        110,
+        55
+      ],
+      "radius": 0.45
+    }
+  ],
+  "after": [
+    {
+      "original_x": -2.52,
+      "triangle": 41,
+      "rgb": [
+        14,
+        15,
+        18
+      ],
+      "radius": 0.51
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 1331,
+      "rgb": [
+        102,
+        113,
+        56
+      ],
+      "radius": 0.45
+    },
+    {
+      "original_x": -2.52,
+      "triangle": 1434,
+      "rgb": [
+        14,
+        15,
+        18
+      ],
+      "radius": 0.51
+    },
+    {
+      "original_x": -2.52,
+      "triangle": 1435,
+      "rgb": [
+        14,
+        15,
+        18
+      ],
+      "radius": 0.51
+    },
+    {
+      "original_x": -2.52,
+      "triangle": 1436,
+      "rgb": [
+        14,
+        15,
+        18
+      ],
+      "radius": 0.51
+    },
+    {
+      "original_x": -2.52,
+      "triangle": 1437,
+      "rgb": [
+        14,
+        15,
+        18
+      ],
+      "radius": 0.51
+    },
+    {
+      "original_x": -2.52,
+      "triangle": 1438,
+      "rgb": [
+        14,
+        15,
+        18
+      ],
+      "radius": 0.51
+    },
+    {
+      "original_x": -2.52,
+      "triangle": 1439,
+      "rgb": [
+        14,
+        15,
+        18
+      ],
+      "radius": 0.51
+    },
+    {
+      "original_x": -2.52,
+      "triangle": 1440,
+      "rgb": [
+        14,
+        15,
+        18
+      ],
+      "radius": 0.51
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 2504,
+      "rgb": [
+        100,
+        110,
+        55
+      ],
+      "radius": 0.45
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 2505,
+      "rgb": [
+        101,
+        111,
+        56
+      ],
+      "radius": 0.45
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 2506,
+      "rgb": [
+        102,
+        113,
+        56
+      ],
+      "radius": 0.45
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 2507,
+      "rgb": [
+        100,
+        110,
+        55
+      ],
+      "radius": 0.45
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 2508,
+      "rgb": [
+        104,
+        114,
+        57
+      ],
+      "radius": 0.45
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 2509,
+      "rgb": [
+        101,
+        111,
+        56
+      ],
+      "radius": 0.45
+    },
+    {
+      "original_x": -2.55,
+      "triangle": 2510,
+      "rgb": [
+        100,
+        110,
+        55
+      ],
+      "radius": 0.45
+    }
+  ],
+  "confirmed": "Eight dark triangles and eight green triangles overlapped in the same rear plane; repaired exported dark plane is 0.03 behind olive plane.",
+  "studio_mesh": "79978356738826 retained; WeaponPresentation v2 masks these faces with separated native parts",
+  "visual_playtest": "Not run; user requested to perform playtests themselves"
+}

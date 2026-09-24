@@ -8,4 +8,4 @@ Intended sizes: approximately 9 x 6, 13 x 10, 19 x 12, and 23 x 9 studs, all bel
 
 FBX round-trip checks passed: one mesh/material per individual asset, UVs present, ground origin, no vertices below ground, under 10,000 triangles each. Import triangle counts differ from source by less than 0.5%; both counts are recorded in validation.json. Preview was visually inspected. Roblox Studio import and edit-mode appearance were verified on September 23, 2026. The four GLB exports imported at their intended stud dimensions with the shared palette texture. The reusable originals are in `ServerStorage.RogueliteGrassKit.GroundPatches` in roguelite place 107877054949326; IDs are in `../studio-asset-manifest.json`. They are anchored with collision, touch, and query disabled. A temporary Studio lineup was inspected and removed. In-game placement and performance are not yet tested.
 
-Status: imported and saved in Studio as reusable templates; not placed in the arena.
+Status: imported and saved in Studio as reusable templates, and all four added to the installed Brushtool 2.1 Brush list on September 23, 2026; not placed in the arena.

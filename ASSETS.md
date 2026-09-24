@@ -2,7 +2,7 @@
 
 ## Original Blender grass kit — September 23, 2026
 
-Six upright grass meshes and four low ground-cover patches from `roguelite-planning/blender-grass-kit/` were imported into roguelite place 107877054949326. Reusable templates are in `ServerStorage.RogueliteGrassKit`, split into `GrassTufts` and `GroundPatches`. The FBX tufts were corrected from Studio's 100x import scale; the GLB ground patches imported at intended size. All templates are anchored and noncolliding. The shared texture and ten mesh IDs are recorded in `studio-asset-manifest.json` in the kit folder. A temporary lineup rendered in Studio and was removed. The assets are not scattered in the arena, and in-game performance has not been tested. No Creator Store content is used.
+Six upright grass meshes and four low ground-cover patches from `roguelite-planning/blender-grass-kit/` were imported into roguelite place 107877054949326. Reusable templates are in `ServerStorage.RogueliteGrassKit`, split into `GrassTufts` and `GroundPatches`. All ten are also registered in the installed Brushtool 2.1 Brush list, whose saved copies are in `ServerStorage.Brushtool2_Plugin_Storage`. The FBX tufts were corrected from Studio's 100x import scale; the GLB ground patches imported at intended size. All templates are anchored and noncolliding. The shared texture and ten mesh IDs are recorded in `studio-asset-manifest.json` in the kit folder. A temporary lineup rendered in Studio and was removed. The assets are not scattered in the arena, and in-game performance has not been tested. No Creator Store content is used.
 
 ## Beach Cove kit (map two) — September 22, 2026
 

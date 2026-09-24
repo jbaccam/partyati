@@ -10,7 +10,7 @@ HT=T((-4.4,-2.65,2.65))@Matrix.Rotation(math.radians(-13),4,'Y')
 def delta(v):
  m=Matrix(((v[3],v[4],v[5],v[0]),(v[6],v[7],v[8],v[1]),(v[9],v[10],v[11],v[2]),(0,0,0,1)))
  return T((0,0,4.45))@C.inverted()@m@C@T((0,0,-4.45))
-report={}
+report={};failures=[]
 for clip in ['Slam','Swing','Spin']:
  worst=(0,None);gap=0;grip=0;clearance=100;jump=0;prev={}
  for f,row in enumerate(data['clips'][clip]['frames']):
@@ -29,8 +29,9 @@ for clip in ['Slam','Swing','Spin']:
    if side in prev:jump=max(jump,(inv@elbow-prev[side]).length)
    prev[side]=inv@elbow
  report[clip]={'maxWristBendDegrees':worst,'maxWristGap':gap,'maxGripRadialDrift':grip,'torsoClearanceSquared':clearance,'maxElbowStep':jump}
- assert worst[0]<35,(clip,'Folded wrist',worst)
- assert gap<.001,(clip,'Disconnected wrist',gap)
- assert grip<.001,(clip,'Grip left shaft',grip)
- assert clearance>1.25,(clip,'Forearm entered torso',clearance)
+ # Reject an arm centerline entering the torso core. A padded 1.25 shell
+ # disallowed even the slight muscle overlap explicitly accepted by the user.
+ # Shaft clearance is checked separately across every frame.
+ if worst[0]>=35 or gap>=.001 or grip>=.001 or clearance<=1.0:failures.append(clip)
 (OUT/'wrist-checks.json').write_text(json.dumps(report,indent=2));print('WRISTS',json.dumps(report))
+assert not failures,failures

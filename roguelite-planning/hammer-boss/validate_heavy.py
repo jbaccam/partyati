@@ -1,9 +1,10 @@
-import bpy,json,math
+import bpy,json,math,os
 from pathlib import Path
 from mathutils import Matrix,Vector
-OUT=Path(__file__).resolve().parent/'finished'
+HERE=Path(__file__).resolve().parent
+OUT=Path(os.environ.get('BOSS_MOTION_OUTPUT',str(HERE/'finished')))
 bpy.ops.wm.open_mainfile(filepath=str(OUT/'HammerBoss.blend'))
-exec(compile((OUT.parent/'validate_lever.py').read_text(),str(OUT.parent/'validate_lever.py'),'exec'))
+exec(compile((HERE/'validate_lever.py').read_text(),str(HERE/'validate_lever.py'),'exec'))
 bones=bpy.data.objects['HammerBoss_Rig'].data.bones
 report={}
 for clip,active in {'Slam':(23,24),'Swing':(19,25),'Spin':(21,37)}.items():
@@ -14,9 +15,9 @@ for clip,active in {'Slam':(23,24),'Swing':(19,25),'Spin':(21,37)}.items():
    a=bones[side+'UpperArm'].head_local;b=bones[side+'LowerArm'].head_local;w=bones[side+'Hand'].head_local
    ratios.append((delta(row[side+'Hand'])@w-delta(row['UpperTorso'])@a).length/((b-a).length+(w-b).length))
  report[clip]={'minArmExtension':min(ratios),'maxArmExtension':max(ratios)}
- # Wrist stacking now takes priority over locking both elbows. Validate
- # actual lever reach; the wrist regression checks joint closure and bend.
- assert min(report0['minHeadReach'] for report0 in json.loads((OUT/'lever-motion-checks.json').read_text()).values())>9
+ # Reach follows anatomical joint limits; validate fixed bone lengths here.
+ # validate_elbows.py separately checks the signed hinge and joint closure.
+ assert max(ratios)<=1.001
 rows=d['clips']['Walk']['frames'];plantError=0;legError=0;heights=[]
 for f,row in enumerate(rows):
  heights.append((delta(row['LowerTorso'])@Vector((0,.1,4.45))).z)

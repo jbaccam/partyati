@@ -1,0 +1,26 @@
+{
+  "Slam": {
+    "minActiveExtension": 0.9739099309693064,
+    "maxActiveExtension": 0.9760541763755627,
+    "minimumShaftTorsoDistanceSquared": 6.141184574311354,
+    "carryPoseMismatch": 1.000000000139778e-06,
+    "overheadWristHeights": [
+      13.417899322509765,
+      13.13860626220703
+    ]
+  },
+  "Swing": {
+    "minActiveExtension": 0.9729205196088777,
+    "maxActiveExtension": 0.9752103930757801,
+    "minimumShaftTorsoDistanceSquared": 5.28553303918513,
+    "carryPoseMismatch": 1.000000000139778e-06,
+    "overheadWristHeights": []
+  },
+  "Spin": {
+    "minActiveExtension": 0.9740514586847814,
+    "maxActiveExtension": 0.9759921936050874,
+    "minimumShaftTorsoDistanceSquared": 5.301306528098197,
+    "carryPoseMismatch": 1.000000000139778e-06,
+    "overheadWristHeights": []
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "Idle": {
+    "minSignedFlexion": 12.057226220728245,
+    "maxSignedFlexion": 39.392549011896826,
+    "maxHingeAxisMismatch": 1.3234378880962442e-06,
+    "maxJointGap": 8.349152663789119e-06,
+    "minimumBendSideDot": 0.2588040977716446,
+    "maxElbowStep": 0.09145045811002836,
+    "maxSwivelStepDegrees": 1.5001599485190553
+  },
+  "Walk": {
+    "minSignedFlexion": 25.520381256825758,
+    "maxSignedFlexion": 43.62080664217941,
+    "maxHingeAxisMismatch": 1.472394776536969e-06,
+    "maxJointGap": 8.036023677140126e-06,
+    "minimumBendSideDot": 0.6560573913156986,
+    "maxElbowStep": 0.09207852222947872,
+    "maxSwivelStepDegrees": 1.5001805409421038
+  },
+  "Slam": {
+    "minSignedFlexion": 12.05730122513572,
+    "maxSignedFlexion": 39.52392537292643,
+    "maxHingeAxisMismatch": 1.3194050563084277e-06,
+    "maxJointGap": 6.921837551519117e-06,
+    "minimumBendSideDot": 0.2588295638561249,
+    "maxElbowStep": 1.7124158185956793,
+    "maxSwivelStepDegrees": 8.999794759141821
+  },
+  "Swing": {
+    "minSignedFlexion": 12.057320104794565,
+    "maxSignedFlexion": 48.15463716000713,
+    "maxHingeAxisMismatch": 1.5237120427088996e-06,
+    "maxJointGap": 7.364008527508021e-06,
+    "minimumBendSideDot": 0.2588295638561249,
+    "maxElbowStep": 2.5723958833309175,
+    "maxSwivelStepDegrees": 15.000069275893622
+  },
+  "Spin": {
+    "minSignedFlexion": 12.05728720176588,
+    "maxSignedFlexion": 51.362438410854544,
+    "maxHingeAxisMismatch": 1.4233534260105553e-06,
+    "maxJointGap": 8.418879145734882e-06,
+    "minimumBendSideDot": 0.2588295638561249,
+    "maxElbowStep": 2.5952447754936228,
+    "maxSwivelStepDegrees": 15.99978489365806
+  },
+  "Hit": {
+    "minSignedFlexion": 12.057226220728245,
+    "maxSignedFlexion": 35.99239654339414,
+    "maxHingeAxisMismatch": 1.1006704159152143e-06,
+    "maxJointGap": 5.896560306779381e-06,
+    "minimumBendSideDot": 0.2588156461715698,
+    "maxElbowStep": 0.07629504012276003,
+    "maxSwivelStepDegrees": 3.5003918230276554
+  },
+  "Death": {
+    "minSignedFlexion": 12.057226220728245,
+    "maxSignedFlexion": 60.653948030563356,
+    "maxHingeAxisMismatch": 9.884312124119401e-07,
+    "maxJointGap": 8.821487426757812e-06,
+    "minimumBendSideDot": 0.2588209956884384,
+    "maxElbowStep": 1.6907043322073276,
+    "maxSwivelStepDegrees": 74.99990143449567
+  }
+}

@@ -11,18 +11,19 @@ local ok,err=xpcall(function()
  npc:SetAttribute('BossManual',true)
  while B.states[npc].attack do task.wait() end
  local base=root.CFrame
+ local standingY=base.Y-M.RootHeight+ph.HipHeight+pr.Size.Y*.5
  pr.Anchored=true
  for _,kind in {'Slam','Swing','Spin'} do
   ph.Health=ph.MaxHealth
   npc:PivotTo(base)
-  pr.CFrame=base*CFrame.new(0,0,-12)
+  pr.CFrame=base*CFrame.new(0,0,-M.reach(kind))
   local before=npc:GetAttribute('BossHits') or 0
   assert(B.start(npc,kind,pr),'Attack start '..kind)
   local a=M.Attacks[kind]
   local head=M.head(npc:GetAttribute('BossFrame'),kind,kind=='Slam' and a.active or (kind=='Swing' and 23/30 or 29/36))
   local pos=head.Position
   -- The slam must now hit beyond its former 2.35-stud radius.
-  pr.CFrame=CFrame.new(pos.X+(kind=='Slam' and 6.5 or 0),base.Y,pos.Z)
+  pr.CFrame=CFrame.new(pos.X+(kind=='Slam' and 6.5 or 0),standingY,pos.Z)
   task.wait(a.active-.12)
   local early=npc:GetAttribute('BossHits') or 0
   assert(early==before,'Early hit '..kind)
@@ -31,11 +32,11 @@ local ok,err=xpcall(function()
   assert(hits==1,'Expected one hit '..kind..' got '..hits)
  report.attacks[kind]={earlyHits=early-before,hits=hits,damage=ph.MaxHealth-ph.Health,reach=M.reach(kind)}
  end
- npc:PivotTo(base);pr.CFrame=base*CFrame.new(0,0,-12)
+ npc:PivotTo(base);pr.CFrame=base*CFrame.new(0,0,-M.reach('Slam'))
  local before=npc:GetAttribute('BossHits') or 0
  assert(B.start(npc,'Slam',pr),'Outside-radius slam start')
  local a=M.Attacks.Slam;local pos=M.head(npc:GetAttribute('BossFrame'),'Slam',a.active).Position
- pr.CFrame=CFrame.new(pos.X+7.5,base.Y,pos.Z)
+ pr.CFrame=CFrame.new(pos.X+7.5,standingY,pos.Z)
  task.wait(a.duration+.35)
  local outsideHits=(npc:GetAttribute('BossHits') or 0)-before
  assert(outsideHits==0,'Slam hit beyond advertised radius')

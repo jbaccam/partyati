@@ -1,0 +1,30 @@
+{
+  "revision": "shared elbow hinge",
+  "runtime": {
+    "samples": 2307,
+    "minSignedFlexion": 7.999978669065344,
+    "maxSignedFlexion": 120.90447010042999,
+    "maxJointGap": 4.45562181994319e-06,
+    "maxHingeAxisMismatch": 2.0485710194861895e-07
+  },
+  "client": {
+    "ok": true,
+    "samples": 87,
+    "maxPosition": 0.0031976408790796995,
+    "maxAngle": 0.0009765625
+  },
+  "server": {
+    "ok": true,
+    "earlyHitsPerAttack": 0,
+    "hitsPerAttack": 1,
+    "slamInsideDistance": 6.5,
+    "slamOutsideDistance": 7.5,
+    "outsideHits": 0,
+    "walkDistance": 18.08907699584961,
+    "walkSeconds": 4
+  },
+  "builds": [
+    "CopyTheScene",
+    "RogueliteCombat"
+  ]
+}

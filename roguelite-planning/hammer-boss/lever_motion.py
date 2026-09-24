@@ -1,4 +1,10 @@
 """Sliding two-hand sledgehammer poses, in Blender's Z-up authoring space."""
+
+# Near-straight reach is solved with a stable, one-way elbow hinge.
+ARM_TARGET=.975
+ARM_CEILING=.994
+CHEST_PULL=0.0
+
 def ease(a,b,f):
  t=max(0,min(1,(f-a)/(b-a)));return t*t*(3-2*t)
 
@@ -11,6 +17,10 @@ def keyed(keys,f):
 def blend_frame(a,b,t):
  return T(a.translation.lerp(b.translation,t))@a.to_quaternion().slerp(b.to_quaternion(),t).to_matrix().to_4x4()
 
+def attack_yaw(clip,f):
+ if clip=='Swing':return keyed([(0,[-50]),(13,[-60]),(18,[-60]),(21,[-28]),(23,[32]),(25,[88]),(31,[108]),(43,[45]),(54,[0])],f)[0]
+ return (-60+(f-21)*22.5) if 21<=f<=37 else keyed([(0,[-50]),(14,[-60]),(21,[-60]),(37,[300]),(43,[334]),(55,[360]),(66,[360])],f)[0]
+
 def attack_pose(clip,f,chest):
  last={'Slam':50,'Swing':54,'Spin':66}[clip]
  weight=ease(0,16,f)*(1-ease(last-18,last,f))
@@ -19,18 +29,14 @@ def attack_pose(clip,f,chest):
  center=7.30
  if clip=='Slam':
   # Pitch lifts the head over the shoulder, then drives its lower end into ground.
-  pitch,hy,hz=keyed([(0,[35,-2.8,8.4]),(12,[78,-2.2,9.6]),(18,[102,-1.8,9.7]),(20,[64,-2.8,8.8]),(23,[-18,-3.5,4.84]),(29,[-18,-3.5,4.84]),(39,[10,-3.3,6.4]),(50,[35,-2.8,8.4])],f)
+  pitch,hy,hz=keyed([(0,[35,-2.8,8.4]),(12,[145,-1.5,13.5]),(18,[160,-1.0,14.3]),(20,[64,-4.2,11.5]),(23,[-55,-5.5,8.0]),(29,[-55,-5.5,8.0]),(39,[-55,-4.5,7.5]),(46,[-25,-3.5,6.0]),(50,[35,-2.8,8.4])],f)
   rotation=R(z=90,y=pitch)
   centerWorld=Vector((-.15,hy,hz))
  else:
-  if clip=='Swing':
-   yaw=keyed([(0,[-65]),(13,[-72]),(18,[-72]),(21,[-28]),(23,[32]),(25,[88]),(31,[108]),(43,[45]),(54,[0])],f)[0]
-  else:
-   # A continuous revolution, without stopping at every quarter turn.
-   yaw=(-60+(f-21)*22.5) if 21<=f<=37 else keyed([(0,[-50]),(14,[-60]),(21,[-60]),(37,[300]),(43,[334]),(55,[360]),(66,[360])],f)[0]
+  yaw=attack_yaw(clip,f)
   # Roll a quarter turn around the shaft: the long head's striking end leads
   # tangential travel, rather than sweeping with the broad side of the block.
-  rotation=R(z=90+yaw,x=90)
+  rotation=R(z=90+yaw,y=-40,x=90)
   centerWorld=R(z=yaw)@Vector((0,-3.45,6.75))
  target=T(centerWorld)@rotation@T((-center,0,0))
  H=blend_frame(HT,target,weight)
@@ -39,7 +45,7 @@ def attack_pose(clip,f,chest):
  if clip=='Slam':orientation=R(z=90*weight,y=-13+(pitch+13)*weight)
  else:
   unwind=yaw-360 if clip=='Spin' and f>=43 else yaw
-  orientation=R(z=(90+unwind)*weight,x=90*weight,y=-13*(1-weight))
+  orientation=R(z=(90+unwind)*weight,x=90*weight,y=-13*(1-weight)-40*weight)
  # Rotate about the held end, rather than interpolating the distant head
  # position and sweeping the wrists through a large unintended arc.
  H=T((HT@Vector((center,0,0))).lerp(centerWorld,weight))@orientation@T((-center,0,0))
@@ -47,12 +53,12 @@ def attack_pose(clip,f,chest):
  handOffsets={side:HT@T((g-({'Right':2.72,'Left':8.05}[side]),0,0))@HT.inverted() for side,g in grip.items()}
  # The two wrist targets lie on the intersection of the arms' reach spheres.
  # This extends BOTH elbows while preserving the paired grip and bone lengths.
- extension=ease(15,19,f)*(1-ease(last-16,last-7,f))
+ extension=ease(5,12,f)*(1-ease(last-16,last-7,f))
  spheres=[]
  for side in ('Right','Left'):
   a=joints[side+'UpperArm']['head'];b=joints[side+'LowerArm']['head'];w=joints[side+'Hand']['head']
   offset=weapon.to_3x3()@(handOffsets[side]@w)
-  spheres.append((chest@a-offset,(b-a).length+(w-b).length-.025))
+  spheres.append((chest@a-offset,((b-a).length+(w-b).length)*ARM_TARGET))
  c1,r1=spheres[0];c2,r2=spheres[1];axis=c2-c1;dist=axis.length;axis.normalize()
  along=(r1*r1-r2*r2+dist*dist)/(2*dist);centerReach=c1+axis*along
  radius=math.sqrt(max(0,r1*r1-along*along))
@@ -73,7 +79,7 @@ def attack_pose(clip,f,chest):
  for iteration in range(60):
   for side in ('Right','Left'):
    a=joints[side+'UpperArm']['head'];b=joints[side+'LowerArm']['head'];w=joints[side+'Hand']['head']
-   delta=weapon@handOffsets[side]@w-chest@a;limit=(b-a).length+(w-b).length-.035
+   delta=weapon@handOffsets[side]@w-chest@a;limit=((b-a).length+(w-b).length)*ARM_CEILING
    if delta.length>limit:weapon.translation-=delta.normalized()*(delta.length-limit)
  if not (clip=='Slam' and 23<=f<=29):
   # Project the paired grip out of the belly during windup/recovery. Moving
@@ -95,7 +101,7 @@ def attack_pose(clip,f,chest):
    weapon.translation+=forward*min(push,.15)
    for side in ('Right','Left'):
     a=joints[side+'UpperArm']['head'];b=joints[side+'LowerArm']['head'];w=joints[side+'Hand']['head']
-    delta=weapon@handOffsets[side]@w-chest@a;limit=(b-a).length+(w-b).length-.035
+    delta=weapon@handOffsets[side]@w-chest@a;limit=((b-a).length+(w-b).length)*ARM_CEILING
     if delta.length>limit:weapon.translation-=delta.normalized()*(delta.length-limit)
  if clip=='Slam' and 23<=f<=29:
   bottom=min((weapon@HT@Vector((x,y,z))).z for x in [-1.55,1.55] for y in [-1.155,1.155] for z in [-2.21,2.21])
@@ -104,5 +110,5 @@ def attack_pose(clip,f,chest):
  # two-handed grip. Near-locked elbows forced the former 90-degree fold.
  wrists=sum((weapon@handOffsets[side]@joints[side+'Hand']['head'] for side in ('Right','Left')),Vector())/2
  inward=chest@Vector((0,0,7))-wrists;inward.z=0
- if inward.length>.001:weapon.translation+=inward.normalized()*1.6*ease(12,19,f)*(1-ease(last-18,last,f))
+ if inward.length>.001:weapon.translation+=inward.normalized()*CHEST_PULL*ease(12,19,f)*(1-ease(last-18,last,f))
  return weapon,handOffsets

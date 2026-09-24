@@ -85,7 +85,7 @@ Run.PreSimulation:Connect(function(dt)
   if state.blendFrom then
    local duration=(clip=='Walk' or clip=='Idle') and .16 or .12
    local weight=math.clamp((now-state.blendStart)/duration,0,1)
-   for name,p in poses do poses[name]=state.blendFrom[name]:Lerp(p,weight) end
+   poses=Motion.blend(state.blendFrom,poses,weight)
    if weight==1 then state.blendFrom=nil end
   end
   Motion.apply(npc,poses);state.lastPose=poses;state.lastClip=clip

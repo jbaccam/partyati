@@ -69,11 +69,12 @@ for name,o in objects.items():
 # hip yaw, chest yaw, crouch, chest lean, weapon yaw, weapon pitch, lift
 exec(compile((HERE/'wrist_motion.py').read_text(),str(HERE/'wrist_motion.py'),'exec'))
 exec(compile((HERE/'lever_motion.py').read_text(),str(HERE/'lever_motion.py'),'exec'))
+exec(compile((HERE/'polish_hinges.py').read_text(),str(HERE/'polish_hinges.py'),'exec'))
 wristHistory={}
 neutral=[0,0,0,0,0,0,0]
 KEYS={
  'Slam':[(0,neutral),(5,neutral),(12,[-8,-12,.3,-7,12,92,3.8]),(18,[-8,-12,.38,-8,15,112,4.1]),(20,[-2,-4,.45,0,20,75,3.2]),(23,[5,5,1.0,18,25,0,0]),(26,[6,6,1.08,20,25,0,0]),(31,[6,7,1.02,18,25,0,0]),(41,[2,4,.45,8,15,15,1.1]),(50,neutral)],
- 'Swing':[(0,neutral),(6,neutral),(13,[-20,-35,.35,-3,-35,13,1.15]),(18,[-25,-42,.40,-3,-42,13,1.15]),(21,[0,-12,.42,4,0,13,1.15]),(23,[20,23,.48,8,75,13,1.15]),(25,[46,55,.53,10,155,13,1.15]),(30,[64,78,.62,11,185,10,1.0]),(37,[53,64,.45,7,164,0,.65]),(45,[24,30,.23,3,70,0,.3]),(54,neutral)],
+ 'Swing':[(0,neutral),(6,neutral),(13,[-20,-35,.35,-3,-35,13,1.15]),(18,[-25,-42,.40,-3,-42,13,1.15]),(21,[0,-12,.42,4,0,13,1.15]),(23,[20,23,.48,8,75,13,1.15]),(25,[60,80,.53,10,155,13,1.15]),(30,[80,100,.62,11,185,10,1.0]),(37,[65,80,.45,7,164,0,.65]),(45,[24,30,.23,3,70,0,.3]),(54,neutral)],
  'Spin':[(0,neutral),(6,neutral),(14,[-32,-47,.50,4,-47,13,1.15]),(20,[-38,-54,.57,5,-54,13,1.15]),(21,[-32,-50,.54,5,-50,13,1.15]),(25,[56,41,.42,6,41,13,1.15]),(29,[148,133,.40,8,133,13,1.15]),(33,[240,225,.46,10,225,13,1.15]),(37,[325,310,.55,12,310,13,1.15]),(42,[371,375,.65,13,375,10,.9]),(51,[366,370,.40,7,370,0,.4]),(60,[360,363,.1,2,363,0,.05]),(66,[360,360,0,0,360,0,0])]
 }
 def channels(clip,f):
@@ -89,6 +90,7 @@ def ik(a,w,l1,l2,pole):
  side=pole-a;side-=u*side.dot(u)
  return a+u*along+side.normalized()*math.sqrt(max(0,l1*l1-along*along)),max(0,distance-l1-l2)
 def pose(clip,f):
+ global carryBase,carryHeight
  if f==0:wristHistory.clear()
  sec=f/30;hip,torso,crouch,lean,yaw,pitch,lift=channels(clip,f) if clip in KEYS else neutral
  stride=math.sin(sec*2*math.pi/1.6) if clip=='Walk' else 0
@@ -106,9 +108,14 @@ def pose(clip,f):
  death=f/84 if clip=='Death' else 0
  if death:
   t=min(1,death*1.4);crouch=2.6*t;lean=74*max(0,(death-.25)/.75);lift=-1.8*t
+ if clip in ('Swing','Spin'):
+  follow=attack_yaw(clip,f)
+  if clip=='Spin' and f>=43:follow-=360
+  last=54 if clip=='Swing' else 66
+  torso=(follow+20)*ease(0,16,f)*(1-ease(last-18,last,f))
  hips=T((sway,0,-crouch))@around((0,.1,4.45),R(y=roll*.65,z=hip))
  chest=T((sway,0,-crouch))@around((0,.1,5.2),R(x=lean,y=roll,z=torso))
- D={'LowerTorso':hips,'UpperTorso':chest,'Head':chest@around(joints['Head']['head'],R(x=-lean*.18,z=-(torso-hip)*.2))}
+ D={'LowerTorso':hips,'UpperTorso':chest,'Head':chest@around(joints['Head']['head'],R(x=-lean*.18,z=-((torso-hip+180)%360-180)*.2))}
  weapon=T((0,0,lift))@around(mid,R(z=yaw,y=pitch))
  handOffsets={side:Matrix.Identity(4) for side in ('Right','Left')}
  if clip in KEYS:weapon,handOffsets=attack_pose(clip,f,chest)
@@ -116,25 +123,38 @@ def pose(clip,f):
  for iteration in range(0 if clip in KEYS else 40):
   for side in ('Right','Left'):
    a=joints[side+'UpperArm']['head'];b=joints[side+'LowerArm']['head'];w=joints[side+'Hand']['head']
-   delta=weapon@w-chest@a;limit=(b-a).length+(w-b).length-.012
+   delta=weapon@w-chest@a;limit=(b-a).length+(w-b).length-.035
    if delta.length>limit:weapon.translation-=delta.normalized()*(delta.length-limit)
  if death:
   corners=[weapon@HT@Vector((x,y,z)) for x in [-1.55,1.55] for y in [-1.155,1.155] for z in [-2.21,2.21]]
   weapon.translation.z+=max(0,-min(p.z for p in corners))
- if clip in KEYS:weapon,gripSolutions=solve_grips(weapon,handOffsets,chest,wristHistory,clip=='Slam' and 23<=f<=29)
+ if clip in KEYS:
+  sweepWeight=0;fixedHeight=clip=='Slam' and 23<=f<=29;heightTarget=4.6
+  if clip in ('Swing','Spin'):
+   start,end=(19,25) if clip=='Swing' else (21,37)
+   fixedHeight=True;last=54 if clip=='Swing' else 66
+   heightWeight=ease(0,start,f)*(1-ease(end+6,last,f))
+   heightTarget=carryHeight+(4.6-carryHeight)*heightWeight
+   sweepWeight=ease(14,start,f)*(1-ease(end,end+10,f))
+   if start<=f<=end:
+    weapon.translation.z+=4.6-(weapon@HT).translation.z;fixedHeight=True
+  weapon,gripSolutions=solve_grips(weapon,handOffsets,chest,wristHistory,fixedHeight,sweepWeight,ease(5,12,f)*(1-ease({"Slam":36,"Swing":38,"Spin":48}[clip],{"Slam":46,"Swing":50,"Spin":62}[clip],f)),ease(0,8,f)*(1-ease({"Slam":40,"Swing":44,"Spin":56}[clip],{"Slam":50,"Swing":54,"Spin":66}[clip],f)),ease(5,17,f)*(1-ease(18,23,f)) if clip=="Slam" else 0,clip in ("Swing","Spin"),heightTarget,True)
+ elif not death:
+  weapon,gripSolutions=solve_grips(weapon,handOffsets,chest,wristHistory)
+  if clip=='Idle' and f==0:carryBase=wristHistory['_values'].copy();carryHeight=(weapon@HT).translation.z
  D['Hammer']=weapon;errors=[]
  for side,s in [('Right',-1),('Left',1)]:
   a=joints[side+'UpperArm']['head'];b=joints[side+'LowerArm']['head'];w=joints[side+'Hand']['head'];shoulder=chest@a;handPose=weapon@handOffsets[side];wrist=handPose@w
-  # Keep the bend plane outside and in front of the rib cage. The old pole
-  # pointed almost down the arm and flipped when the wrist passed under it.
-  pole=chest@(a+Vector((s*3.5,-2.5,-.7)))
-  elbow,err=ik(shoulder,wrist,(b-a).length,(w-b).length,pole)
-  if clip in KEYS:
-   handPose,elbow,err,bend,roll=gripSolutions[side]
+  if death:handPose=chest.copy();wrist=handPose@w
+  # The upper arm and forearm share a bounded, one-way elbow hinge.
+  elbow,err=elbow_hinge(side,shoulder,wrist,(b-a).length,(w-b).length,chest)
+  if not death:
+   handPose,elbow,err,bend,roll,swivel=gripSolutions[side]
    wrist=handPose@w
   errors.append(err)
-  D[side+'UpperArm']=align(a,b,shoulder,elbow);D[side+'LowerArm']=wrist_forearm(b,w,elbow,wrist,handPose) if clip in KEYS else align(b,w,elbow,wrist);D[side+'Hand']=handPose
-  a=joints[side+'UpperLeg']['head'];b=joints[side+'LowerLeg']['head'];w=joints[side+'Foot']['head'];foot=R(z=hip*.85)@w
+  D[side+'UpperArm'],D[side+'LowerArm']=hinge_frames(a,b,w,shoulder,elbow,wrist)
+  D[side+'Hand']=handPose
+  a=joints[side+'UpperLeg']['head'];b=joints[side+'LowerLeg']['head'];w=joints[side+'Foot']['head'];legYaw=hip if clip=='Spin' else hip*.85;foot=R(z=legYaw)@w
   foot.y+=stride*s*.52;foot.z=.55+max(0,stride*s)*.22
   if clip=='Walk':
    phase=(f/48-(0 if side=='Right' else .43))%1;stance=.60 if side=='Right' else .57
@@ -144,8 +164,8 @@ def pose(clip,f):
     t=(phase-stance)/(1-stance);q=t*t*(3-2*t)
     foot.y=w.y+travel*(.5-q);foot.z=.55+(.64 if side=='Right' else .32)*math.sin(math.pi*t)**1.3
    foot.x=w.x
-  knee,err=ik(hips@a,foot,(b-a).length,(w-b).length,R(z=hip*.85)@Vector((s*2,-2.5,2)))
-  D[side+'UpperLeg']=align(a,b,hips@a,knee);D[side+'LowerLeg']=align(b,w,knee,foot);D[side+'Foot']=T(foot)@R(z=0 if clip=='Walk' else hip*.85)@T(-w)
+  knee,err=ik(hips@a,foot,(b-a).length,(w-b).length,R(z=legYaw)@Vector((s*2,-2.5,2)))
+  D[side+'UpperLeg']=align(a,b,hips@a,knee);D[side+'LowerLeg']=align(b,w,knee,foot);D[side+'Foot']=T(foot)@R(z=0 if clip=='Walk' else legYaw)@T(-w)
  return D,max(errors)
 def apply(D,frame=None):
  for name in joints:
@@ -169,8 +189,12 @@ for name,j in joints.items():
 checks={};scene.render.fps=30
 for clip,last in {'Idle':96,'Walk':48,'Slam':50,'Swing':54,'Spin':66,'Hit':18,'Death':84}.items():
  rig.animation_data_clear();frames=[];maxerr=0;scene.render.fps=36 if clip=='Spin' else 30
+ raw=[]
  for f in range(last+1):
-  D,error=pose(clip,f);maxerr=max(maxerr,error);apply(D,f+1)
+  D,error=pose(clip,f);maxerr=max(maxerr,error);raw.append(D)
+ if clip in KEYS:raw=polish_hinges(raw)
+ for f,D in enumerate(raw):
+  apply(D,f+1)
   frames.append({n:arr(C@T((0,0,-ROOT))@d@T((0,0,ROOT))@C.inverted()) for n,d in D.items()})
  action=rig.animation_data.action;action.name='Boss_'+clip;action.use_fake_user=True;scene.frame_start=1;scene.frame_end=last+1;scene.frame_set(1)
  export(clip+'.fbx',True);data['clips'][clip]={'fps':scene.render.fps,'lastFrame':last,'frames':frames};checks[clip]={'frames':last+1,'maxArmOverreach':maxerr}

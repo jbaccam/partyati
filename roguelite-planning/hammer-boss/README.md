@@ -4,6 +4,26 @@ The current deliverable is **`finished/HammerBoss.blend`**. Earlier files in thi
 
 The rebuilt model is 11.92 studs tall, with a 9.05-stud handle. Carry grips are 5.33 studs apart; attack grips slide to 6.55 and 8.05 along the shaft, 1.50 studs apart near its end. It has a projecting belly, torn cream shirt, suspenders, charcoal trousers, rounded hips and seat, closed grips, and a beveled iron hammer. Enlarged traps/back blend into the unchanged shoulders. Green skin retains the Tank family palette; the boss now has its own modeled scarred brow, narrowed eye, and broken-tooth snarl. It is a reconstructed 3D interpretation of the supplied single view; hidden surfaces are authored rather than recovered from that image.
 
+## Extended attack paths — September 24, 2026
+
+Rebuilt the attacks around near-straight reach rather than pulling the grip inward to satisfy the wrist solver. Both arms reach 97.3–97.6% of their available length during active strikes, with a small positive elbow bend. The slam raises both wrists above 13.1 studs (the model is 11.92 studs tall), carries the hammer behind the head, and follows through with the hands held forward. Swing/spin torso rotation follows the weapon, with the intended striking face leading. The horizontal head-height constraint now continues smoothly through recovery instead of switching off at the end of the damage window.
+
+Idle and every attack share the same solved carry pose. Attack endpoints match it within 0.000002 in exported pose components; spin foot/head rotations also return cleanly through the full revolution. The elbow hinge uses 12–130 degrees and remains enforced after frame and clip blending. The authoring optimizer can adjust the weapon pitch while keeping both hands on the shaft. The model's mesh proportions were not lengthened. A whole-clip elbow planner limits changes in shoulder swivel while preserving the authored hand and hammer paths; the final maximum authored changes are 9 degrees for slam, 15 for swing, and 16 for spin. Runtime interpolation now follows the held handle point relative to the torso and interpolates the hands relative to the weapon, preventing independent world-space interpolation from cutting inward across the swing arc.
+
+Final checks passed: every authored attack frame retained hand contact and joint closure, maximum wrist bend stayed below 35 degrees, and the shaft stayed outside the torso core throughout windup/strike/recovery. Arm centerlines are required to remain outside the torso core; the former padded shell was removed because the user explicitly allows slight muscle overlap. These sampled core tests are not an exhaustive mesh-intersection proof. Runtime checking covered 2,307 poses/transitions, and 87 actual client poses matched within 0.00392 studs and approximately 0.07 degrees. The initial 0.00001 basis-vector diagnostic was tighter than the observed Motor6D precision; the rendering regression uses 0.01 studs and a 0.002 basis-vector difference (approximately 0.12 degrees). Single-client Play verified one active hit per attack, zero early hits, the slam inside/outside boundary, and 18.02 studs traveled in four seconds. Both Rojo packages built. The final full sequences are in `finished/ElbowMotionReview.mp4` at half speed. Multi-client/published behavior was not retested.
+
+Installed in the authorized Studio place. Previous motion is preserved in `ServerStorage.BeforeHammerBossExtendedReach`. The reports below are historical.
+
+## Elbow hinge correction — September 23, 2026
+
+The previous wrist-fitting solver allowed elbow branch flips and independently rotated the upper and lower arm sections. The replacement gives both sections the same hinge axis, keeps signed elbow flexion between 8 and 130 degrees, and limits shoulder swivel to 75 degrees either way. Bone lengths remain fixed. The same constraint runs after frame interpolation and after client transition blending, so interpolated poses cannot bypass the limits. Death releases the hammer grip as the body falls.
+
+All seven clips were rebuilt and installed in the authorized Studio place. Horizontal attacks now keep the hammer head at player height through their damage windows. The 7-stud slam radius, faster spin, heavy gait, and paired handle grips are retained. The prior installed motion is backed up in `ServerStorage.BeforeHammerBossElbowHinge`.
+
+Validation: every authored frame passed signed hinge, joint closure, grip and wrist checks; 2,307 runtime samples including locomotion transitions passed. The final live client matched 87 applied poses within 0.0032 studs. Single-client server tests confirmed one hit per attack, zero early hits, a slam hit at 6.5 studs and miss at 7.5, and 18.09 studs of walking in four seconds. Both Rojo packages built. Full attack sequences were rendered for geometry review in `finished/ElbowMotionReview.mp4` at half speed. Published/multiplayer testing remains unverified. An unrelated CardShowcase missing-child warning was observed during an earlier test.
+
+The reports below describe previous revisions unless explicitly labeled as the elbow correction.
+
 ## Deliverables
 
 The latest traps/arms revision raises and widens the trapezius and upper back into the unchanged shoulder caps. Biceps, triceps, and forearms have fuller shaped profiles with narrower elbow/wrist transitions. The shirt and suspenders are fitted by ray-casting onto the enlarged body surface rather than using an approximate torso outline. Prior grip geometry and hand orientation are retained.
@@ -25,7 +45,7 @@ The version immediately before this continuity revision is retained under `Serve
 
 The encounter uses wave 20 by default; `ReplicatedStorage.RogueliteCombat.HammerBossWave` can override it. Wave completion waits while the boss is alive. Changing the normal enemy count preserves the boss. Stopping a wave removes it. Boss movement and hit decisions run on the server; clients display the matching poses, warning shapes and impact effects.
 
-Each hand stays closed around the shaft while sliding into the paired attack grip. Both arms extend to more than 99% of their available reach during active strikes. The hammer's local Z striking end leads horizontal/spinning travel. A slam commits its direction before anticipation. Swing and spin collision sample the actual oriented head at 120 Hz during their active windows; each player can be hit once per attack. Warning shapes do not themselves deal damage.
+Each hand stays closed around the shaft while sliding into the paired attack grip. Arm extension follows fixed bone lengths and a one-way elbow hinge; the weapon path yields to anatomical reach limits. The hammer's local Z striking end leads horizontal/spinning travel. A slam commits its direction before anticipation. Swing and spin collision sample the actual oriented head at 120 Hz during their active windows; each player can be hit once per attack. Warning shapes do not themselves deal damage.
 
 Walk is a 1.6-second asymmetrical gait authored at 4.5 studs/second, with a lower dragging left step, longer right support, weight sway and 0.558 studs of authored hip bob. Client phase follows horizontal distance traveled. Planted feet move backward relative to the root at the matching speed, reducing sliding. The weapon lifts enough to clear the ground during the body drop.
 
@@ -40,6 +60,52 @@ In Studio, open **Stats / Test [P] → Zombies → Spawn boss / Remove boss**. T
 Frames use 30 FPS and start at zero in the design data; Blender's timeline starts at frame 1. Idle, walk, hit and death last 96, 48, 18 and 84 frames respectively.
 
 `BossService.spawn(cframe, true)` creates a Studio-only practice boss. Practice death gives no shard drop. Death cancels attacks immediately, preserves the visible death pose for 2.9 seconds, then removes the model. No DataStore access is introduced.
+
+## Elbow, wrist and weapon-distance fix — September 23, 2026
+
+Attacks showed popping elbows, twisted wrists and the hammer pinned against the
+body. Measured cause, not guessed:
+
+| | before | after |
+| --- | --- | --- |
+| Max arm extension, Slam/Swing/Spin | 99.8 / 99.7 / 99.4 % | 93.7 / 93.7 / 93.6 % |
+| Min elbow offset from the shoulder-wrist line | 0.18 / 0.22 / 0.32 studs | 0.94 / 0.90 / 0.92 studs |
+| Idle (unchanged control) | 89.8 %, 1.22 studs | 89.8 %, 1.22 studs |
+
+`ELBOW_MIN` in `wrist_motion.py` was 8 degrees. That is the minimum elbow *flex*,
+so it set the reach sphere at 99.8% of (upper arm + forearm), and the grip
+optimiser in `solve_grips` always pushed to that limit because its
+belly-clearance penalty drives the weapon outward until the projection stops it.
+At that extension the elbow sits on the shoulder-to-wrist line with almost no
+perpendicular offset, so its bend direction is unconstrained and flips between
+frames — the popping elbow. The locked forearm then forces the hand joint to
+absorb every orientation change, which is the twisted wrist. `lever_motion.py`
+also carried a 1.6-stud inward pull whose own comment says it existed to buy back
+elbow flex; that is what held the hammer against the belly.
+
+Fix: `ELBOW_MIN` 8 → 42 degrees, the paired-grip reach target expressed as a
+fraction of arm length (`ARM_TARGET` / `ARM_CEILING`) instead of a 0.025-stud
+margin, and the inward pull reduced from 1.6 to 0.30 studs. `minFlex` in
+`BossMotion.luau` was raised to match — the runtime re-solves both arms every
+frame, so if the two constants disagree the runtime produces a pose the clips
+never contained. With them matched, the runtime reproduces the baked clips to
+within 8e-6 studs of elbow displacement and 0.0002 degrees of forearm twist
+across all seven clips.
+
+Only `Slam`, `Swing` and `Spin` changed; `Idle`, `Walk`, `Hit` and `Death` are
+byte-identical. Attack reach is effectively unchanged (Slam 9.14 → 9.31, Swing
+9.04 → 9.12, Spin 9.59 → 9.56), so hit windows and warning shapes were not
+rebalanced. `test_elbow_runtime.luau` now asserts a 41.9-degree floor instead of
+7.9 so a revert of either constant fails the regression; it passes over 2307
+samples with zero hinge-axis mismatch and a 1e-6 maximum joint gap.
+
+The pre-fix sources and clips are kept in `before-arm-flex/`, and the pre-fix
+Studio modules in `ServerStorage.BeforeHammerBossArmFlex_20260923`.
+
+Verified: the numbers above, measured both offline against the clip files and
+in Studio against the live modules; a posed before/after comparison and a
+five-frame swing-arc strip inspected in the Studio viewport. Not verified: a
+Play-mode run of the encounter, and multi-client behaviour.
 
 ## Validation
 

@@ -1,0 +1,35 @@
+{
+  "revision": "extended attack paths",
+  "runtime": {
+    "ok": true,
+    "samples": 2307,
+    "minSignedFlexion": 11.999987563287824,
+    "maxSignedFlexion": 61.53877266470836,
+    "maxJointGap": 2.6656007321435027e-06
+  },
+  "client": {
+    "ok": true,
+    "samples": 87,
+    "maxPosition": 0.0039121913723647594,
+    "maxBasisVectorError": 0.0011830305447801948,
+    "positionTolerance": 0.01,
+    "basisVectorTolerance": 0.002,
+    "strictDiagnosticBasisTolerance": 1e-05,
+    "strictDiagnosticPassed": false,
+    "note": "Compare rendered rigid-part poses within 0.01 studs and approximately 0.12 degrees; the initial micro-radian diagnostic was below observed Motor6D transform precision."
+  },
+  "server": {
+    "ok": true,
+    "earlyHitsPerAttack": 0,
+    "hitsPerAttack": 1,
+    "outsideSlamHits": 0,
+    "insideSlamDistance": 6.5,
+    "outsideSlamDistance": 7.5,
+    "walkDistance": 18.024526596069336,
+    "walkSeconds": 4
+  },
+  "builds": [
+    "CopyTheScene",
+    "RogueliteCombat"
+  ]
+}

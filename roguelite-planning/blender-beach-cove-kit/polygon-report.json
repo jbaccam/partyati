@@ -1,0 +1,340 @@
+{
+  "blender_version": "5.2.1 LTS",
+  "authoring": "final Roblox stud size; import at 1:1",
+  "density_studs_per_repeat": {
+    "rock": 40.0,
+    "grass": 18.0,
+    "bark": 8.0,
+    "frond": 7.0,
+    "wood": 5.0,
+    "sand": 10.0,
+    "water": 12.0
+  },
+  "modules": {
+    "01_Headland_Short": {
+      "file_stem": "01-headland-short",
+      "triangles": 336,
+      "vertices": 170,
+      "materials": 1,
+      "dimensions_studs": [
+        18.931,
+        14.713,
+        10.118
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "02_Headland_Medium": {
+      "file_stem": "02-headland-medium",
+      "triangles": 344,
+      "vertices": 174,
+      "materials": 1,
+      "dimensions_studs": [
+        21.335,
+        15.246,
+        17.196
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "03_Headland_Tall": {
+      "file_stem": "03-headland-tall",
+      "triangles": 354,
+      "vertices": 179,
+      "materials": 1,
+      "dimensions_studs": [
+        16.973,
+        14.13,
+        27.384
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "04_Plateau_Wide_Low": {
+      "file_stem": "04-plateau-wide-low",
+      "triangles": 430,
+      "vertices": 217,
+      "materials": 1,
+      "dimensions_studs": [
+        34.611,
+        27.9,
+        8.093
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "05_Plateau_Broad": {
+      "file_stem": "05-plateau-broad",
+      "triangles": 386,
+      "vertices": 195,
+      "materials": 1,
+      "dimensions_studs": [
+        31.07,
+        27.238,
+        15.18
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "06_Headland_Tall_Mass": {
+      "file_stem": "06-headland-tall-mass",
+      "triangles": 380,
+      "vertices": 192,
+      "materials": 1,
+      "dimensions_studs": [
+        29.655,
+        24.701,
+        30.375
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "07_Headland_Tapered": {
+      "file_stem": "07-headland-tapered",
+      "triangles": 324,
+      "vertices": 164,
+      "materials": 1,
+      "dimensions_studs": [
+        20.606,
+        16.136,
+        19.219
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "08_Stack_Double": {
+      "file_stem": "08-stack-double",
+      "triangles": 742,
+      "vertices": 375,
+      "materials": 1,
+      "dimensions_studs": [
+        31.538,
+        20.444,
+        21.242
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "09_Stack_Triple": {
+      "file_stem": "09-stack-triple",
+      "triangles": 1084,
+      "vertices": 548,
+      "materials": 1,
+      "dimensions_studs": [
+        34.077,
+        25.131,
+        28.386
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "10_Rim_Corner_Wedge": {
+      "file_stem": "10-rim-corner-wedge",
+      "triangles": 328,
+      "vertices": 166,
+      "materials": 1,
+      "dimensions_studs": [
+        25.221,
+        14.099,
+        17.196
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "11_Boulder_Medium": {
+      "file_stem": "11-boulder-medium",
+      "triangles": 212,
+      "vertices": 108,
+      "materials": 1,
+      "dimensions_studs": [
+        5.201,
+        4.413,
+        3.646
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "12_Boulder_Large": {
+      "file_stem": "12-boulder-large",
+      "triangles": 206,
+      "vertices": 105,
+      "materials": 1,
+      "dimensions_studs": [
+        10.894,
+        8.689,
+        6.472
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "13_Rock_Cluster": {
+      "file_stem": "13-rock-cluster",
+      "triangles": 852,
+      "vertices": 434,
+      "materials": 1,
+      "dimensions_studs": [
+        10.246,
+        7.32,
+        4.866
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "14_Standing_Rock": {
+      "file_stem": "14-standing-rock",
+      "triangles": 202,
+      "vertices": 103,
+      "materials": 1,
+      "dimensions_studs": [
+        4.946,
+        4.359,
+        9.91
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "15_Shore_Rock_Low": {
+      "file_stem": "15-shore-rock-low",
+      "triangles": 156,
+      "vertices": 80,
+      "materials": 1,
+      "dimensions_studs": [
+        12.582,
+        7.617,
+        1.964
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "16_Palm_Tall": {
+      "file_stem": "16-palm-tall",
+      "triangles": 807,
+      "vertices": 531,
+      "materials": 1,
+      "dimensions_studs": [
+        20.674,
+        20.693,
+        23.502
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "17_Palm_Leaning": {
+      "file_stem": "17-palm-leaning",
+      "triangles": 739,
+      "vertices": 486,
+      "materials": 1,
+      "dimensions_studs": [
+        17.973,
+        17.975,
+        19.229
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "18_Palm_Short": {
+      "file_stem": "18-palm-short",
+      "triangles": 559,
+      "vertices": 363,
+      "materials": 1,
+      "dimensions_studs": [
+        14.715,
+        15.029,
+        14.956
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "19_Driftwood_Log": {
+      "file_stem": "19-driftwood-log",
+      "triangles": 302,
+      "vertices": 167,
+      "materials": 1,
+      "dimensions_studs": [
+        11.28,
+        3.525,
+        4.115
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "20_Driftwood_Planks": {
+      "file_stem": "20-driftwood-planks",
+      "triangles": 612,
+      "vertices": 338,
+      "materials": 1,
+      "dimensions_studs": [
+        8.61,
+        2.515,
+        1.528
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "21_Wrecked_Rowboat": {
+      "file_stem": "21-wrecked-rowboat",
+      "triangles": 632,
+      "vertices": 322,
+      "materials": 1,
+      "dimensions_studs": [
+        10.687,
+        3.711,
+        3.042
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "22_Tide_Pool_Small": {
+      "file_stem": "22-tide-pool-small",
+      "triangles": 71,
+      "vertices": 45,
+      "materials": 1,
+      "dimensions_studs": [
+        7.696,
+        5.385,
+        0.38
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "23_Tide_Pool_Large": {
+      "file_stem": "23-tide-pool-large",
+      "triangles": 42,
+      "vertices": 29,
+      "materials": 1,
+      "dimensions_studs": [
+        13.408,
+        8.811,
+        0.38
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "24_Grass_Patch_Small": {
+      "file_stem": "24-grass-patch-small",
+      "triangles": 229,
+      "vertices": 152,
+      "materials": 1,
+      "dimensions_studs": [
+        6.446,
+        5.166,
+        1.303
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    },
+    "25_Grass_Patch_Large": {
+      "file_stem": "25-grass-patch-large",
+      "triangles": 269,
+      "vertices": 177,
+      "materials": 1,
+      "dimensions_studs": [
+        10.182,
+        8.0,
+        1.961
+      ],
+      "atlas_size": 2048,
+      "pivot": "ground-level local origin"
+    }
+  }
+}

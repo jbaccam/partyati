@@ -1,0 +1,12 @@
+{
+  "sampleCount": 7680,
+  "minSignedSkinClearance": 0.09662087261676788,
+  "insideSkinSamples": 0,
+  "shoulderCapRadiiUnchanged": [
+    1.22,
+    1.1
+  ],
+  "trapeziusTop": 10.86,
+  "upperBackHalfWidth": 3.15,
+  "upperBackHalfDepth": 1.62
+}

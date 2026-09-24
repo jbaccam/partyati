@@ -1,0 +1,2244 @@
+<?xml version='1.0' encoding='utf-8'?>
+<roblox version="4">
+  <Item class="Model" referent="BOSS1">
+    <Properties>
+      <string name="Name">HammerBoss_NPC</string>
+      <bool name="Archivable">true</bool>
+      <Ref name="PrimaryPart">BOSS2</Ref>
+    </Properties>
+    <Item class="Part" referent="BOSS2">
+      <Properties>
+        <float name="Reflectance">0</float>
+        <bool name="CanQuery">false</bool>
+        <bool name="CanCollide">true</bool>
+        <Color3 name="Color">
+          <R>0.6392157077789307</R>
+          <G>0.6352941393852234</G>
+          <B>0.6470588445663452</B>
+        </Color3>
+        <CoordinateFrame name="CFrame">
+          <X>0</X>
+          <Y>4.449999809265137</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <bool name="CanTouch">false</bool>
+        <bool name="Massless">false</bool>
+        <bool name="CastShadow">true</bool>
+        <float name="Transparency">1</float>
+        <string name="Name">HumanoidRootPart</string>
+        <bool name="Anchored">true</bool>
+        <CoordinateFrame name="PivotOffset">
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <bool name="Archivable">true</bool>
+        <Vector3 name="size">
+          <X>3.200000047683716</X>
+          <Y>2.5999999046325684</Y>
+          <Z>2.5</Z>
+        </Vector3>
+      </Properties>
+      <Item class="Motor6D" referent="BOSS3">
+        <Properties>
+          <CoordinateFrame name="Transform">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <string name="Name">Boss_Hammer</string>
+          <Ref name="Part1">BOSS25</Ref>
+          <CoordinateFrame name="C1">
+            <X>3.2153332233428955</X>
+            <Y>0</Y>
+            <Z>0.05625009536743164</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <CoordinateFrame name="C0">
+            <X>4.400000095367432</X>
+            <Y>-1.799999713897705</Y>
+            <Z>-2.6500000953674316</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="Archivable">true</bool>
+          <Ref name="Part0">BOSS2</Ref>
+        </Properties>
+      </Item>
+      <Item class="Motor6D" referent="BOSS4">
+        <Properties>
+          <CoordinateFrame name="Transform">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <string name="Name">Boss_LowerTorso</string>
+          <Ref name="Part1">BOSS37</Ref>
+          <CoordinateFrame name="C1">
+            <X>0.0034791231155395508</X>
+            <Y>0.6100006103515625</Y>
+            <Z>-0.14060357213020325</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <CoordinateFrame name="C0">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0.10000000149011612</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="Archivable">true</bool>
+          <Ref name="Part0">BOSS2</Ref>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="MeshPart" referent="BOSS5">
+      <Properties>
+        <bool name="CanQuery">true</bool>
+        <Color3 name="Color">
+          <R>1</R>
+          <G>1</G>
+          <B>1</B>
+        </Color3>
+        <bool name="Anchored">false</bool>
+        <Vector3 name="InitialSize">
+          <X>661.880615234375</X>
+          <Y>664.7376708984375</Y>
+          <Z>471.636962890625</Z>
+        </Vector3>
+        <token name="Material">256</token>
+        <bool name="Archivable">true</bool>
+        <Vector3 name="size">
+          <X>6.618806838989258</X>
+          <Y>6.647377014160156</Y>
+          <Z>4.716370105743408</Z>
+        </Vector3>
+        <bool name="CanCollide">false</bool>
+        <token name="CollisionFidelity">2</token>
+        <Content name="MeshId">
+          <url>rbxassetid://107037484736055</url>
+        </Content>
+        <bool name="CanTouch">false</bool>
+        <token name="RenderFidelity">1</token>
+        <Content name="TextureID">
+          <url />
+        </Content>
+        <float name="Transparency">0</float>
+        <string name="Name">UpperTorso</string>
+        <float name="Reflectance">0</float>
+        <CoordinateFrame name="CFrame">
+          <X>0.020108461380004883</X>
+          <Y>7.539310455322266</Y>
+          <Z>-0.272815465927124</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <bool name="Massless">true</bool>
+        <bool name="CastShadow">true</bool>
+        <CoordinateFrame name="PivotOffset">
+          <X>-2.0108489990234375</X>
+          <Y>-233.93109130859375</Y>
+          <Z>37.28150177001953</Z>
+          <R00>1</R00>
+          <R01>-1.9952024631587254e-23</R01>
+          <R02>-2.4492934404725397e-16</R02>
+          <R10>-2.4492934404725397e-16</R10>
+          <R11>-1.6292067073209182e-07</R11>
+          <R12>-1</R12>
+          <R20>-1.9952027787030875e-23</R20>
+          <R21>1</R21>
+          <R22>-1.6292067073209182e-07</R22>
+        </CoordinateFrame>
+      </Properties>
+      <Item class="SurfaceAppearance" referent="BOSS6">
+        <Properties>
+          <Content name="ColorMap">
+            <url>rbxassetid://101655182967414</url>
+          </Content>
+          <Content name="NormalMap">
+            <url />
+          </Content>
+          <string name="Name">BossSurface</string>
+          <Content name="RoughnessMap">
+            <url />
+          </Content>
+          <Content name="MetalnessMap">
+            <url />
+          </Content>
+          <bool name="Archivable">true</bool>
+          <token name="AlphaMode">0</token>
+        </Properties>
+      </Item>
+      <Item class="Motor6D" referent="BOSS7">
+        <Properties>
+          <CoordinateFrame name="Transform">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <string name="Name">Boss_Head</string>
+          <Ref name="Part1">BOSS15</Ref>
+          <CoordinateFrame name="C1">
+            <X>-0.23999997973442078</X>
+            <Y>-0.7809991836547852</Y>
+            <Z>0.29344847798347473</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <CoordinateFrame name="C0">
+            <X>0.13989153504371643</X>
+            <Y>2.170689582824707</Y>
+            <Z>-0.007184535264968872</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="Archivable">true</bool>
+          <Ref name="Part0">BOSS5</Ref>
+        </Properties>
+      </Item>
+      <Item class="Motor6D" referent="BOSS8">
+        <Properties>
+          <CoordinateFrame name="Transform">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <string name="Name">Boss_RightUpperArm</string>
+          <Ref name="Part1">BOSS22</Ref>
+          <CoordinateFrame name="C1">
+            <X>-0.1644575595855713</X>
+            <Y>0.634434700012207</Y>
+            <Z>0.17356152832508087</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <CoordinateFrame name="C0">
+            <X>2.8998916149139404</X>
+            <Y>1.5906896591186523</Y>
+            <Z>0.2928154766559601</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="Archivable">true</bool>
+          <Ref name="Part0">BOSS5</Ref>
+        </Properties>
+      </Item>
+      <Item class="Motor6D" referent="BOSS9">
+        <Properties>
+          <CoordinateFrame name="Transform">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <string name="Name">Boss_LeftUpperArm</string>
+          <Ref name="Part1">BOSS27</Ref>
+          <CoordinateFrame name="C1">
+            <X>0.1652522087097168</X>
+            <Y>0.6344490051269531</Y>
+            <Z>0.17361535131931305</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <CoordinateFrame name="C0">
+            <X>-2.94010853767395</X>
+            <Y>1.5906896591186523</Y>
+            <Z>0.2928154766559601</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="Archivable">true</bool>
+          <Ref name="Part0">BOSS5</Ref>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="MeshPart" referent="BOSS10">
+      <Properties>
+        <bool name="CanQuery">true</bool>
+        <Color3 name="Color">
+          <R>1</R>
+          <G>1</G>
+          <B>1</B>
+        </Color3>
+        <bool name="Anchored">false</bool>
+        <Vector3 name="InitialSize">
+          <X>209.1549530029297</X>
+          <Y>239.37750244140625</Y>
+          <Z>323.24932861328125</Z>
+        </Vector3>
+        <token name="Material">256</token>
+        <bool name="Archivable">true</bool>
+        <Vector3 name="size">
+          <X>2.0915496349334717</X>
+          <Y>2.393775224685669</Y>
+          <Z>3.2324934005737305</Z>
+        </Vector3>
+        <bool name="CanCollide">false</bool>
+        <token name="CollisionFidelity">0</token>
+        <Content name="MeshId">
+          <url>rbxassetid://131707221301228</url>
+        </Content>
+        <bool name="CanTouch">false</bool>
+        <token name="RenderFidelity">1</token>
+        <Content name="TextureID">
+          <url />
+        </Content>
+        <float name="Transparency">0</float>
+        <string name="Name">LeftLowerArm</string>
+        <float name="Reflectance">0</float>
+        <CoordinateFrame name="CFrame">
+          <X>-3.561150074005127</X>
+          <Y>6.243133544921875</Y>
+          <Z>-1.0314627885818481</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <bool name="Massless">true</bool>
+        <bool name="CastShadow">true</bool>
+        <CoordinateFrame name="PivotOffset">
+          <X>-4.885009765625</X>
+          <Y>62.6865234375</Y>
+          <Z>95.14625549316406</Z>
+          <R00>1</R00>
+          <R01>-1.9952024631587254e-23</R01>
+          <R02>-2.4492934404725397e-16</R02>
+          <R10>-2.4492934404725397e-16</R10>
+          <R11>-1.6292067073209182e-07</R11>
+          <R12>-1</R12>
+          <R20>-1.9952027787030875e-23</R20>
+          <R21>1</R21>
+          <R22>-1.6292067073209182e-07</R22>
+        </CoordinateFrame>
+      </Properties>
+      <Item class="SurfaceAppearance" referent="BOSS11">
+        <Properties>
+          <Content name="ColorMap">
+            <url>rbxassetid://81405525428856</url>
+          </Content>
+          <Content name="NormalMap">
+            <url />
+          </Content>
+          <string name="Name">BossSurface</string>
+          <Content name="RoughnessMap">
+            <url />
+          </Content>
+          <Content name="MetalnessMap">
+            <url />
+          </Content>
+          <bool name="Archivable">true</bool>
+          <token name="AlphaMode">0</token>
+        </Properties>
+      </Item>
+      <Item class="Motor6D" referent="BOSS12">
+        <Properties>
+          <CoordinateFrame name="Transform">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <string name="Name">Boss_LeftHand</string>
+          <Ref name="Part1">BOSS33</Ref>
+          <CoordinateFrame name="C1">
+            <X>0.06592035293579102</X>
+            <Y>0.6739778518676758</Y>
+            <Z>0.3690817356109619</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <CoordinateFrame name="C0">
+            <X>0.3491706848144531</X>
+            <Y>-0.7786769866943359</Y>
+            <Z>-1.3185373544692993</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="Archivable">true</bool>
+          <Ref name="Part0">BOSS10</Ref>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="MeshPart" referent="BOSS13">
+      <Properties>
+        <bool name="CanQuery">true</bool>
+        <Color3 name="Color">
+          <R>1</R>
+          <G>1</G>
+          <B>1</B>
+        </Color3>
+        <bool name="Anchored">false</bool>
+        <Vector3 name="InitialSize">
+          <X>201.26173400878906</X>
+          <Y>80.00003051757812</Y>
+          <Z>234.65185546875</Z>
+        </Vector3>
+        <token name="Material">256</token>
+        <bool name="Archivable">true</bool>
+        <Vector3 name="size">
+          <X>2.012617588043213</X>
+          <Y>0.8000003695487976</Y>
+          <Z>2.3465187549591064</Z>
+        </Vector3>
+        <bool name="CanCollide">false</bool>
+        <token name="CollisionFidelity">0</token>
+        <Content name="MeshId">
+          <url>rbxassetid://78662631248676</url>
+        </Content>
+        <bool name="CanTouch">false</bool>
+        <token name="RenderFidelity">1</token>
+        <Content name="TextureID">
+          <url />
+        </Content>
+        <float name="Transparency">0</float>
+        <string name="Name">LeftFoot</string>
+        <float name="Reflectance">0</float>
+        <CoordinateFrame name="CFrame">
+          <X>-1.9470000267028809</X>
+          <Y>0.4000000059604645</Y>
+          <Z>-0.48000001907348633</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <bool name="Massless">true</bool>
+        <bool name="CastShadow">true</bool>
+        <CoordinateFrame name="PivotOffset">
+          <X>-1.52587890625e-05</X>
+          <Y>14.999996185302734</Y>
+          <Z>36</Z>
+          <R00>1</R00>
+          <R01>-1.9952024631587254e-23</R01>
+          <R02>-2.4492934404725397e-16</R02>
+          <R10>-2.4492934404725397e-16</R10>
+          <R11>-1.6292067073209182e-07</R11>
+          <R12>-1</R12>
+          <R20>-1.9952027787030875e-23</R20>
+          <R21>1</R21>
+          <R22>-1.6292067073209182e-07</R22>
+        </CoordinateFrame>
+      </Properties>
+      <Item class="SurfaceAppearance" referent="BOSS14">
+        <Properties>
+          <Content name="ColorMap">
+            <url>rbxassetid://116006736935016</url>
+          </Content>
+          <Content name="NormalMap">
+            <url />
+          </Content>
+          <string name="Name">BossSurface</string>
+          <Content name="RoughnessMap">
+            <url />
+          </Content>
+          <Content name="MetalnessMap">
+            <url />
+          </Content>
+          <bool name="Archivable">true</bool>
+          <token name="AlphaMode">0</token>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="MeshPart" referent="BOSS15">
+      <Properties>
+        <bool name="CanQuery">true</bool>
+        <Color3 name="Color">
+          <R>1</R>
+          <G>1</G>
+          <B>1</B>
+        </Color3>
+        <bool name="Anchored">false</bool>
+        <Vector3 name="InitialSize">
+          <X>203.53213500976562</X>
+          <Y>286.19964599609375</Y>
+          <Z>221.31033325195312</Z>
+        </Vector3>
+        <token name="Material">256</token>
+        <bool name="Archivable">true</bool>
+        <Vector3 name="size">
+          <X>2.0353214740753174</X>
+          <Y>2.861996650695801</Y>
+          <Z>2.2131035327911377</Z>
+        </Vector3>
+        <bool name="CanCollide">false</bool>
+        <token name="CollisionFidelity">0</token>
+        <Content name="MeshId">
+          <url>rbxassetid://70916650066359</url>
+        </Content>
+        <bool name="CanTouch">false</bool>
+        <token name="RenderFidelity">1</token>
+        <Content name="TextureID">
+          <url />
+        </Content>
+        <float name="Transparency">0</float>
+        <string name="Name">Head</string>
+        <float name="Reflectance">0</float>
+        <CoordinateFrame name="CFrame">
+          <X>0.3999999761581421</X>
+          <Y>10.490999221801758</Y>
+          <Z>-0.5734484791755676</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <bool name="Massless">true</bool>
+        <bool name="CastShadow">true</bool>
+        <CoordinateFrame name="PivotOffset">
+          <X>-24</X>
+          <Y>-78.099853515625</Y>
+          <Z>29.344837188720703</Z>
+          <R00>1</R00>
+          <R01>-1.9952024631587254e-23</R01>
+          <R02>-2.4492934404725397e-16</R02>
+          <R10>-2.4492934404725397e-16</R10>
+          <R11>-1.6292067073209182e-07</R11>
+          <R12>-1</R12>
+          <R20>-1.9952027787030875e-23</R20>
+          <R21>1</R21>
+          <R22>-1.6292067073209182e-07</R22>
+        </CoordinateFrame>
+      </Properties>
+      <Item class="SurfaceAppearance" referent="BOSS16">
+        <Properties>
+          <Content name="ColorMap">
+            <url>rbxassetid://89511967432151</url>
+          </Content>
+          <Content name="NormalMap">
+            <url />
+          </Content>
+          <string name="Name">BossSurface</string>
+          <Content name="RoughnessMap">
+            <url />
+          </Content>
+          <Content name="MetalnessMap">
+            <url />
+          </Content>
+          <bool name="Archivable">true</bool>
+          <token name="AlphaMode">0</token>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="MeshPart" referent="BOSS17">
+      <Properties>
+        <bool name="CanQuery">true</bool>
+        <Color3 name="Color">
+          <R>1</R>
+          <G>1</G>
+          <B>1</B>
+        </Color3>
+        <bool name="Anchored">false</bool>
+        <Vector3 name="InitialSize">
+          <X>201.7384033203125</X>
+          <Y>296.5238342285156</Y>
+          <Z>204.3133544921875</Z>
+        </Vector3>
+        <token name="Material">256</token>
+        <bool name="Archivable">true</bool>
+        <Vector3 name="size">
+          <X>2.0173842906951904</X>
+          <Y>2.965238571166992</Y>
+          <Z>2.0431337356567383</Z>
+        </Vector3>
+        <bool name="CanCollide">false</bool>
+        <token name="CollisionFidelity">0</token>
+        <Content name="MeshId">
+          <url>rbxassetid://97764055023384</url>
+        </Content>
+        <bool name="CanTouch">false</bool>
+        <token name="RenderFidelity">1</token>
+        <Content name="TextureID">
+          <url />
+        </Content>
+        <float name="Transparency">0</float>
+        <string name="Name">RightUpperLeg</string>
+        <float name="Reflectance">0</float>
+        <CoordinateFrame name="CFrame">
+          <X>1.6763079166412354</X>
+          <Y>3.113365650177002</Y>
+          <Z>0.10398578643798828</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <bool name="Massless">true</bool>
+        <bool name="CastShadow">true</bool>
+        <CoordinateFrame name="PivotOffset">
+          <X>-17.630828857421875</X>
+          <Y>128.6634521484375</Y>
+          <Z>2.6014404296875</Z>
+          <R00>1</R00>
+          <R01>-1.9952024631587254e-23</R01>
+          <R02>-2.4492934404725397e-16</R02>
+          <R10>-2.4492934404725397e-16</R10>
+          <R11>-1.6292067073209182e-07</R11>
+          <R12>-1</R12>
+          <R20>-1.9952027787030875e-23</R20>
+          <R21>1</R21>
+          <R22>-1.6292067073209182e-07</R22>
+        </CoordinateFrame>
+      </Properties>
+      <Item class="SurfaceAppearance" referent="BOSS18">
+        <Properties>
+          <Content name="ColorMap">
+            <url>rbxassetid://107284971821960</url>
+          </Content>
+          <Content name="NormalMap">
+            <url />
+          </Content>
+          <string name="Name">BossSurface</string>
+          <Content name="RoughnessMap">
+            <url />
+          </Content>
+          <Content name="MetalnessMap">
+            <url />
+          </Content>
+          <bool name="Archivable">true</bool>
+          <token name="AlphaMode">0</token>
+        </Properties>
+      </Item>
+      <Item class="Motor6D" referent="BOSS19">
+        <Properties>
+          <CoordinateFrame name="Transform">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <string name="Name">Boss_RightLowerLeg</string>
+          <Ref name="Part1">BOSS42</Ref>
+          <CoordinateFrame name="C1">
+            <X>-0.00509953498840332</X>
+            <Y>0.7849998474121094</Y>
+            <Z>0.036649465560913086</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <CoordinateFrame name="C0">
+            <X>0.13869214057922363</X>
+            <Y>-0.9933657646179199</Y>
+            <Z>-0.07398578524589539</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="Archivable">true</bool>
+          <Ref name="Part0">BOSS17</Ref>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="MeshPart" referent="BOSS20">
+      <Properties>
+        <bool name="CanQuery">true</bool>
+        <Color3 name="Color">
+          <R>1</R>
+          <G>1</G>
+          <B>1</B>
+        </Color3>
+        <bool name="Anchored">false</bool>
+        <Vector3 name="InitialSize">
+          <X>168.8819580078125</X>
+          <Y>187.7110595703125</Y>
+          <Z>144.37391662597656</Z>
+        </Vector3>
+        <token name="Material">256</token>
+        <bool name="Archivable">true</bool>
+        <Vector3 name="size">
+          <X>1.6888196468353271</X>
+          <Y>1.8771107196807861</Y>
+          <Z>1.4437392950057983</Z>
+        </Vector3>
+        <bool name="CanCollide">false</bool>
+        <token name="CollisionFidelity">0</token>
+        <Content name="MeshId">
+          <url>rbxassetid://88994628916071</url>
+        </Content>
+        <bool name="CanTouch">false</bool>
+        <token name="RenderFidelity">1</token>
+        <Content name="TextureID">
+          <url />
+        </Content>
+        <float name="Transparency">0</float>
+        <string name="Name">RightHand</string>
+        <float name="Reflectance">0</float>
+        <CoordinateFrame name="CFrame">
+          <X>1.9154574871063232</X>
+          <Y>3.594486713409424</Y>
+          <Z>-2.5178422927856445</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <bool name="Massless">true</bool>
+        <bool name="CastShadow">true</bool>
+        <CoordinateFrame name="PivotOffset">
+          <X>6.595550537109375</X>
+          <Y>67.09814453125</Y>
+          <Z>16.784225463867188</Z>
+          <R00>1</R00>
+          <R01>-1.9952024631587254e-23</R01>
+          <R02>-2.4492934404725397e-16</R02>
+          <R10>-2.4492934404725397e-16</R10>
+          <R11>-1.6292067073209182e-07</R11>
+          <R12>-1</R12>
+          <R20>-1.9952027787030875e-23</R20>
+          <R21>1</R21>
+          <R22>-1.6292067073209182e-07</R22>
+        </CoordinateFrame>
+      </Properties>
+      <Item class="SurfaceAppearance" referent="BOSS21">
+        <Properties>
+          <Content name="ColorMap">
+            <url>rbxassetid://98190623195030</url>
+          </Content>
+          <Content name="NormalMap">
+            <url />
+          </Content>
+          <string name="Name">BossSurface</string>
+          <Content name="RoughnessMap">
+            <url />
+          </Content>
+          <Content name="MetalnessMap">
+            <url />
+          </Content>
+          <bool name="Archivable">true</bool>
+          <token name="AlphaMode">0</token>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="MeshPart" referent="BOSS22">
+      <Properties>
+        <bool name="CanQuery">true</bool>
+        <Color3 name="Color">
+          <R>1</R>
+          <G>1</G>
+          <B>1</B>
+        </Color3>
+        <bool name="Anchored">false</bool>
+        <Vector3 name="InitialSize">
+          <X>269.5657653808594</X>
+          <Y>365.11199951171875</Y>
+          <Z>280.51837158203125</Z>
+        </Vector3>
+        <token name="Material">256</token>
+        <bool name="Archivable">true</bool>
+        <Vector3 name="size">
+          <X>2.695657730102539</X>
+          <Y>3.651120185852051</Y>
+          <Z>2.8051838874816895</Z>
+        </Vector3>
+        <bool name="CanCollide">false</bool>
+        <token name="CollisionFidelity">0</token>
+        <Content name="MeshId">
+          <url>rbxassetid://136668896044914</url>
+        </Content>
+        <bool name="CanTouch">false</bool>
+        <token name="RenderFidelity">1</token>
+        <Content name="TextureID">
+          <url />
+        </Content>
+        <float name="Transparency">0</float>
+        <string name="Name">RightUpperArm</string>
+        <float name="Reflectance">0</float>
+        <CoordinateFrame name="CFrame">
+          <X>3.0844576358795166</X>
+          <Y>8.495565414428711</Y>
+          <Z>-0.153561532497406</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <bool name="Massless">true</bool>
+        <bool name="CastShadow">true</bool>
+        <CoordinateFrame name="PivotOffset">
+          <X>-16.44573974609375</X>
+          <Y>63.4434814453125</Y>
+          <Z>17.356163024902344</Z>
+          <R00>1</R00>
+          <R01>-1.9952024631587254e-23</R01>
+          <R02>-2.4492934404725397e-16</R02>
+          <R10>-2.4492934404725397e-16</R10>
+          <R11>-1.6292067073209182e-07</R11>
+          <R12>-1</R12>
+          <R20>-1.9952027787030875e-23</R20>
+          <R21>1</R21>
+          <R22>-1.6292067073209182e-07</R22>
+        </CoordinateFrame>
+      </Properties>
+      <Item class="SurfaceAppearance" referent="BOSS23">
+        <Properties>
+          <Content name="ColorMap">
+            <url>rbxassetid://112474048856974</url>
+          </Content>
+          <Content name="NormalMap">
+            <url />
+          </Content>
+          <string name="Name">BossSurface</string>
+          <Content name="RoughnessMap">
+            <url />
+          </Content>
+          <Content name="MetalnessMap">
+            <url />
+          </Content>
+          <bool name="Archivable">true</bool>
+          <token name="AlphaMode">0</token>
+        </Properties>
+      </Item>
+      <Item class="Motor6D" referent="BOSS24">
+        <Properties>
+          <CoordinateFrame name="Transform">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <string name="Name">Boss_RightLowerArm</string>
+          <Ref name="Part1">BOSS30</Ref>
+          <CoordinateFrame name="C1">
+            <X>0.6403720378875732</X>
+            <Y>1.2717714309692383</Y>
+            <Z>0.9899925589561462</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <CoordinateFrame name="C0">
+            <X>0.5255422592163086</X>
+            <Y>-1.625565528869629</Y>
+            <Z>0.07356153428554535</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="Archivable">true</bool>
+          <Ref name="Part0">BOSS22</Ref>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="MeshPart" referent="BOSS25">
+      <Properties>
+        <bool name="CanQuery">false</bool>
+        <Color3 name="Color">
+          <R>1</R>
+          <G>1</G>
+          <B>1</B>
+        </Color3>
+        <bool name="Anchored">false</bool>
+        <Vector3 name="InitialSize">
+          <X>1036.7509765625</X>
+          <Y>489.15887451171875</Y>
+          <Z>242.25006103515625</Z>
+        </Vector3>
+        <token name="Material">256</token>
+        <bool name="Archivable">true</bool>
+        <Vector3 name="size">
+          <X>10.367510795593262</X>
+          <Y>4.891589164733887</Y>
+          <Z>2.4225008487701416</Z>
+        </Vector3>
+        <bool name="CanCollide">false</bool>
+        <token name="CollisionFidelity">0</token>
+        <Content name="MeshId">
+          <url>rbxassetid://117023325887159</url>
+        </Content>
+        <bool name="CanTouch">false</bool>
+        <token name="RenderFidelity">1</token>
+        <Content name="TextureID">
+          <url />
+        </Content>
+        <float name="Transparency">0</float>
+        <string name="Name">Hammer</string>
+        <float name="Reflectance">0</float>
+        <CoordinateFrame name="CFrame">
+          <X>1.1846668720245361</X>
+          <Y>2.6500000953674316</Y>
+          <Z>-2.7062501907348633</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <bool name="Massless">true</bool>
+        <bool name="CastShadow">true</bool>
+        <CoordinateFrame name="PivotOffset">
+          <X>321.5333251953125</X>
+          <Y>0</Y>
+          <Z>5.625030517578125</Z>
+          <R00>1</R00>
+          <R01>-1.9952024631587254e-23</R01>
+          <R02>-2.4492934404725397e-16</R02>
+          <R10>-2.4492934404725397e-16</R10>
+          <R11>-1.6292067073209182e-07</R11>
+          <R12>-1</R12>
+          <R20>-1.9952027787030875e-23</R20>
+          <R21>1</R21>
+          <R22>-1.6292067073209182e-07</R22>
+        </CoordinateFrame>
+      </Properties>
+      <Item class="SurfaceAppearance" referent="BOSS26">
+        <Properties>
+          <Content name="ColorMap">
+            <url>rbxassetid://95102370541261</url>
+          </Content>
+          <Content name="NormalMap">
+            <url />
+          </Content>
+          <string name="Name">BossSurface</string>
+          <Content name="RoughnessMap">
+            <url />
+          </Content>
+          <Content name="MetalnessMap">
+            <url />
+          </Content>
+          <bool name="Archivable">true</bool>
+          <token name="AlphaMode">0</token>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="MeshPart" referent="BOSS27">
+      <Properties>
+        <bool name="CanQuery">true</bool>
+        <Color3 name="Color">
+          <R>1</R>
+          <G>1</G>
+          <B>1</B>
+        </Color3>
+        <bool name="Anchored">false</bool>
+        <Vector3 name="InitialSize">
+          <X>269.7228698730469</X>
+          <Y>365.10931396484375</Y>
+          <Z>280.460205078125</Z>
+        </Vector3>
+        <token name="Material">256</token>
+        <bool name="Archivable">true</bool>
+        <Vector3 name="size">
+          <X>2.6972289085388184</X>
+          <Y>3.6510934829711914</Y>
+          <Z>2.8046021461486816</Z>
+        </Vector3>
+        <bool name="CanCollide">false</bool>
+        <token name="CollisionFidelity">0</token>
+        <Content name="MeshId">
+          <url>rbxassetid://127837227781666</url>
+        </Content>
+        <bool name="CanTouch">false</bool>
+        <token name="RenderFidelity">1</token>
+        <Content name="TextureID">
+          <url />
+        </Content>
+        <float name="Transparency">0</float>
+        <string name="Name">LeftUpperArm</string>
+        <float name="Reflectance">0</float>
+        <CoordinateFrame name="CFrame">
+          <X>-3.085252285003662</X>
+          <Y>8.495551109313965</Y>
+          <Z>-0.15361535549163818</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <bool name="Massless">true</bool>
+        <bool name="CastShadow">true</bool>
+        <CoordinateFrame name="PivotOffset">
+          <X>16.52520751953125</X>
+          <Y>63.4449462890625</Y>
+          <Z>17.361549377441406</Z>
+          <R00>1</R00>
+          <R01>-1.9952024631587254e-23</R01>
+          <R02>-2.4492934404725397e-16</R02>
+          <R10>-2.4492934404725397e-16</R10>
+          <R11>-1.6292067073209182e-07</R11>
+          <R12>-1</R12>
+          <R20>-1.9952027787030875e-23</R20>
+          <R21>1</R21>
+          <R22>-1.6292067073209182e-07</R22>
+        </CoordinateFrame>
+      </Properties>
+      <Item class="SurfaceAppearance" referent="BOSS28">
+        <Properties>
+          <Content name="ColorMap">
+            <url>rbxassetid://70787986849965</url>
+          </Content>
+          <Content name="NormalMap">
+            <url />
+          </Content>
+          <string name="Name">BossSurface</string>
+          <Content name="RoughnessMap">
+            <url />
+          </Content>
+          <Content name="MetalnessMap">
+            <url />
+          </Content>
+          <bool name="Archivable">true</bool>
+          <token name="AlphaMode">0</token>
+        </Properties>
+      </Item>
+      <Item class="Motor6D" referent="BOSS29">
+        <Properties>
+          <CoordinateFrame name="Transform">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <string name="Name">Boss_LeftLowerArm</string>
+          <Ref name="Part1">BOSS10</Ref>
+          <CoordinateFrame name="C1">
+            <X>-0.04884982109069824</X>
+            <Y>0.626866340637207</Y>
+            <Z>0.9514628052711487</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <CoordinateFrame name="C0">
+            <X>-0.5247476100921631</X>
+            <Y>-1.6255512237548828</Y>
+            <Z>0.07361535727977753</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="Archivable">true</bool>
+          <Ref name="Part0">BOSS27</Ref>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="MeshPart" referent="BOSS30">
+      <Properties>
+        <bool name="CanQuery">true</bool>
+        <Color3 name="Color">
+          <R>1</R>
+          <G>1</G>
+          <B>1</B>
+        </Color3>
+        <bool name="Anchored">false</bool>
+        <Vector3 name="InitialSize">
+          <X>282.81634521484375</X>
+          <Y>338.0945739746094</Y>
+          <Z>334.67852783203125</Z>
+        </Vector3>
+        <token name="Material">256</token>
+        <bool name="Archivable">true</bool>
+        <Vector3 name="size">
+          <X>2.8281636238098145</X>
+          <Y>3.380945920944214</Y>
+          <Z>3.346785545349121</Z>
+        </Vector3>
+        <bool name="CanCollide">false</bool>
+        <token name="CollisionFidelity">0</token>
+        <Content name="MeshId">
+          <url>rbxassetid://76173725960282</url>
+        </Content>
+        <bool name="CanTouch">false</bool>
+        <token name="RenderFidelity">1</token>
+        <Content name="TextureID">
+          <url />
+        </Content>
+        <float name="Transparency">0</float>
+        <string name="Name">RightLowerArm</string>
+        <float name="Reflectance">0</float>
+        <CoordinateFrame name="CFrame">
+          <X>2.969627857208252</X>
+          <Y>5.598228454589844</Y>
+          <Z>-1.0699925422668457</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <bool name="Massless">true</bool>
+        <bool name="CastShadow">true</bool>
+        <CoordinateFrame name="PivotOffset">
+          <X>64.03717041015625</X>
+          <Y>127.17706298828125</Y>
+          <Z>98.99930572509766</Z>
+          <R00>1</R00>
+          <R01>-1.9952024631587254e-23</R01>
+          <R02>-2.4492934404725397e-16</R02>
+          <R10>-2.4492934404725397e-16</R10>
+          <R11>-1.6292067073209182e-07</R11>
+          <R12>-1</R12>
+          <R20>-1.9952027787030875e-23</R20>
+          <R21>1</R21>
+          <R22>-1.6292067073209182e-07</R22>
+        </CoordinateFrame>
+      </Properties>
+      <Item class="SurfaceAppearance" referent="BOSS31">
+        <Properties>
+          <Content name="ColorMap">
+            <url>rbxassetid://125691732590386</url>
+          </Content>
+          <Content name="NormalMap">
+            <url />
+          </Content>
+          <string name="Name">BossSurface</string>
+          <Content name="RoughnessMap">
+            <url />
+          </Content>
+          <Content name="MetalnessMap">
+            <url />
+          </Content>
+          <bool name="Archivable">true</bool>
+          <token name="AlphaMode">0</token>
+        </Properties>
+      </Item>
+      <Item class="Motor6D" referent="BOSS32">
+        <Properties>
+          <CoordinateFrame name="Transform">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <string name="Name">Boss_RightHand</string>
+          <Ref name="Part1">BOSS20</Ref>
+          <CoordinateFrame name="C1">
+            <X>0.06595540046691895</X>
+            <Y>0.6709814071655273</Y>
+            <Z>0.16784214973449707</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <CoordinateFrame name="C0">
+            <X>-0.9882149696350098</X>
+            <Y>-1.3327603340148926</Y>
+            <Z>-1.2800076007843018</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="Archivable">true</bool>
+          <Ref name="Part0">BOSS30</Ref>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="MeshPart" referent="BOSS33">
+      <Properties>
+        <bool name="CanQuery">true</bool>
+        <Color3 name="Color">
+          <R>1</R>
+          <G>1</G>
+          <B>1</B>
+        </Color3>
+        <bool name="Anchored">false</bool>
+        <Vector3 name="InitialSize">
+          <X>168.8817901611328</X>
+          <Y>187.11846923828125</Y>
+          <Z>160.99456787109375</Z>
+        </Vector3>
+        <token name="Material">256</token>
+        <bool name="Archivable">true</bool>
+        <Vector3 name="size">
+          <X>1.6888179779052734</X>
+          <Y>1.8711848258972168</Y>
+          <Z>1.6099457740783691</Z>
+        </Vector3>
+        <bool name="CanCollide">false</bool>
+        <token name="CollisionFidelity">0</token>
+        <Content name="MeshId">
+          <url>rbxassetid://105741480739582</url>
+        </Content>
+        <bool name="CanTouch">false</bool>
+        <token name="RenderFidelity">1</token>
+        <Content name="TextureID">
+          <url />
+        </Content>
+        <float name="Transparency">0</float>
+        <string name="Name">LeftHand</string>
+        <float name="Reflectance">0</float>
+        <CoordinateFrame name="CFrame">
+          <X>-3.277899742126465</X>
+          <Y>4.790478706359863</Y>
+          <Z>-2.7190818786621094</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <bool name="Massless">true</bool>
+        <bool name="CastShadow">true</bool>
+        <CoordinateFrame name="PivotOffset">
+          <X>6.592041015625</X>
+          <Y>67.39779663085938</Y>
+          <Z>36.90815734863281</Z>
+          <R00>1</R00>
+          <R01>-1.9952024631587254e-23</R01>
+          <R02>-2.4492934404725397e-16</R02>
+          <R10>-2.4492934404725397e-16</R10>
+          <R11>-1.6292067073209182e-07</R11>
+          <R12>-1</R12>
+          <R20>-1.9952027787030875e-23</R20>
+          <R21>1</R21>
+          <R22>-1.6292067073209182e-07</R22>
+        </CoordinateFrame>
+      </Properties>
+      <Item class="SurfaceAppearance" referent="BOSS34">
+        <Properties>
+          <Content name="ColorMap">
+            <url>rbxassetid://112629976436265</url>
+          </Content>
+          <Content name="NormalMap">
+            <url />
+          </Content>
+          <string name="Name">BossSurface</string>
+          <Content name="RoughnessMap">
+            <url />
+          </Content>
+          <Content name="MetalnessMap">
+            <url />
+          </Content>
+          <bool name="Archivable">true</bool>
+          <token name="AlphaMode">0</token>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="MeshPart" referent="BOSS35">
+      <Properties>
+        <bool name="CanQuery">true</bool>
+        <Color3 name="Color">
+          <R>1</R>
+          <G>1</G>
+          <B>1</B>
+        </Color3>
+        <bool name="Anchored">false</bool>
+        <Vector3 name="InitialSize">
+          <X>201.26173400878906</X>
+          <Y>80.00003051757812</Y>
+          <Z>234.65185546875</Z>
+        </Vector3>
+        <token name="Material">256</token>
+        <bool name="Archivable">true</bool>
+        <Vector3 name="size">
+          <X>2.012617588043213</X>
+          <Y>0.8000003695487976</Y>
+          <Z>2.3465187549591064</Z>
+        </Vector3>
+        <bool name="CanCollide">false</bool>
+        <token name="CollisionFidelity">0</token>
+        <Content name="MeshId">
+          <url>rbxassetid://105244823595975</url>
+        </Content>
+        <bool name="CanTouch">false</bool>
+        <token name="RenderFidelity">1</token>
+        <Content name="TextureID">
+          <url />
+        </Content>
+        <float name="Transparency">0</float>
+        <string name="Name">RightFoot</string>
+        <float name="Reflectance">0</float>
+        <CoordinateFrame name="CFrame">
+          <X>1.9470000267028809</X>
+          <Y>0.4000000059604645</Y>
+          <Z>-0.48000001907348633</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <bool name="Massless">true</bool>
+        <bool name="CastShadow">true</bool>
+        <CoordinateFrame name="PivotOffset">
+          <X>1.52587890625e-05</X>
+          <Y>14.999996185302734</Y>
+          <Z>36</Z>
+          <R00>1</R00>
+          <R01>-1.9952024631587254e-23</R01>
+          <R02>-2.4492934404725397e-16</R02>
+          <R10>-2.4492934404725397e-16</R10>
+          <R11>-1.6292067073209182e-07</R11>
+          <R12>-1</R12>
+          <R20>-1.9952027787030875e-23</R20>
+          <R21>1</R21>
+          <R22>-1.6292067073209182e-07</R22>
+        </CoordinateFrame>
+      </Properties>
+      <Item class="SurfaceAppearance" referent="BOSS36">
+        <Properties>
+          <Content name="ColorMap">
+            <url>rbxassetid://134963818135260</url>
+          </Content>
+          <Content name="NormalMap">
+            <url />
+          </Content>
+          <string name="Name">BossSurface</string>
+          <Content name="RoughnessMap">
+            <url />
+          </Content>
+          <Content name="MetalnessMap">
+            <url />
+          </Content>
+          <bool name="Archivable">true</bool>
+          <token name="AlphaMode">0</token>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="MeshPart" referent="BOSS37">
+      <Properties>
+        <bool name="CanQuery">true</bool>
+        <Color3 name="Color">
+          <R>1</R>
+          <G>1</G>
+          <B>1</B>
+        </Color3>
+        <bool name="Anchored">false</bool>
+        <Vector3 name="InitialSize">
+          <X>449.3683166503906</X>
+          <Y>201.99984741210938</Y>
+          <Z>310.1207275390625</Z>
+        </Vector3>
+        <token name="Material">256</token>
+        <bool name="Archivable">true</bool>
+        <Vector3 name="size">
+          <X>4.493683338165283</X>
+          <Y>2.019998550415039</Y>
+          <Z>3.1012074947357178</Z>
+        </Vector3>
+        <bool name="CanCollide">false</bool>
+        <token name="CollisionFidelity">0</token>
+        <Content name="MeshId">
+          <url>rbxassetid://139793316841018</url>
+        </Content>
+        <bool name="CanTouch">false</bool>
+        <token name="RenderFidelity">1</token>
+        <Content name="TextureID">
+          <url />
+        </Content>
+        <float name="Transparency">0</float>
+        <string name="Name">LowerTorso</string>
+        <float name="Reflectance">0</float>
+        <CoordinateFrame name="CFrame">
+          <X>-0.0034791231155395508</X>
+          <Y>3.839999198913574</Y>
+          <Z>0.24060356616973877</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <bool name="Massless">true</bool>
+        <bool name="CastShadow">true</bool>
+        <CoordinateFrame name="PivotOffset">
+          <X>0.3479156494140625</X>
+          <Y>61.000030517578125</Y>
+          <Z>-14.060340881347656</Z>
+          <R00>1</R00>
+          <R01>-1.9952024631587254e-23</R01>
+          <R02>-2.4492934404725397e-16</R02>
+          <R10>-2.4492934404725397e-16</R10>
+          <R11>-1.6292067073209182e-07</R11>
+          <R12>-1</R12>
+          <R20>-1.9952027787030875e-23</R20>
+          <R21>1</R21>
+          <R22>-1.6292067073209182e-07</R22>
+        </CoordinateFrame>
+      </Properties>
+      <Item class="SurfaceAppearance" referent="BOSS38">
+        <Properties>
+          <Content name="ColorMap">
+            <url>rbxassetid://85256407182149</url>
+          </Content>
+          <Content name="NormalMap">
+            <url />
+          </Content>
+          <string name="Name">BossSurface</string>
+          <Content name="RoughnessMap">
+            <url />
+          </Content>
+          <Content name="MetalnessMap">
+            <url />
+          </Content>
+          <bool name="Archivable">true</bool>
+          <token name="AlphaMode">0</token>
+        </Properties>
+      </Item>
+      <Item class="Motor6D" referent="BOSS39">
+        <Properties>
+          <CoordinateFrame name="Transform">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <string name="Name">Boss_UpperTorso</string>
+          <Ref name="Part1">BOSS5</Ref>
+          <CoordinateFrame name="C1">
+            <X>-0.020108461380004883</X>
+            <Y>-2.339310646057129</Y>
+            <Z>0.37281545996665955</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <CoordinateFrame name="C0">
+            <X>0.0034791231155395508</X>
+            <Y>1.3600006103515625</Y>
+            <Z>-0.14060357213020325</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="Archivable">true</bool>
+          <Ref name="Part0">BOSS37</Ref>
+        </Properties>
+      </Item>
+      <Item class="Motor6D" referent="BOSS40">
+        <Properties>
+          <CoordinateFrame name="Transform">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <string name="Name">Boss_LeftUpperLeg</string>
+          <Ref name="Part1">BOSS45</Ref>
+          <CoordinateFrame name="C1">
+            <X>0.17895174026489258</X>
+            <Y>1.2866344451904297</Y>
+            <Z>0.026014208793640137</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <CoordinateFrame name="C0">
+            <X>-1.4965208768844604</X>
+            <Y>0.5600008964538574</Y>
+            <Z>-0.11060357093811035</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="Archivable">true</bool>
+          <Ref name="Part0">BOSS37</Ref>
+        </Properties>
+      </Item>
+      <Item class="Motor6D" referent="BOSS41">
+        <Properties>
+          <CoordinateFrame name="Transform">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <string name="Name">Boss_RightUpperLeg</string>
+          <Ref name="Part1">BOSS17</Ref>
+          <CoordinateFrame name="C1">
+            <X>-0.17630791664123535</X>
+            <Y>1.2866344451904297</Y>
+            <Z>0.026014208793640137</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <CoordinateFrame name="C0">
+            <X>1.5034791231155396</X>
+            <Y>0.5600008964538574</Y>
+            <Z>-0.11060357093811035</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="Archivable">true</bool>
+          <Ref name="Part0">BOSS37</Ref>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="MeshPart" referent="BOSS42">
+      <Properties>
+        <bool name="CanQuery">true</bool>
+        <Color3 name="Color">
+          <R>1</R>
+          <G>1</G>
+          <B>1</B>
+        </Color3>
+        <bool name="Anchored">false</bool>
+        <Vector3 name="InitialSize">
+          <X>169.92771911621094</X>
+          <Y>191.00003051757812</Y>
+          <Z>175.0764617919922</Z>
+        </Vector3>
+        <token name="Material">256</token>
+        <bool name="Archivable">true</bool>
+        <Vector3 name="size">
+          <X>1.6992772817611694</X>
+          <Y>1.9100004434585571</Y>
+          <Z>1.7507647275924683</Z>
+        </Vector3>
+        <bool name="CanCollide">false</bool>
+        <token name="CollisionFidelity">0</token>
+        <Content name="MeshId">
+          <url>rbxassetid://108720185936730</url>
+        </Content>
+        <bool name="CanTouch">false</bool>
+        <token name="RenderFidelity">1</token>
+        <Content name="TextureID">
+          <url />
+        </Content>
+        <float name="Transparency">0</float>
+        <string name="Name">RightLowerLeg</string>
+        <float name="Reflectance">0</float>
+        <CoordinateFrame name="CFrame">
+          <X>1.8200995922088623</X>
+          <Y>1.3350000381469727</Y>
+          <Z>-0.00664946436882019</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <bool name="Massless">true</bool>
+        <bool name="CastShadow">true</bool>
+        <CoordinateFrame name="PivotOffset">
+          <X>-0.50994873046875</X>
+          <Y>78.49996948242188</Y>
+          <Z>3.6649551391601562</Z>
+          <R00>1</R00>
+          <R01>-1.9952024631587254e-23</R01>
+          <R02>-2.4492934404725397e-16</R02>
+          <R10>-2.4492934404725397e-16</R10>
+          <R11>-1.6292067073209182e-07</R11>
+          <R12>-1</R12>
+          <R20>-1.9952027787030875e-23</R20>
+          <R21>1</R21>
+          <R22>-1.6292067073209182e-07</R22>
+        </CoordinateFrame>
+      </Properties>
+      <Item class="SurfaceAppearance" referent="BOSS43">
+        <Properties>
+          <Content name="ColorMap">
+            <url>rbxassetid://100928753942545</url>
+          </Content>
+          <Content name="NormalMap">
+            <url />
+          </Content>
+          <string name="Name">BossSurface</string>
+          <Content name="RoughnessMap">
+            <url />
+          </Content>
+          <Content name="MetalnessMap">
+            <url />
+          </Content>
+          <bool name="Archivable">true</bool>
+          <token name="AlphaMode">0</token>
+        </Properties>
+      </Item>
+      <Item class="Motor6D" referent="BOSS44">
+        <Properties>
+          <CoordinateFrame name="Transform">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <string name="Name">Boss_RightFoot</string>
+          <Ref name="Part1">BOSS35</Ref>
+          <CoordinateFrame name="C1">
+            <X>0</X>
+            <Y>0.15000000596046448</Y>
+            <Z>0.36000001430511475</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <CoordinateFrame name="C0">
+            <X>0.12690043449401855</X>
+            <Y>-0.7850000262260437</Y>
+            <Z>-0.1133505329489708</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="Archivable">true</bool>
+          <Ref name="Part0">BOSS42</Ref>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="MeshPart" referent="BOSS45">
+      <Properties>
+        <bool name="CanQuery">true</bool>
+        <Color3 name="Color">
+          <R>1</R>
+          <G>1</G>
+          <B>1</B>
+        </Color3>
+        <bool name="Anchored">false</bool>
+        <Vector3 name="InitialSize">
+          <X>201.20965576171875</X>
+          <Y>296.5238342285156</Y>
+          <Z>204.3133544921875</Z>
+        </Vector3>
+        <token name="Material">256</token>
+        <bool name="Archivable">true</bool>
+        <Vector3 name="size">
+          <X>2.012096643447876</X>
+          <Y>2.965238571166992</Y>
+          <Z>2.0431337356567383</Z>
+        </Vector3>
+        <bool name="CanCollide">false</bool>
+        <token name="CollisionFidelity">0</token>
+        <Content name="MeshId">
+          <url>rbxassetid://79922371223026</url>
+        </Content>
+        <bool name="CanTouch">false</bool>
+        <token name="RenderFidelity">1</token>
+        <Content name="TextureID">
+          <url />
+        </Content>
+        <float name="Transparency">0</float>
+        <string name="Name">LeftUpperLeg</string>
+        <float name="Reflectance">0</float>
+        <CoordinateFrame name="CFrame">
+          <X>-1.6789517402648926</X>
+          <Y>3.113365650177002</Y>
+          <Z>0.10398578643798828</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <bool name="Massless">true</bool>
+        <bool name="CastShadow">true</bool>
+        <CoordinateFrame name="PivotOffset">
+          <X>17.89520263671875</X>
+          <Y>128.6634521484375</Y>
+          <Z>2.6014404296875</Z>
+          <R00>1</R00>
+          <R01>-1.9952024631587254e-23</R01>
+          <R02>-2.4492934404725397e-16</R02>
+          <R10>-2.4492934404725397e-16</R10>
+          <R11>-1.6292067073209182e-07</R11>
+          <R12>-1</R12>
+          <R20>-1.9952027787030875e-23</R20>
+          <R21>1</R21>
+          <R22>-1.6292067073209182e-07</R22>
+        </CoordinateFrame>
+      </Properties>
+      <Item class="SurfaceAppearance" referent="BOSS46">
+        <Properties>
+          <Content name="ColorMap">
+            <url>rbxassetid://131167257859000</url>
+          </Content>
+          <Content name="NormalMap">
+            <url />
+          </Content>
+          <string name="Name">BossSurface</string>
+          <Content name="RoughnessMap">
+            <url />
+          </Content>
+          <Content name="MetalnessMap">
+            <url />
+          </Content>
+          <bool name="Archivable">true</bool>
+          <token name="AlphaMode">0</token>
+        </Properties>
+      </Item>
+      <Item class="Motor6D" referent="BOSS47">
+        <Properties>
+          <CoordinateFrame name="Transform">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <string name="Name">Boss_LeftLowerLeg</string>
+          <Ref name="Part1">BOSS48</Ref>
+          <CoordinateFrame name="C1">
+            <X>0.007532596588134766</X>
+            <Y>0.7849998474121094</Y>
+            <Z>0.036649465560913086</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <CoordinateFrame name="C0">
+            <X>-0.1360483169555664</X>
+            <Y>-0.9933657646179199</Y>
+            <Z>-0.07398578524589539</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="Archivable">true</bool>
+          <Ref name="Part0">BOSS45</Ref>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="MeshPart" referent="BOSS48">
+      <Properties>
+        <bool name="CanQuery">true</bool>
+        <Color3 name="Color">
+          <R>1</R>
+          <G>1</G>
+          <B>1</B>
+        </Color3>
+        <bool name="Anchored">false</bool>
+        <Vector3 name="InitialSize">
+          <X>168.29347229003906</X>
+          <Y>191.00003051757812</Y>
+          <Z>175.0764617919922</Z>
+        </Vector3>
+        <token name="Material">256</token>
+        <bool name="Archivable">true</bool>
+        <Vector3 name="size">
+          <X>1.6829348802566528</X>
+          <Y>1.9100004434585571</Y>
+          <Z>1.7507647275924683</Z>
+        </Vector3>
+        <bool name="CanCollide">false</bool>
+        <token name="CollisionFidelity">0</token>
+        <Content name="MeshId">
+          <url>rbxassetid://109238609236371</url>
+        </Content>
+        <bool name="CanTouch">false</bool>
+        <token name="RenderFidelity">1</token>
+        <Content name="TextureID">
+          <url />
+        </Content>
+        <float name="Transparency">0</float>
+        <string name="Name">LeftLowerLeg</string>
+        <float name="Reflectance">0</float>
+        <CoordinateFrame name="CFrame">
+          <X>-1.8225326538085938</X>
+          <Y>1.3350000381469727</Y>
+          <Z>-0.00664946436882019</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <bool name="Massless">true</bool>
+        <bool name="CastShadow">true</bool>
+        <CoordinateFrame name="PivotOffset">
+          <X>0.753265380859375</X>
+          <Y>78.49996948242188</Y>
+          <Z>3.6649551391601562</Z>
+          <R00>1</R00>
+          <R01>-1.9952024631587254e-23</R01>
+          <R02>-2.4492934404725397e-16</R02>
+          <R10>-2.4492934404725397e-16</R10>
+          <R11>-1.6292067073209182e-07</R11>
+          <R12>-1</R12>
+          <R20>-1.9952027787030875e-23</R20>
+          <R21>1</R21>
+          <R22>-1.6292067073209182e-07</R22>
+        </CoordinateFrame>
+      </Properties>
+      <Item class="SurfaceAppearance" referent="BOSS49">
+        <Properties>
+          <Content name="ColorMap">
+            <url>rbxassetid://93750463755271</url>
+          </Content>
+          <Content name="NormalMap">
+            <url />
+          </Content>
+          <string name="Name">BossSurface</string>
+          <Content name="RoughnessMap">
+            <url />
+          </Content>
+          <Content name="MetalnessMap">
+            <url />
+          </Content>
+          <bool name="Archivable">true</bool>
+          <token name="AlphaMode">0</token>
+        </Properties>
+      </Item>
+      <Item class="Motor6D" referent="BOSS50">
+        <Properties>
+          <CoordinateFrame name="Transform">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <string name="Name">Boss_LeftFoot</string>
+          <Ref name="Part1">BOSS13</Ref>
+          <CoordinateFrame name="C1">
+            <X>0</X>
+            <Y>0.15000000596046448</Y>
+            <Z>0.36000001430511475</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <CoordinateFrame name="C0">
+            <X>-0.12446737289428711</X>
+            <Y>-0.7850000262260437</Y>
+            <Z>-0.1133505329489708</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="Archivable">true</bool>
+          <Ref name="Part0">BOSS48</Ref>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="Humanoid" referent="BOSS51">
+      <Properties>
+        <token name="RigType">1</token>
+        <token name="DisplayDistanceType">2</token>
+        <float name="HipHeight">3.1500000953674316</float>
+        <bool name="AutomaticScalingEnabled">false</bool>
+        <bool name="RequiresNeck">false</bool>
+        <float name="Health">1800</float>
+        <string name="Name">Humanoid</string>
+        <bool name="BreakJointsOnDeath">false</bool>
+        <float name="WalkSpeed">4.5</float>
+        <bool name="Archivable">true</bool>
+        <float name="MaxHealth">1800</float>
+      </Properties>
+      <Item class="Animator" referent="BOSS52">
+        <Properties>
+          <string name="Name">Animator</string>
+          <bool name="Archivable">true</bool>
+        </Properties>
+      </Item>
+    </Item>
+  </Item>
+</roblox>

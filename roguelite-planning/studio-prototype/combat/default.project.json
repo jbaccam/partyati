@@ -1,0 +1,265 @@
+{
+  "name": "RogueliteKatanaCombat",
+  "tree": {
+    "$className": "DataModel",
+    "Workspace": {
+      "$className": "Workspace",
+      "$ignoreUnknownInstances": true,
+      "$properties": {
+        "Gravity": 150
+      }
+    },
+    "ReplicatedStorage": {
+      "RogueliteCombat": {
+        "$className": "Folder",
+        "$ignoreUnknownInstances": true,
+        "KatanaMotion": {
+          "$path": "KatanaMotion.luau"
+        },
+        "WeaponCatalog": {
+          "$path": "WeaponCatalog.luau"
+        },
+        "WeaponMotion": {
+          "$path": "WeaponMotion.luau"
+        },
+        "ChainWeaponGeometry": {
+          "$path": "ChainWeaponGeometry.luau"
+        },
+        "ChainWeaponMotion": {
+          "$path": "ChainWeaponMotion.luau"
+        },
+        "WeaponPresentation": {
+          "$path": "WeaponPresentation.luau"
+        },
+        "BulletImpactVisuals": {
+          "$path": "BulletImpactVisuals.luau"
+        },
+        "MobImpactVisuals": {
+          "$path": "MobImpactVisuals.luau"
+        },
+        "ZombieDeath": {
+          "$path": "ZombieDeath.luau"
+        },
+        "BossData": {
+          "$path": "../../hammer-boss/finished/BossDataMain.luau",
+          "Idle": { "$path": "../../hammer-boss/finished/clips/Idle.luau" },
+          "Walk": { "$path": "../../hammer-boss/finished/clips/Walk.luau" },
+          "Slam": { "$path": "../../hammer-boss/finished/clips/Slam.luau" },
+          "Swing": { "$path": "../../hammer-boss/finished/clips/Swing.luau" },
+          "Spin": { "$path": "../../hammer-boss/finished/clips/Spin.luau" },
+          "Hit": { "$path": "../../hammer-boss/finished/clips/Hit.luau" },
+          "Death": { "$path": "../../hammer-boss/finished/clips/Death.luau" }
+        },
+        "BossMotion": {
+          "$path": "../../hammer-boss/BossMotion.luau"
+        },
+        "ZombiePopped": {
+          "$className": "RemoteEvent"
+        },
+        "RocketProjectile": {
+          "$path": "RocketProjectile.luau"
+        },
+        "RocketMotion": {
+          "$path": "RocketMotion.luau"
+        },
+        "RocketFX": {
+          "$className": "RemoteEvent"
+        },
+        "RocketVisuals": {
+          "$path": "RocketVisuals.luau"
+        },
+        "CharacterStats": {
+          "$path": "CharacterStats.luau"
+        },
+        "EditPractice": {
+          "$className": "RemoteEvent"
+        },
+        "PlayerDamaged": {
+          "$className": "RemoteEvent",
+          "$properties": {
+            "Sandboxed": true
+          }
+        },
+        "RocketExplosionVisuals": {
+          "$path": "RocketExplosionVisuals.luau"
+        },
+        "EconomyConfig": {
+          "$path": "EconomyConfig.luau"
+        },
+        "RunXP": {
+          "$path": "RunXP.luau"
+        },
+        "ShardMotion": {
+          "$path": "ShardMotion.luau"
+        },
+        "CrystalShardVisual": {
+          "$path": "../../crystal-shard/CrystalShardVisual.lua"
+        },
+        "ShopCatalog": {
+          "$path": "ShopCatalog.luau"
+        },
+        "ShopAction": {
+          "$className": "RemoteEvent"
+        },
+        "CardPresentation": {
+          "$path": "CardPresentation.luau"
+        },
+        "ArcMotion": {
+          "$path": "ArcMotion.luau"
+        },
+        "ProjectileTarget": {
+          "$path": "ProjectileTarget.luau"
+        },
+        "ArcVisuals": {
+          "$path": "ArcVisuals.luau"
+        },
+        "ArcShot": {
+          "$className": "RemoteEvent"
+        },
+        "ZombieTypes": {
+          "$path": "ZombieTypes.luau"
+        },
+        "ZombieMotion": {
+          "$path": "ZombieMotion.luau"
+        },
+        "ZombieSlamVisuals": {
+          "$path": "ZombieSlamVisuals.luau"
+        },
+        "MuzzleFlashVisuals": {
+          "$path": "MuzzleFlashVisuals.luau"
+        },
+        "SpecialMotion": {
+          "$path": "SpecialMotion.luau"
+        },
+        "SpecialWeaponVisuals": {
+          "$path": "SpecialWeaponVisuals.luau"
+        },
+        "SpecialFX": {
+          "$className": "RemoteEvent",
+          "$properties": {
+            "Sandboxed": true
+          }
+        }
+      },
+      "RogueliteUI": {
+        "$path": "../ui/RogueliteUI.luau"
+      },
+      "WeaponInventoryUI": {
+        "$path": "../ui/WeaponInventoryUI.luau"
+      },
+      "CharacterStatsUI": {
+        "$path": "../ui/CharacterStatsUI.luau"
+      },
+      "ShopUI": {
+        "$path": "../ui/ShopUI.luau",
+        "$attributes": {
+          "HorizontalMargin": 0.025,
+          "HeaderTop": 16,
+          "ContentTop": 64,
+          "WeaponsHeight": 152,
+          "WeaponsWidth": 320,
+          "ItemsHeight": 152,
+          "InventoryBottomPadding": 12,
+          "RerollWidth": 180,
+          "RerollHeight": 34,
+          "InventoryGap": 8,
+          "SlotGap": 4,
+          "InventoryTitleHeight": 26,
+          "ItemWidthShare": 0.55,
+          "CardHeight": 390,
+          "StatsWidth": 310
+        }
+      }
+    },
+    "ServerStorage": {
+      "RogueliteNPCs": {
+        "$className": "Folder",
+        "$ignoreUnknownInstances": true,
+        "HammerBoss_NPC": {
+          "$path": "../../hammer-boss/finished/HammerBoss_NPC.rbxmx",
+          "$attributes": {
+            "IsBoss": true,
+            "IsHammerBoss": true,
+            "ZombieType": "HammerBoss",
+            "ContactDamage": 0,
+            "ContactRange": 0,
+            "BaseMoveSpeed": 4.5,
+            "SourceAsset": "hammer-boss/finished/HammerBoss.blend"
+          }
+        }
+      }
+    },
+    "ServerScriptService": {
+      "RogueliteCombat": {
+        "$path": "RogueliteCombat.server.luau"
+      },
+      "RogueliteZombieChase": {
+        "$path": "../RogueliteZombieChase.server.luau"
+      },
+      "CharacterService": {
+        "$path": "CharacterService.luau"
+      },
+      "CombatEffectsService": {
+        "$path": "CombatEffectsService.luau"
+      },
+      "StatProjectiles": {
+        "$path": "StatProjectiles.luau"
+      },
+      "ShardDropService": {
+        "$path": "ShardDropService.luau"
+      },
+      "ShopService": {
+        "$path": "ShopService.luau"
+      },
+      "ArcProjectiles": {
+        "$path": "ArcProjectiles.luau"
+      },
+      "PracticeTarget": {
+        "$path": "PracticeTarget.server.luau"
+      },
+      "ZombieAttacks": {
+        "$path": "ZombieAttacks.luau"
+      },
+      "BossService": {
+        "$path": "../../hammer-boss/BossService.luau"
+      },
+      "BossEncounter": {
+        "$path": "../../hammer-boss/BossEncounter.server.luau"
+      },
+      "SpecialWeapons": {
+        "$path": "SpecialWeapons.luau"
+      }
+    },
+    "StarterPlayer": {
+      "$properties": {
+        "CharacterUseJumpPower": false,
+        "CharacterJumpHeight": 9.5
+      },
+      "StarterPlayerScripts": {
+        "BossPresentation": {
+          "$path": "../../hammer-boss/BossPresentation.client.luau"
+        },
+        "ShardVisuals": {
+          "$path": "ShardVisuals.client.luau"
+        },
+        "RogueliteZombieAnimation": {
+          "$path": "../RogueliteZombieAnimation.client.luau"
+        },
+        "RogueliteCombat": {
+          "$path": "RogueliteCombat.client.luau"
+        },
+        "RogueliteHUD": {
+          "$path": "../ui/RogueliteHUD.client.luau"
+        },
+        "CardShowcase": {
+          "$path": "CardShowcase.client.luau"
+        }
+      },
+      "StarterCharacterScripts": {
+        "Health": {
+          "$path": "Health.server.luau"
+        }
+      }
+    }
+  }
+}

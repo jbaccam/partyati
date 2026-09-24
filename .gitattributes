@@ -4,3 +4,24 @@
 *.toml text eol=lf
 *.yml text eol=lf
 *.md text eol=lf
+character-assets/**/*.obj filter=lfs diff=lfs merge=lfs -text
+roguelite-planning/**/*.blend filter=lfs diff=lfs merge=lfs -text
+character-assets/**/*.glb filter=lfs diff=lfs merge=lfs -text
+character-assets/**/*.gif filter=lfs diff=lfs merge=lfs -text
+character-assets/*.zip filter=lfs diff=lfs merge=lfs -text
+roguelite-planning/**/*.obj filter=lfs diff=lfs merge=lfs -text
+character-assets/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+character-assets/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+roguelite-planning/**/*.zip filter=lfs diff=lfs merge=lfs -text
+character-assets/**/*.fbx filter=lfs diff=lfs merge=lfs -text
+character-assets/**/*.png filter=lfs diff=lfs merge=lfs -text
+character-assets/**/*.mesh filter=lfs diff=lfs merge=lfs -text
+roguelite-planning/**/*.png filter=lfs diff=lfs merge=lfs -text
+roguelite-planning/**/*.gif filter=lfs diff=lfs merge=lfs -text
+roguelite-planning/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+roguelite-planning/**/*.mesh filter=lfs diff=lfs merge=lfs -text
+character-assets/**/*.blend filter=lfs diff=lfs merge=lfs -text
+character-assets/**/*.zip filter=lfs diff=lfs merge=lfs -text
+roguelite-planning/**/*.fbx filter=lfs diff=lfs merge=lfs -text
+roguelite-planning/**/*.glb filter=lfs diff=lfs merge=lfs -text
+roguelite-planning/**/*.jpg filter=lfs diff=lfs merge=lfs -text

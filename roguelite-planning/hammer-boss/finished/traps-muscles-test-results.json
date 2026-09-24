@@ -1,0 +1,27 @@
+{
+  "clips": {
+    "Swing": 11,
+    "Idle": 20,
+    "Hit": 4,
+    "Slam": 11,
+    "Death": 17,
+    "Spin": 14,
+    "Walk": 10
+  },
+  "maxHandPoseError": 0.003014037385582924,
+  "maxWeaponPoseError": 0.0009765754221007228,
+  "positionToleranceStuds": 0.01,
+  "passed": true,
+  "revision": "TrapsMuscles_20260923",
+  "visualChecks": [
+    "Studio front and rear inspected",
+    "Unchanged shoulder cap radii",
+    "Enlarged traps and upper back",
+    "Refitted shirt and suspenders",
+    "Fuller biceps triceps and forearms"
+  ],
+  "packages": {
+    "CopyTheScene": true,
+    "RogueliteCombat": true
+  }
+}

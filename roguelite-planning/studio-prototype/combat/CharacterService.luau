@@ -1,0 +1,154 @@
+-- Server-only authoritative character builds, practice controls and health economy.
+local Players=game:GetService('Players')
+local RunService=game:GetService('RunService')
+local Tags=game:GetService('CollectionService')
+local combat=game.ReplicatedStorage:WaitForChild('RogueliteCombat')
+local Stats=require(combat:WaitForChild('CharacterStats'))
+local playerDamaged=combat:FindFirstChild('PlayerDamaged')
+if not playerDamaged then
+ playerDamaged=Instance.new('RemoteEvent');playerDamaged.Name='PlayerDamaged'
+ playerDamaged.Sandboxed=true
+ playerDamaged.Capabilities=SecurityCapabilities.new(Enum.SecurityCapability.Basic,Enum.SecurityCapability.RemoteEvent)
+ playerDamaged.Parent=combat
+end
+assert(playerDamaged:IsA('RemoteEvent'),'RogueliteCombat.PlayerDamaged must be a RemoteEvent')
+workspace.Gravity=Stats.Movement.Gravity
+local Catalog=require(combat:WaitForChild('WeaponCatalog'))
+local Service={states={}}
+local function humanoid(player) return player.Character and player.Character:FindFirstChildOfClass('Humanoid') end
+local function applyMoveSpeed(h,s)
+ local state=h:GetState()
+ local airborne=h.Health>0 and (state==Enum.HumanoidStateType.Jumping or state==Enum.HumanoidStateType.Freefall)
+ -- Always derive from the resolved ground stat; repeated jumps never stack.
+ h.WalkSpeed=s.stats.MoveSpeed*(airborne and Stats.Movement.AirSpeedMultiplier or 1)
+end
+function Service.refresh(player)
+ local s=Service.states[player];if not s then return end
+ local count=0
+ for _,slot in s.folder:GetChildren() do local d=Catalog.ById[slot:GetAttribute('WeaponId')];if d and d.home==s.class then count+=1 end end
+ s.stats=Stats.resolve(s.class,count,s.overrides,s.itemBonuses,s.itemPercent)
+ s.folder:SetAttribute('Class',s.class);s.folder:SetAttribute('AffinityCount',count)
+ for _,d in Stats.List do
+  local value=s.stats[d.id];s.folder:SetAttribute('Stat_'..d.id,value)
+  s.folder:SetAttribute('Override_'..d.id,s.overrides[d.id]~=nil)
+  if player.Character then player.Character:SetAttribute('Stat_'..d.id,value) end
+ end
+ local h=humanoid(player)
+ if h then
+  local missing=h.MaxHealth-h.Health;local alive=h.Health>0
+  h.MaxHealth=s.stats.MaxHP;if alive then h.Health=math.clamp(h.MaxHealth-missing,1,h.MaxHealth) end
+  applyMoveSpeed(h,s)
+  h.UseJumpPower=false;h.JumpHeight=Stats.Movement.JumpHeight
+  player.Character:SetAttribute('CombatClass',s.class)
+ end
+ if Service.onStatsChanged then Service.onStatsChanged(player) end
+end
+function Service.attach(player,folder)
+ local s={folder=folder,class='Brawler',overrides={},lastRequest=-1e6,lastContact=0,blocks=1,leech=0,hits=0}
+ Service.states[player]=s
+ local function spawned(character)
+  local h=character:WaitForChild('Humanoid',10);if not h or player.Character~=character then return end
+  s.leech=0;s.blocks=1;s.hits=0;s.lastContact=os.clock()
+  Service.refresh(player);h.Health=h.MaxHealth
+  if s.moveStateConnection then s.moveStateConnection:Disconnect() end
+  s.moveStateConnection=h.StateChanged:Connect(function()
+   if player.Character==character and Service.states[player]==s then applyMoveSpeed(h,s) end
+  end)
+  -- Disable Roblox's implicit regeneration: this game's Recovery/Regeneration own healing.
+  local health=character:FindFirstChild('Health');if health and health:IsA('Script') then health.Disabled=true end
+ end
+ player.CharacterAdded:Connect(spawned)
+ if player.Character then task.spawn(spawned,player.Character) end
+ for _,slot in folder:GetChildren() do slot:GetAttributeChangedSignal('WeaponId'):Connect(function() Service.refresh(player) end) end
+ Service.refresh(player)
+end
+function Service.heal(player,amount)
+ local s=Service.states[player];local h=humanoid(player)
+ if s and h and h.Health>0 then h.Health=math.min(h.MaxHealth,h.Health+math.max(0,amount)*Stats.mult(s.stats.Recovery)) end
+end
+function Service.leech(player,damage)
+ local s=Service.states[player];if not s then return end
+ local h=humanoid(player);if not h or h.Health<=0 then return end
+ local heal=math.min(damage*s.stats.LifeSteal/100*Stats.mult(s.stats.Recovery),math.max(0,s.stats.LifeStealCap-s.leech))
+ s.leech+=heal;h.Health=math.min(h.MaxHealth,h.Health+heal)
+end
+function Service.contact(player,amount,roll)
+ local s=Service.states[player];local h=humanoid(player)
+ if not s or not h or h.Health<=0 or player.Character:FindFirstChildOfClass('ForceField') then return 0 end
+ if s.stats.FirstHitBlock>0 and s.blocks>0 then s.blocks-=1;s.folder:SetAttribute('BlocksRemaining',s.blocks);return 0 end
+ if (roll or math.random())<s.stats.Dodge/100 then return 0 end
+ local before=h.Health;h:TakeDamage(Stats.incoming(amount,s.stats));local actual=before-h.Health
+ -- Only the damaged player needs this feedback. The server supplies actual health
+ -- lost after armor and health clamping; clients never submit damage values.
+ if actual>0 then playerDamaged:FireClient(player,actual) end
+ return actual
+end
+local remote=combat:FindFirstChild('EditPractice') or Instance.new('RemoteEvent')
+remote.Name='EditPractice';remote.Parent=combat
+function Service.request(player,action,key,value)
+ local s=Service.states[player];local h=humanoid(player);local run=game.ReplicatedStorage:FindFirstChild('RogueliteRunState')
+ -- Studio stat/health/population controls remain usable during combat.
+ if not RunService:IsStudio() or not s or not h or h.Health<=0 then return false end
+ if type(action)~='string' or type(key)=='table' or os.clock()-s.lastRequest<.08 then return false end
+ if action=='Stat' then
+  if type(key)~='string' or not Stats.valid(key,value) then return false end
+  s.overrides[key]=value;Service.refresh(player)
+ elseif action=='Class' then
+  if type(key)~='string' or not Stats.Classes[key] then return false end
+  s.class=key;s.overrides={};Service.refresh(player)
+ elseif action=='Build' then
+  if run and run:GetAttribute('Phase')~='Practice' then return false end
+  local preset=Stats.Classes[s.class].build
+  for index,id in preset do if not combat.WeaponTemplates:FindFirstChild(id) then return false end end
+  for i=1,6 do
+   local slot=s.folder:FindFirstChild('Slot'..i);slot:SetAttribute('WeaponId',preset[i] or '');slot:SetAttribute('StartTime',-1e6)
+  end
+  s.folder:SetAttribute('EquippedCount',#preset);Service.refresh(player)
+ elseif action=='Reset' then s.overrides={};Service.refresh(player)
+ elseif action=='Heal' then h.Health=h.MaxHealth
+ elseif action=='Damage' then Service.contact(player,20)
+ elseif action=='Zombies' then
+  if type(value)~='number' or value~=value or value%1~=0 or value<0 or value>100 then return false end
+  combat:SetAttribute('ZombieCount',value)
+  combat:SetAttribute('TestZombieCountOverride',value)
+ elseif action=='AutoZombies' then combat:SetAttribute('TestZombieCountOverride',nil)
+ elseif action=='SpawnBoss' or action=='RemoveBoss' then
+  if key~=nil or value~=nil then return false end
+  if not Service.onPracticeBoss or not Service.onPracticeBoss(player,action) then return false end
+ else return false end
+ s.lastRequest=os.clock();s.folder:SetAttribute('PracticeRevision',(s.folder:GetAttribute('PracticeRevision') or 0)+1)
+ return true
+end
+remote.OnServerEvent:Connect(function(...) Service.request(...) end)
+Players.PlayerRemoving:Connect(function(p)
+ local s=Service.states[p];if s and s.moveStateConnection then s.moveStateConnection:Disconnect() end
+ Service.states[p]=nil
+end)
+local elapsed=0
+RunService.Heartbeat:Connect(function(dt)
+ elapsed+=dt;if elapsed<.1 then return end;local step=elapsed;elapsed=0
+ local now=os.clock()
+ for player,s in Service.states do
+  local h=humanoid(player);local root=player.Character and player.Character:FindFirstChild('HumanoidRootPart')
+  if h and root and h.Health>0 then
+   Service.heal(player,s.stats.Regeneration*step)
+   local second=math.floor(now);if s.leechSecond~=second then s.leechSecond=second;s.leech=0 end
+   if now-s.lastContact>=.8 and combat:GetAttribute('ZombiesEnabled') then
+    for _,npc in Tags:GetTagged('RogueliteZombie') do
+     local nr=npc:FindFirstChild('HumanoidRootPart');local nh=npc:FindFirstChildOfClass('Humanoid')
+     local contactDamage=npc:GetAttribute('ContactDamage') or 10
+     local contactRange=npc:GetAttribute('ContactRange') or 4.5
+     local delta=nr and root.Position-nr.Position
+     if contactDamage>0 and not npc:GetAttribute('PracticeTarget') and nr and nh and nh.Health>0 and math.abs(delta.Y)<4.5 and Vector2.new(delta.X,delta.Z).Magnitude<contactRange then
+      local params=RaycastParams.new();params.FilterType=Enum.RaycastFilterType.Exclude;params.FilterDescendantsInstances={npc,player.Character,workspace:FindFirstChild('RogueliteEnemies')}
+      if not workspace:Raycast(nr.Position,root.Position-nr.Position,params) then s.lastContact=now;Service.contact(player,contactDamage);break end
+     end
+    end
+   end
+  end
+ end
+end)
+local function resetBlocks() for _,s in Service.states do s.blocks=1;s.folder:SetAttribute('BlocksRemaining',1) end end
+combat:GetAttributeChangedSignal('ZombieCount'):Connect(resetBlocks)
+combat:GetAttributeChangedSignal('ZombiesEnabled'):Connect(resetBlocks)
+return Service

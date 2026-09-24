@@ -1,0 +1,1454 @@
+{
+  "blender_version": "5.2.1 LTS",
+  "scope": "Blender round-trip only; no Roblox Studio import or in-game test is claimed",
+  "assets": {
+    "01-headland-short": {
+      "fbx": {
+        "file": "exports/fbx/01-headland-short.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 336,
+        "vertices": 170,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          10.118,
+          14.713,
+          18.931
+        ],
+        "uv_range": [
+          0.0053,
+          0.9947
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/01-headland-short.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 336,
+        "vertices": 348,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          10.118,
+          14.713,
+          18.931
+        ],
+        "uv_range": [
+          0.0053,
+          0.9947
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "02-headland-medium": {
+      "fbx": {
+        "file": "exports/fbx/02-headland-medium.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 344,
+        "vertices": 174,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          15.246,
+          17.196,
+          21.335
+        ],
+        "uv_range": [
+          0.005,
+          0.995
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/02-headland-medium.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 344,
+        "vertices": 341,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          15.246,
+          17.196,
+          21.335
+        ],
+        "uv_range": [
+          0.005,
+          0.995
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "03-headland-tall": {
+      "fbx": {
+        "file": "exports/fbx/03-headland-tall.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 354,
+        "vertices": 179,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          14.13,
+          16.973,
+          27.384
+        ],
+        "uv_range": [
+          0.0057,
+          0.9943
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/03-headland-tall.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 354,
+        "vertices": 380,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          14.13,
+          16.973,
+          27.384
+        ],
+        "uv_range": [
+          0.0057,
+          0.9943
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "04-plateau-wide-low": {
+      "fbx": {
+        "file": "exports/fbx/04-plateau-wide-low.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 430,
+        "vertices": 217,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          8.093,
+          27.9,
+          34.611
+        ],
+        "uv_range": [
+          0.0044,
+          0.9956
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/04-plateau-wide-low.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 430,
+        "vertices": 389,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          8.093,
+          27.9,
+          34.611
+        ],
+        "uv_range": [
+          0.0044,
+          0.9956
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "05-plateau-broad": {
+      "fbx": {
+        "file": "exports/fbx/05-plateau-broad.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 386,
+        "vertices": 195,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          15.18,
+          27.238,
+          31.07
+        ],
+        "uv_range": [
+          0.0054,
+          0.9946
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/05-plateau-broad.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 386,
+        "vertices": 367,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          15.18,
+          27.238,
+          31.07
+        ],
+        "uv_range": [
+          0.0054,
+          0.9946
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "06-headland-tall-mass": {
+      "fbx": {
+        "file": "exports/fbx/06-headland-tall-mass.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 380,
+        "vertices": 192,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          24.701,
+          29.655,
+          30.375
+        ],
+        "uv_range": [
+          0.0045,
+          0.9955
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/06-headland-tall-mass.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 380,
+        "vertices": 371,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          24.701,
+          29.655,
+          30.375
+        ],
+        "uv_range": [
+          0.0045,
+          0.9955
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "07-headland-tapered": {
+      "fbx": {
+        "file": "exports/fbx/07-headland-tapered.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 324,
+        "vertices": 164,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          16.136,
+          19.219,
+          20.606
+        ],
+        "uv_range": [
+          0.0054,
+          0.9946
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/07-headland-tapered.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 324,
+        "vertices": 339,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          16.136,
+          19.219,
+          20.606
+        ],
+        "uv_range": [
+          0.0054,
+          0.9946
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "08-stack-double": {
+      "fbx": {
+        "file": "exports/fbx/08-stack-double.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 742,
+        "vertices": 375,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          20.444,
+          21.242,
+          31.538
+        ],
+        "uv_range": [
+          0.0073,
+          0.9927
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/08-stack-double.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 742,
+        "vertices": 721,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          20.444,
+          21.242,
+          31.538
+        ],
+        "uv_range": [
+          0.0073,
+          0.9927
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "09-stack-triple": {
+      "fbx": {
+        "file": "exports/fbx/09-stack-triple.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 1084,
+        "vertices": 548,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          25.131,
+          28.386,
+          34.077
+        ],
+        "uv_range": [
+          0.0084,
+          0.9916
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/09-stack-triple.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 1084,
+        "vertices": 1080,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          25.131,
+          28.386,
+          34.077
+        ],
+        "uv_range": [
+          0.0084,
+          0.9916
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "10-rim-corner-wedge": {
+      "fbx": {
+        "file": "exports/fbx/10-rim-corner-wedge.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 328,
+        "vertices": 166,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          14.099,
+          17.196,
+          25.221
+        ],
+        "uv_range": [
+          0.0055,
+          0.9945
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/10-rim-corner-wedge.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 328,
+        "vertices": 331,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          14.099,
+          17.196,
+          25.221
+        ],
+        "uv_range": [
+          0.0055,
+          0.9945
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "11-boulder-medium": {
+      "fbx": {
+        "file": "exports/fbx/11-boulder-medium.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 212,
+        "vertices": 108,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          3.646,
+          4.413,
+          5.201
+        ],
+        "uv_range": [
+          0.0045,
+          0.9955
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/11-boulder-medium.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 212,
+        "vertices": 179,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          3.646,
+          4.413,
+          5.201
+        ],
+        "uv_range": [
+          0.0045,
+          0.9955
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "12-boulder-large": {
+      "fbx": {
+        "file": "exports/fbx/12-boulder-large.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 206,
+        "vertices": 105,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          6.472,
+          8.689,
+          10.894
+        ],
+        "uv_range": [
+          0.0045,
+          0.9955
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/12-boulder-large.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 206,
+        "vertices": 169,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          6.472,
+          8.689,
+          10.894
+        ],
+        "uv_range": [
+          0.0045,
+          0.9955
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "13-rock-cluster": {
+      "fbx": {
+        "file": "exports/fbx/13-rock-cluster.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 852,
+        "vertices": 434,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          4.866,
+          7.32,
+          10.246
+        ],
+        "uv_range": [
+          0.0079,
+          0.9921
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/13-rock-cluster.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 852,
+        "vertices": 702,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          4.866,
+          7.32,
+          10.246
+        ],
+        "uv_range": [
+          0.0079,
+          0.9921
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "14-standing-rock": {
+      "fbx": {
+        "file": "exports/fbx/14-standing-rock.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 202,
+        "vertices": 103,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          4.359,
+          4.946,
+          9.91
+        ],
+        "uv_range": [
+          0.005,
+          0.995
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/14-standing-rock.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 202,
+        "vertices": 197,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          4.359,
+          4.946,
+          9.91
+        ],
+        "uv_range": [
+          0.005,
+          0.995
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "15-shore-rock-low": {
+      "fbx": {
+        "file": "exports/fbx/15-shore-rock-low.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 156,
+        "vertices": 80,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          1.964,
+          7.617,
+          12.582
+        ],
+        "uv_range": [
+          0.0032,
+          0.9968
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/15-shore-rock-low.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 156,
+        "vertices": 146,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          1.964,
+          7.617,
+          12.582
+        ],
+        "uv_range": [
+          0.0032,
+          0.9968
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "16-palm-tall": {
+      "fbx": {
+        "file": "exports/fbx/16-palm-tall.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 807,
+        "vertices": 531,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          20.674,
+          20.693,
+          23.502
+        ],
+        "uv_range": [
+          0.0078,
+          0.9921
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/16-palm-tall.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 807,
+        "vertices": 674,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          20.674,
+          20.693,
+          23.502
+        ],
+        "uv_range": [
+          0.0078,
+          0.9921
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "17-palm-leaning": {
+      "fbx": {
+        "file": "exports/fbx/17-palm-leaning.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 739,
+        "vertices": 486,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          17.973,
+          17.975,
+          19.229
+        ],
+        "uv_range": [
+          0.0079,
+          0.9921
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/17-palm-leaning.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 739,
+        "vertices": 620,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          17.973,
+          17.975,
+          19.229
+        ],
+        "uv_range": [
+          0.0079,
+          0.9921
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "18-palm-short": {
+      "fbx": {
+        "file": "exports/fbx/18-palm-short.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 559,
+        "vertices": 363,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          14.715,
+          14.956,
+          15.029
+        ],
+        "uv_range": [
+          0.007,
+          0.993
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/18-palm-short.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 559,
+        "vertices": 483,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          14.715,
+          14.956,
+          15.029
+        ],
+        "uv_range": [
+          0.007,
+          0.993
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "19-driftwood-log": {
+      "fbx": {
+        "file": "exports/fbx/19-driftwood-log.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 302,
+        "vertices": 167,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          3.525,
+          4.115,
+          11.28
+        ],
+        "uv_range": [
+          0.0063,
+          0.9937
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/19-driftwood-log.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 302,
+        "vertices": 349,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          3.525,
+          4.115,
+          11.28
+        ],
+        "uv_range": [
+          0.0063,
+          0.9937
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "20-driftwood-planks": {
+      "fbx": {
+        "file": "exports/fbx/20-driftwood-planks.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 612,
+        "vertices": 338,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          1.528,
+          2.515,
+          8.61
+        ],
+        "uv_range": [
+          0.0078,
+          0.9922
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/20-driftwood-planks.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 612,
+        "vertices": 702,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          1.528,
+          2.515,
+          8.61
+        ],
+        "uv_range": [
+          0.0078,
+          0.9922
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "21-wrecked-rowboat": {
+      "fbx": {
+        "file": "exports/fbx/21-wrecked-rowboat.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 632,
+        "vertices": 322,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          3.042,
+          3.711,
+          10.687
+        ],
+        "uv_range": [
+          0.0058,
+          0.9942
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/21-wrecked-rowboat.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 632,
+        "vertices": 693,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          3.042,
+          3.711,
+          10.687
+        ],
+        "uv_range": [
+          0.0058,
+          0.9942
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "22-tide-pool-small": {
+      "fbx": {
+        "file": "exports/fbx/22-tide-pool-small.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 71,
+        "vertices": 45,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          0.38,
+          5.385,
+          7.696
+        ],
+        "uv_range": [
+          0.0017,
+          0.9983
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/22-tide-pool-small.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 71,
+        "vertices": 45,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          0.38,
+          5.385,
+          7.696
+        ],
+        "uv_range": [
+          0.0017,
+          0.9983
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "23-tide-pool-large": {
+      "fbx": {
+        "file": "exports/fbx/23-tide-pool-large.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 42,
+        "vertices": 29,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          0.38,
+          8.811,
+          13.408
+        ],
+        "uv_range": [
+          0.0016,
+          0.9984
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/23-tide-pool-large.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 42,
+        "vertices": 29,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          0.38,
+          8.811,
+          13.408
+        ],
+        "uv_range": [
+          0.0016,
+          0.9984
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "24-grass-patch-small": {
+      "fbx": {
+        "file": "exports/fbx/24-grass-patch-small.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 229,
+        "vertices": 152,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          1.303,
+          5.166,
+          6.446
+        ],
+        "uv_range": [
+          0.0053,
+          0.9947
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/24-grass-patch-small.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 229,
+        "vertices": 219,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          1.303,
+          5.166,
+          6.446
+        ],
+        "uv_range": [
+          0.0053,
+          0.9947
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    },
+    "25-grass-patch-large": {
+      "fbx": {
+        "file": "exports/fbx/25-grass-patch-large.fbx",
+        "ok": true,
+        "problems": [],
+        "triangles": 269,
+        "vertices": 177,
+        "materials": 1,
+        "uv_layers": [
+          "AtlasUV"
+        ],
+        "dimensions_sorted": [
+          1.961,
+          8.0,
+          10.182
+        ],
+        "uv_range": [
+          0.0058,
+          0.9942
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "glb": {
+        "file": "exports/glb/25-grass-patch-large.glb",
+        "ok": true,
+        "problems": [],
+        "triangles": 269,
+        "vertices": 254,
+        "materials": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "dimensions_sorted": [
+          1.961,
+          8.0,
+          10.182
+        ],
+        "uv_range": [
+          0.0058,
+          0.9942
+        ],
+        "degenerate_triangles": 0,
+        "metallic": 0.0,
+        "texture_size": [
+          2048,
+          2048
+        ]
+      },
+      "ok": true
+    }
+  },
+  "source_sheets": {
+    "rock": {
+      "stored_as": "textures/source/rock_original.png",
+      "sha256": "ac164fbb2411ebd2b3a76aa09c049c51033efad6ac2358bb3c734b4d9bef4b72",
+      "matches_recorded": true
+    },
+    "transition": {
+      "stored_as": "textures/source/transition_original.png",
+      "sha256": "6d6c81cb6192d6a1d3baa1ecc69f059dde4358b9da43e384e4bd9e09eb228f4a",
+      "matches_recorded": true
+    },
+    "grass": {
+      "stored_as": "textures/source/grass_original.png",
+      "sha256": "91fed16cd66e4ec32c005c605aa0d426ce47c191adf90c38cda9d83b562ec1b3",
+      "matches_recorded": true
+    },
+    "bark": {
+      "stored_as": "textures/source/bark_original.png",
+      "sha256": "71bbf22e936e436bc7896e368c8a21e7b21ea5ab7619319a31380bb7cf135096",
+      "matches_recorded": true
+    },
+    "foliage": {
+      "stored_as": "textures/source/foliage_original.png",
+      "sha256": "fab58ab37ca789ec6f1f4ac24b9699198cb55d64f6b9aa5757d0a3ad439f0d26",
+      "matches_recorded": true
+    },
+    "logbark": {
+      "stored_as": "textures/source/logbark_original.png",
+      "sha256": "fb7e8fa2ab1bee185a160d584f6a09618c0f57b683020b289880f6dcd963829d",
+      "matches_recorded": true
+    },
+    "reference": {
+      "stored_as": "textures/source/beach-cove-reference.png",
+      "sha256": "84587e99b0165a14f2686ef13d7da4d3ca46db06b5eaf078376c3e25cbd39cf9",
+      "matches_recorded": true
+    },
+    "mountain_rock": {
+      "stored_as": "textures/source/mountain_rock.png",
+      "sha256": "ca668f37d2db428301409e73e56aded626bea4b2fc4544c1950ccd170b94d53d",
+      "matches_recorded": false
+    },
+    "mountain_grass": {
+      "stored_as": "textures/source/mountain_grass.png",
+      "sha256": "05bbd4525fbbb173ffe70e11f5eb5ff447c414bfbd7a7c8a74ff18ba3b44c3c2",
+      "matches_recorded": false
+    },
+    "mountain_transition": {
+      "stored_as": "textures/source/mountain_transition.png",
+      "sha256": "a4cdbc07f4870f17743e47066e417ee4c4b426b595a47a88d8dbd57045121b54",
+      "matches_recorded": false
+    },
+    "mountain_frond": {
+      "stored_as": "textures/source/mountain_frond.png",
+      "sha256": "b9f890cbc6c6a1fb805222da465291163513bea6f9bca4b8755b1a6c32e43fef",
+      "matches_recorded": false
+    },
+    "mountain_palm_bark": {
+      "stored_as": "textures/source/mountain_palm_bark.png",
+      "sha256": "fb9213ab0b639e93ea4b64acbd138580d426a6e9717b04f51e778057691f8c9a",
+      "matches_recorded": false
+    },
+    "mountain_water": {
+      "stored_as": "textures/source/mountain_water.png",
+      "sha256": "715887f5f6578fbd01baeb4f9ed531449a405a2f3422cdd38e99e768b770fe47",
+      "matches_recorded": false
+    }
+  },
+  "summary": {
+    "assets_checked": 25,
+    "passed": 25,
+    "failed": 0,
+    "source_sheets_matching": 7
+  }
+}

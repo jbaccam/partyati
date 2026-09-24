@@ -1,0 +1,98 @@
+{
+  "Hammer.001": {
+    "triangles": 4086,
+    "uvs": [
+      "BossAtlas"
+    ]
+  },
+  "Head.001": {
+    "triangles": 628,
+    "uvs": [
+      "FamilyPaint"
+    ]
+  },
+  "LeftFoot.001": {
+    "triangles": 188,
+    "uvs": [
+      "BossAtlas"
+    ]
+  },
+  "LeftHand.001": {
+    "triangles": 8948,
+    "uvs": [
+      "BossAtlas"
+    ]
+  },
+  "LeftLowerArm.001": {
+    "triangles": 8454,
+    "uvs": [
+      "BossAtlas"
+    ]
+  },
+  "LeftLowerLeg.001": {
+    "triangles": 156,
+    "uvs": [
+      "BossAtlas"
+    ]
+  },
+  "LeftUpperArm.001": {
+    "triangles": 9824,
+    "uvs": [
+      "BossAtlas"
+    ]
+  },
+  "LeftUpperLeg.001": {
+    "triangles": 396,
+    "uvs": [
+      "BossAtlas"
+    ]
+  },
+  "LowerTorso.001": {
+    "triangles": 6470,
+    "uvs": [
+      "BossAtlas"
+    ]
+  },
+  "RightFoot.001": {
+    "triangles": 188,
+    "uvs": [
+      "BossAtlas"
+    ]
+  },
+  "RightHand.001": {
+    "triangles": 8617,
+    "uvs": [
+      "BossAtlas"
+    ]
+  },
+  "RightLowerArm.001": {
+    "triangles": 10894,
+    "uvs": [
+      "BossAtlas"
+    ]
+  },
+  "RightLowerLeg.001": {
+    "triangles": 156,
+    "uvs": [
+      "BossAtlas"
+    ]
+  },
+  "RightUpperArm.001": {
+    "triangles": 9824,
+    "uvs": [
+      "BossAtlas"
+    ]
+  },
+  "RightUpperLeg.001": {
+    "triangles": 396,
+    "uvs": [
+      "BossAtlas"
+    ]
+  },
+  "UpperTorso.001": {
+    "triangles": 22114,
+    "uvs": [
+      "BossAtlas"
+    ]
+  }
+}

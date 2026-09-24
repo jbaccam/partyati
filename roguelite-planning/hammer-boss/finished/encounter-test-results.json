@@ -1,0 +1,12 @@
+{
+  "spawned": true,
+  "moved": 0.0194091796875,
+  "phase": "Combat",
+  "bossAlive": true,
+  "wave": 20,
+  "nextPhase": "Shop",
+  "survivedPopulationChange": true,
+  "bossAliveAfter": false,
+  "nextWave": 21,
+  "heldUntilBossDeath": true
+}

@@ -100,4 +100,9 @@ def attack_pose(clip,f,chest):
  if clip=='Slam' and 23<=f<=29:
   bottom=min((weapon@HT@Vector((x,y,z))).z for x in [-1.55,1.55] for y in [-1.155,1.155] for z in [-2.21,2.21])
   weapon.translation.z+=.005-bottom
+ # A little elbow flexion is required to stack the wrist behind a real
+ # two-handed grip. Near-locked elbows forced the former 90-degree fold.
+ wrists=sum((weapon@handOffsets[side]@joints[side+'Hand']['head'] for side in ('Right','Left')),Vector())/2
+ inward=chest@Vector((0,0,7))-wrists;inward.z=0
+ if inward.length>.001:weapon.translation+=inward.normalized()*1.6*ease(12,19,f)*(1-ease(last-18,last,f))
  return weapon,handOffsets

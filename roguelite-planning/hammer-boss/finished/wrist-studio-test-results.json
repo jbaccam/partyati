@@ -1,0 +1,14 @@
+{
+  "slamRadius": 7,
+  "insideSlam": {"distance": 6.5, "hits": 1},
+  "outsideSlam": {"distance": 7.5, "hits": 0},
+  "attacks": {
+    "Slam": {"earlyHits": 0, "hits": 1},
+    "Swing": {"earlyHits": 0, "hits": 1},
+    "Spin": {"earlyHits": 0, "hits": 1}
+  },
+  "walk": {"distance": 19.427738189697267, "seconds": 4},
+  "client": {"samples": 87, "maxPositionError": 0.0032014416065067055, "maxAngleError": 0, "ok": true},
+  "singleClientStudio": true,
+  "multiClientTested": false
+}

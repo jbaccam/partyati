@@ -35,16 +35,16 @@
   },
   "Slam": {
     "maxElbowStepInTorsoSpace": [
-      0.8063870500757045,
+      0.8221024648116227,
       [
-        18,
+        41,
         "Right"
       ]
     ],
     "minTorsoCoreClearanceSquared": [
-      1.2999966881228482,
+      1.6856369236229847,
       [
-        10,
+        43,
         "Left",
         10
       ]
@@ -52,33 +52,33 @@
   },
   "Swing": {
     "maxElbowStepInTorsoSpace": [
-      0.667708062136019,
+      1.1292795534233855,
       [
-        18,
-        "Right"
+        23,
+        "Left"
       ]
     ],
     "minTorsoCoreClearanceSquared": [
-      1.3455489294378173,
+      1.2777772081028482,
       [
-        25,
+        27,
         "Left",
-        3
+        7
       ]
     ]
   },
   "Spin": {
     "maxElbowStepInTorsoSpace": [
-      0.5643935485603175,
+      1.073556237962409,
       [
-        11,
+        56,
         "Right"
       ]
     ],
     "minTorsoCoreClearanceSquared": [
-      1.8829153572232384,
+      1.2995876893293103,
       [
-        10,
+        42,
         "Left",
         10
       ]

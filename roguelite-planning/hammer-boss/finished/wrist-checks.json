@@ -1,0 +1,41 @@
+{
+  "Slam": {
+    "maxWristBendDegrees": [
+      19.125439798742608,
+      [
+        10,
+        "Right"
+      ]
+    ],
+    "maxWristGap": 5.8897110591104625e-06,
+    "maxGripRadialDrift": 4.488904431149533e-06,
+    "torsoClearanceSquared": 1.6856369236229847,
+    "maxElbowStep": 0.8221022563663464
+  },
+  "Swing": {
+    "maxWristBendDegrees": [
+      31.824829305567533,
+      [
+        25,
+        "Right"
+      ]
+    ],
+    "maxWristGap": 5.86432164967005e-06,
+    "maxGripRadialDrift": 5.826794679631981e-06,
+    "torsoClearanceSquared": 1.2777772081028482,
+    "maxElbowStep": 1.1292792895177317
+  },
+  "Spin": {
+    "maxWristBendDegrees": [
+      20.7947892583125,
+      [
+        56,
+        "Right"
+      ]
+    ],
+    "maxWristGap": 6.4074300052531664e-06,
+    "maxGripRadialDrift": 4.359866234894566e-06,
+    "torsoClearanceSquared": 1.2995876893293103,
+    "maxElbowStep": 1.0735566404877528
+  }
+}

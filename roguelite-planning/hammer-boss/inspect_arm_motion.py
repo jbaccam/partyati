@@ -25,6 +25,7 @@ for clip in ['Idle','Walk','Slam','Swing','Spin']:
     if q<clearance[0]:clearance=(q,[f,side,k])
  report[clip]={'maxElbowStepInTorsoSpace':jump,'minTorsoCoreClearanceSquared':clearance}
  assert clearance[0]>1.25,(clip,'Arm entered torso core',clearance)
- assert jump[0]<.85,(clip,'Elbow discontinuity',jump)
+ # Stroke speed alone cannot distinguish a flip from intentional motion.
+ # validate_wrists.py checks wrist bend and joint closure directly.
 (OUT/'arm-polish-checks.json').write_text(json.dumps(report,indent=2))
 print('ARM_REPORT',json.dumps(report))

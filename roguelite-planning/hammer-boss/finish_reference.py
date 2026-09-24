@@ -67,7 +67,9 @@ bpy.ops.object.mode_set(mode='OBJECT');rig.show_in_front=True
 for name,o in objects.items():
  vg=o.vertex_groups.new(name=name);vg.add(list(range(len(o.data.vertices))),1.,'REPLACE');mod=o.modifiers.new('Articulated boss','ARMATURE');mod.object=rig;o.parent=rig
 # hip yaw, chest yaw, crouch, chest lean, weapon yaw, weapon pitch, lift
+exec(compile((HERE/'wrist_motion.py').read_text(),str(HERE/'wrist_motion.py'),'exec'))
 exec(compile((HERE/'lever_motion.py').read_text(),str(HERE/'lever_motion.py'),'exec'))
+wristHistory={}
 neutral=[0,0,0,0,0,0,0]
 KEYS={
  'Slam':[(0,neutral),(5,neutral),(12,[-8,-12,.3,-7,12,92,3.8]),(18,[-8,-12,.38,-8,15,112,4.1]),(20,[-2,-4,.45,0,20,75,3.2]),(23,[5,5,1.0,18,25,0,0]),(26,[6,6,1.08,20,25,0,0]),(31,[6,7,1.02,18,25,0,0]),(41,[2,4,.45,8,15,15,1.1]),(50,neutral)],
@@ -87,6 +89,7 @@ def ik(a,w,l1,l2,pole):
  side=pole-a;side-=u*side.dot(u)
  return a+u*along+side.normalized()*math.sqrt(max(0,l1*l1-along*along)),max(0,distance-l1-l2)
 def pose(clip,f):
+ if f==0:wristHistory.clear()
  sec=f/30;hip,torso,crouch,lean,yaw,pitch,lift=channels(clip,f) if clip in KEYS else neutral
  stride=math.sin(sec*2*math.pi/1.6) if clip=='Walk' else 0
  sway=0;roll=0
@@ -118,14 +121,19 @@ def pose(clip,f):
  if death:
   corners=[weapon@HT@Vector((x,y,z)) for x in [-1.55,1.55] for y in [-1.155,1.155] for z in [-2.21,2.21]]
   weapon.translation.z+=max(0,-min(p.z for p in corners))
+ if clip in KEYS:weapon,gripSolutions=solve_grips(weapon,handOffsets,chest,wristHistory,clip=='Slam' and 23<=f<=29)
  D['Hammer']=weapon;errors=[]
  for side,s in [('Right',-1),('Left',1)]:
   a=joints[side+'UpperArm']['head'];b=joints[side+'LowerArm']['head'];w=joints[side+'Hand']['head'];shoulder=chest@a;handPose=weapon@handOffsets[side];wrist=handPose@w
   # Keep the bend plane outside and in front of the rib cage. The old pole
   # pointed almost down the arm and flipped when the wrist passed under it.
   pole=chest@(a+Vector((s*3.5,-2.5,-.7)))
-  elbow,err=ik(shoulder,wrist,(b-a).length,(w-b).length,pole);errors.append(err)
-  D[side+'UpperArm']=align(a,b,shoulder,elbow);D[side+'LowerArm']=align(b,w,elbow,wrist);D[side+'Hand']=handPose
+  elbow,err=ik(shoulder,wrist,(b-a).length,(w-b).length,pole)
+  if clip in KEYS:
+   handPose,elbow,err,bend,roll=gripSolutions[side]
+   wrist=handPose@w
+  errors.append(err)
+  D[side+'UpperArm']=align(a,b,shoulder,elbow);D[side+'LowerArm']=wrist_forearm(b,w,elbow,wrist,handPose) if clip in KEYS else align(b,w,elbow,wrist);D[side+'Hand']=handPose
   a=joints[side+'UpperLeg']['head'];b=joints[side+'LowerLeg']['head'];w=joints[side+'Foot']['head'];foot=R(z=hip*.85)@w
   foot.y+=stride*s*.52;foot.z=.55+max(0,stride*s)*.22
   if clip=='Walk':

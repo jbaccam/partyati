@@ -1,0 +1,62 @@
+{
+  "Baby_blend": {
+    "body_sections": 15,
+    "bones": 16,
+    "uv_bounds": "pass",
+    "normalized_weights": "pass",
+    "closed_geometry": "pass",
+    "textures_loaded": true,
+    "elbow_displacement": 0.23788916269488714,
+    "unrelated_foot_displacement": 0.0
+  },
+  "Baby_fbx": {
+    "body_sections": 15,
+    "bones": 16,
+    "uv_bounds": "pass",
+    "normalized_weights": "pass",
+    "closed_geometry": "pass",
+    "textures_loaded": true,
+    "elbow_displacement": 0.2378891235454513,
+    "unrelated_foot_displacement": 0.0
+  },
+  "Baby_glb": {
+    "body_sections": 15,
+    "bones": 16,
+    "uv_bounds": "pass",
+    "normalized_weights": "pass",
+    "closed_geometry": "pass",
+    "textures_loaded": true,
+    "elbow_displacement": 0.2378892488236233,
+    "unrelated_foot_displacement": 0.0
+  },
+  "Mutant_blend": {
+    "body_sections": 15,
+    "bones": 16,
+    "uv_bounds": "pass",
+    "normalized_weights": "pass",
+    "closed_geometry": "pass",
+    "textures_loaded": true,
+    "elbow_displacement": 1.3402054751185752,
+    "unrelated_foot_displacement": 0.0
+  },
+  "Mutant_fbx": {
+    "body_sections": 15,
+    "bones": 16,
+    "uv_bounds": "pass",
+    "normalized_weights": "pass",
+    "closed_geometry": "pass",
+    "textures_loaded": true,
+    "elbow_displacement": 1.3402042227484947,
+    "unrelated_foot_displacement": 0.0
+  },
+  "Mutant_glb": {
+    "body_sections": 15,
+    "bones": 16,
+    "uv_bounds": "pass",
+    "normalized_weights": "pass",
+    "closed_geometry": "pass",
+    "textures_loaded": true,
+    "elbow_displacement": 1.3402033249232612,
+    "unrelated_foot_displacement": 0.0
+  }
+}

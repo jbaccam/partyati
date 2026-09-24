@@ -1,0 +1,38 @@
+{
+  "Hunched": [
+    {
+      "name": "LeftHand",
+      "bottom": 1.3128430843353271,
+      "forward": 1.9028999759600713
+    },
+    {
+      "name": "RightHand",
+      "bottom": 1.3128430843353271,
+      "forward": 1.9028999759600713
+    }
+  ],
+  "ArmsRaised": [
+    {
+      "name": "LeftHand",
+      "bottom": 9.594646453857422,
+      "forward": 2.650192595445193
+    },
+    {
+      "name": "RightHand",
+      "bottom": 9.594646453857422,
+      "forward": 2.650192595445193
+    }
+  ],
+  "Impact": [
+    {
+      "name": "LeftHand",
+      "bottom": -0.07066655158996582,
+      "forward": 3.453667647563494
+    },
+    {
+      "name": "RightHand",
+      "bottom": -0.07066655158996582,
+      "forward": 3.453667647563494
+    }
+  ]
+}

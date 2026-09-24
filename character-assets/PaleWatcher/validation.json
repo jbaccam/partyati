@@ -1,0 +1,12 @@
+{
+  "vertices": 9490,
+  "triangles": 18844,
+  "bones": 38,
+  "max_influences": 2,
+  "unweighted_vertices": 0,
+  "height_blender_units": 8.428,
+  "texture_resolution": 4096,
+  "revision": 2,
+  "high_sculpt_vertices": 160040,
+  "split_coincident_edges": 0
+}

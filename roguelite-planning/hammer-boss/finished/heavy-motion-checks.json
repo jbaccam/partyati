@@ -4,12 +4,12 @@
     "maxArmExtension": 0.9753281051695852
   },
   "Swing": {
-    "minArmExtension": 0.9657183618616529,
-    "maxArmExtension": 0.9801601359841466
+    "minArmExtension": 0.9660290317289593,
+    "maxArmExtension": 0.9796770381178672
   },
   "Spin": {
-    "minArmExtension": 0.9740515138785758,
-    "maxArmExtension": 0.9759921555093051
+    "minArmExtension": 0.9660290317289593,
+    "maxArmExtension": 0.9796770381178672
   },
   "Walk": {
     "plantedFootWorldDriftPerFrame": 1.4901161193847656e-07,

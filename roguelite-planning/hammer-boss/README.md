@@ -154,3 +154,11 @@ The slam keeps its approved overhead and middle weapon path through frame 20, th
 Updated separate review videos are in `finished/attack-videos/`: Slam.mp4, Swing.mp4 and Spin.mp4. Each shows normal speed followed by half speed. These are Blender renders of the exported animation data, not gameplay recordings.
 
 All authored wrist, hinge, grip, reach, ground-contact and walking checks passed. Studio checked 2,307 interpolated poses/transitions with signed elbow flexion 12–101.574 degrees and maximum joint gap 0.00000267 studs. All 87 actual client pose samples passed (maximum position error 0.003913 studs; basis-vector error 0.001184). Both Rojo packages built. Combat damage logic is unchanged; the earlier damage-window tests were not rerun for this animation-only revision. The full multiplayer loop was not tested.
+
+## Shoulder-loaded swing and spin (September 24)
+
+Swing and Spin now lift the original separated carry grip toward the right shoulder before sliding either hand. Both elbows bend about 74–77 degrees at the loaded pose. The grip then slides toward the handle end while the arms extend into a level horizontal strike. Swing covers 180 degrees during its active window; Spin continues through 360 degrees. The approved slam is unchanged. Updated normal/half-speed previews are in `finished/attack-videos/`.
+
+`validate_shoulder_sweeps.py` checks the unchanged grip through the shoulder lift, bent elbows, raised hammer, level active shaft, and sweep angles. These and all wrist, hinge, reach, grip, ground-contact and walking checks passed. The Studio pose regression passed 2,307 samples/transitions with a maximum joint gap of 0.00000267 studs. Both Rojo packages built. Damage timing and gameplay code are unchanged; multiplayer behavior was not tested in this revision.
+
+Client playback also passed all 87 pose samples (maximum position error 0.003913 studs, basis-vector error 0.001184). The initial Studio Play startup stalled; activating Studio and starting playback completed the test. Idle, Walk, Slam, Hit and Death clip data were compared with the preceding commit and are unchanged.

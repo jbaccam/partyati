@@ -58,7 +58,7 @@ def grip_arm(side,weapon,offset,chest,previous=None):
   if best is None or score<best[0]:best=(score,hand,elbow,err,math.degrees(bend),degrees)
  return best[1:]
 
-def solve_grips(weapon,offsets,chest,history,grounded=False,sweepWeight=0,extensionWeight=0,carryWeight=1,overheadWeight=0,isSweep=False,heightTarget=4.6,tiltAllowed=True,flightHeight=None):
+def solve_grips(weapon,offsets,chest,history,grounded=False,sweepWeight=0,extensionWeight=0,carryWeight=1,overheadWeight=0,isSweep=False,heightTarget=4.6,tiltAllowed=True,flightHeight=None,motionContinuity=0,extensionTarget=.975):
  """Solve weapon placement and both wrist rolls together, with continuity."""
  inv=chest.inverted();cuff=HT.to_3x3()@Vector((0,0,1))
  baseline=globals().get("carryBase",[0.]*8)
@@ -78,6 +78,7 @@ def solve_grips(weapon,offsets,chest,history,grounded=False,sweepWeight=0,extens
    H=W@HT
   axis=(H.to_3x3()@Vector((1,0,0))).normalized();solutions={};score=sum(x*x for x in values[:3])*3.0
   score+=actual[7]**2*2
+  if motionContinuity and '_weapon' in history:score+=(W.translation-history['_weapon']).length_squared*10*motionContinuity
   score+=(H.translation.z-4.6)**2*5000*sweepWeight*sweepWeight
   for i,(side,g) in enumerate([('Right',2.72),('Left',8.05)]):
    a=joints[side+'UpperArm']['head'];b=joints[side+'LowerArm']['head'];w=joints[side+'Hand']['head']
@@ -88,7 +89,7 @@ def solve_grips(weapon,offsets,chest,history,grounded=False,sweepWeight=0,extens
    bend=(elbow-wrist).normalized().angle(direction)
    length=(b-a).length+(w-b).length
    extension=(wrist-chest@a).length/length
-   score+=(extension-.975)**2*100000*extensionWeight
+   score+=(extension-extensionTarget)**2*100000*extensionWeight
    # Below the shoulders, both cuffs and the held shaft stay ahead of the belly.
    score+=max(0,7.0+6.1*overheadWeight-wrist.z)**2*5000*overheadWeight
    localWrist=inv@wrist
@@ -101,7 +102,7 @@ def solve_grips(weapon,offsets,chest,history,grounded=False,sweepWeight=0,extens
    if side in history:
     score+=(inv@elbow-history[side]['elbow']).length_squared*15.0
     diff=(values[3+i]-history[side]['roll']+math.pi)%math.tau-math.pi
-    score+=diff*diff*.25
+    score+=diff*diff*(.25+25*motionContinuity)
     score+=(actual[5+i]-history[side]['swivel'])**2*15
    score+=values[5+i]**2*.02
    solutions[side]=(hand,elbow,err,bend,actual[3+i],actual[5+i])
@@ -146,6 +147,7 @@ def solve_grips(weapon,offsets,chest,history,grounded=False,sweepWeight=0,extens
   if worst<.000001:break
  shift=Vector(bestValues[:3])+chest.to_3x3().transposed()@(W.translation-best[1].translation)/max(carryWeight,1e-6)
  bestValues[:3]=list(shift);best=evaluate(bestValues)
+ history['_weapon']=best[1].translation.copy()
  history['_shift']=bestValues[:3]
  history['_values']=bestValues.copy()
  history['_tilt']=bestValues[7]

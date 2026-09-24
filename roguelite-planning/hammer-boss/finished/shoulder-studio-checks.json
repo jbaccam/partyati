@@ -1,0 +1,1 @@
+{"runtime":{"ok":true,"samples":2307,"minSignedFlexion":11.99998505793755,"maxSignedFlexion":99.51173101576456,"maxJointGap":0.0000026656007321435028},"client":{"ok":true,"samples":87,"maxBasisVectorError":0.0011830305447801948,"maxPosition":0.0039121913723647598},"rootBuild":true,"combatBuild":true,"unchangedClips":["Idle","Walk","Slam","Hit","Death"]}

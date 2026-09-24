@@ -10,16 +10,16 @@
     ]
   },
   "Swing": {
-    "minActiveExtension": 0.9657183089226871,
-    "maxActiveExtension": 0.9801601359841466,
-    "minimumShaftTorsoDistanceSquared": 1.3298505388529425,
+    "minActiveExtension": 0.9660289739959325,
+    "maxActiveExtension": 0.9796770381178672,
+    "minimumShaftTorsoDistanceSquared": 1.3574445132256225,
     "carryPoseMismatch": 1.000000000139778e-06,
     "overheadWristHeights": []
   },
   "Spin": {
-    "minActiveExtension": 0.9740514586847814,
-    "maxActiveExtension": 0.9759921936050874,
-    "minimumShaftTorsoDistanceSquared": 5.301306528098197,
+    "minActiveExtension": 0.9660289739959325,
+    "maxActiveExtension": 0.9796770381178672,
+    "minimumShaftTorsoDistanceSquared": 1.285047141298187,
     "carryPoseMismatch": 1.000000000139778e-06,
     "overheadWristHeights": []
   }

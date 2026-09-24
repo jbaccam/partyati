@@ -18,10 +18,11 @@ def blend_frame(a,b,t):
  return T(a.translation.lerp(b.translation,t))@a.to_quaternion().slerp(b.to_quaternion(),t).to_matrix().to_4x4()
 
 def attack_yaw(clip,f):
- if clip=='Swing':return keyed([(0,[-50]),(13,[-60]),(18,[-60]),(21,[-28]),(23,[32]),(25,[88]),(31,[108]),(43,[45]),(54,[0])],f)[0]
+ if clip=='Swing':return keyed([(0,[-50]),(13,[-60]),(18,[-60]),(19,[-60]),(21,[-25]),(23,[50]),(25,[120]),(31,[130]),(43,[45]),(54,[0])],f)[0]
  return (-60+(f-21)*22.5) if 21<=f<=37 else keyed([(0,[-50]),(14,[-60]),(21,[-60]),(37,[300]),(43,[334]),(55,[360]),(66,[360])],f)[0]
 
 def attack_pose(clip,f,chest):
+ if clip in ('Swing','Spin'):return shoulder_sweep_pose(clip,f,chest)
  last={'Slam':50,'Swing':54,'Spin':66}[clip]
  weight=ease(0,16,f)*(1-ease(last-18,last,f))
  gripWeight=ease(5,18,f)*(1-ease(last-10,last,f))
@@ -114,5 +115,37 @@ def attack_pose(clip,f,chest):
  if inward.length>.001:weapon.translation+=inward.normalized()*CHEST_PULL*ease(12,19,f)*(1-ease(last-18,last,f))
  return weapon,handOffsets
 
+
+
+
+
+def shoulder_sweep_pose(clip,f,chest):
+ # Lift the carry grip to the right shoulder before either hand slides.
+ start,end,last=(19,25,54) if clip=='Swing' else (21,37,66)
+ liftEnd=start-7
+ lift=ease(0,liftEnd,f)
+ drive=ease(liftEnd,start,f)
+ recover=ease(last-18,last,f)
+ slide=drive*(1-ease(last-10,last,f))
+ grip={'Right':2.72+3.83*slide,'Left':8.05}
+ center=(grip['Right']+grip['Left'])/2
+ carryCenter=HT@Vector((5.385,0,0))
+ shoulderCenter=Vector((-1.0,-3.6,8.0))
+ yaw=attack_yaw(clip,f)
+ if clip=='Spin' and f>=43:yaw-=360
+ activeRotation=R(z=90+yaw,x=90)
+ shoulderRotation=R(y=45,z=-15)
+ raised=blend_frame(HT,T(shoulderCenter)@shoulderRotation@T((-5.385,0,0)),lift)
+ activeCenter=R(z=yaw)@Vector((0,-3.45,6.75))
+ orientation=raised.to_quaternion().slerp(activeRotation.to_quaternion(),drive).to_matrix().to_4x4()
+ held=(raised@Vector((center,0,0))).lerp(activeCenter,drive)
+ H=T(held)@orientation@T((-center,0,0))
+ if f>=end:
+  weight=1-recover
+  orientation=R(z=(90+yaw)*weight,x=90*weight,y=-13*(1-weight)-40*ease(end+6,last-6,f)*weight)
+  held=(HT@Vector((center,0,0))).lerp(activeCenter,weight)
+  H=T(held)@orientation@T((-center,0,0))
+ offsets={side:HT@T((g-({'Right':2.72,'Left':8.05}[side]),0,0))@HT.inverted() for side,g in grip.items()}
+ return H@HT.inverted(),offsets
 
 

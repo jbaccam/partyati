@@ -1,0 +1,20 @@
+{
+  "Swing": {
+    "carryGripErrorThroughShoulderLift": 4.362314939498901e-06,
+    "loadedElbowFlexionDegrees": [
+      76.88518552440743,
+      73.66544117985259
+    ],
+    "headHeightAtShoulder": 12.49999828338623,
+    "sweepDegrees": 180.0
+  },
+  "Spin": {
+    "carryGripErrorThroughShoulderLift": 4.7731400627526455e-06,
+    "loadedElbowFlexionDegrees": [
+      76.34586012716488,
+      74.04882652815458
+    ],
+    "headHeightAtShoulder": 12.49999828338623,
+    "sweepDegrees": 360.0
+  }
+}

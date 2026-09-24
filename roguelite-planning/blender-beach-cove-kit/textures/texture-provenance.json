@@ -1,0 +1,155 @@
+{
+  "note": "Beach palette derived from the painted sheets already used by the sibling rounded cliff kits. Originals copied unchanged into textures/source/.",
+  "sources": {
+    "rock": {
+      "original_filename": "02862eb3-b09f-4d03-8bc3-ad7b57fd49a7.png",
+      "stored_as": "textures/source/rock_original.png",
+      "sha256": "ac164fbb2411ebd2b3a76aa09c049c51033efad6ac2358bb3c734b4d9bef4b72"
+    },
+    "transition": {
+      "original_filename": "62c4effc-a3a8-48f1-a138-776cdb1d9a8e.png",
+      "stored_as": "textures/source/transition_original.png",
+      "sha256": "6d6c81cb6192d6a1d3baa1ecc69f059dde4358b9da43e384e4bd9e09eb228f4a"
+    },
+    "grass": {
+      "original_filename": "ChatGPT Image Sep 16, 2026, 11_42_57 AM (2).png",
+      "stored_as": "textures/source/grass_original.png",
+      "sha256": "91fed16cd66e4ec32c005c605aa0d426ce47c191adf90c38cda9d83b562ec1b3"
+    },
+    "bark": {
+      "original_filename": "ChatGPT Image Sep 16, 2026, 06_07_54 PM.png",
+      "stored_as": "textures/source/bark_original.png",
+      "sha256": "71bbf22e936e436bc7896e368c8a21e7b21ea5ab7619319a31380bb7cf135096"
+    },
+    "foliage": {
+      "original_filename": "ChatGPT Image Sep 16, 2026, 06_10_48 PM.png",
+      "stored_as": "textures/source/foliage_original.png",
+      "sha256": "fab58ab37ca789ec6f1f4ac24b9699198cb55d64f6b9aa5757d0a3ad439f0d26"
+    },
+    "logbark": {
+      "original_filename": "ChatGPT Image Sep 16, 2026, 11_42_59 AM (6).png",
+      "stored_as": "textures/source/logbark_original.png",
+      "sha256": "fb7e8fa2ab1bee185a160d584f6a09618c0f57b683020b289880f6dcd963829d"
+    },
+    "reference": {
+      "original_filename": "ChatGPT Image Sep 22, 2026, 07_47_05 PM.png",
+      "stored_as": "textures/source/beach-cove-reference.png",
+      "sha256": "84587e99b0165a14f2686ef13d7da4d3ca46db06b5eaf078376c3e25cbd39cf9"
+    },
+    "mountain_rock": {
+      "original_filename": "6.webp",
+      "stored_as": "textures/source/mountain_rock.png",
+      "sha256": "2fad4ca005a9607dc5bf3cdb87a2dc036a0d42361e2451b3b8f705d8cc03dae6",
+      "note": "user's mountain sheet, supplied 2026-09-23; recoloured here, not reused as-is"
+    },
+    "mountain_grass": {
+      "original_filename": "13.webp",
+      "stored_as": "textures/source/mountain_grass.png",
+      "sha256": "d4b00488d2d670cda623b16134fe4bd5e3282203834dd3d829c8d9c2f00d0c52",
+      "note": "user's mountain sheet, supplied 2026-09-23; recoloured here, not reused as-is"
+    },
+    "mountain_transition": {
+      "original_filename": "8.webp",
+      "stored_as": "textures/source/mountain_transition.png",
+      "sha256": "cffd016204109d52c491e12ef205562e8ad76cfb86387c8c334f5d7661d3a929",
+      "note": "user's mountain sheet, supplied 2026-09-23; recoloured here, not reused as-is"
+    },
+    "mountain_frond": {
+      "original_filename": "17.webp",
+      "stored_as": "textures/source/mountain_frond.png",
+      "sha256": "89f9353aba43da8c263cd51019fb00beb77dd2a6656607f3841b34e609fc245a",
+      "note": "user's mountain sheet, supplied 2026-09-23; recoloured here, not reused as-is"
+    },
+    "mountain_palm_bark": {
+      "original_filename": "18.webp",
+      "stored_as": "textures/source/mountain_palm_bark.png",
+      "sha256": "7370f7bfb9b56c0d6285b900978e2bd5da84184f5f0c3caf82b7aa2157062f64",
+      "note": "user's mountain sheet, supplied 2026-09-23; recoloured here, not reused as-is"
+    },
+    "mountain_water": {
+      "original_filename": "10.webp",
+      "stored_as": "textures/source/mountain_water.png",
+      "sha256": "472596fda56aea1ccd8a1da1715450aa21f567303818cf8124d81f4b52374c85",
+      "note": "user's mountain sheet, supplied 2026-09-23; recoloured here, not reused as-is"
+    }
+  },
+  "outputs": {
+    "rock": {
+      "file": "textures/rock.png",
+      "origin": "hue/value regrade of a supplied painted sheet",
+      "size": 1024,
+      "tiles": "both",
+      "healed": true,
+      "seam_error_before": 0.02882,
+      "seam_error_after": 0.01121
+    },
+    "grass": {
+      "file": "textures/grass.png",
+      "origin": "hue/value regrade of a supplied painted sheet",
+      "size": 1024,
+      "tiles": "both",
+      "healed": true,
+      "seam_error_before": 0.02175,
+      "seam_error_after": 0.00554
+    },
+    "transition": {
+      "file": "textures/transition.png",
+      "origin": "hue/value regrade of a supplied painted sheet",
+      "size": 1024,
+      "tiles": "x",
+      "healed": true,
+      "seam_error_before": 0.05653,
+      "seam_error_after": 0.0127
+    },
+    "frond": {
+      "file": "textures/frond.png",
+      "origin": "hue/value regrade of a supplied painted sheet",
+      "size": 1024,
+      "tiles": "both",
+      "healed": false,
+      "seam_error_before": 0.01093,
+      "seam_error_after": 0.01115
+    },
+    "palm_bark": {
+      "file": "textures/palm_bark.png",
+      "origin": "hue/value regrade of a supplied painted sheet",
+      "size": 1024,
+      "tiles": "both",
+      "healed": false,
+      "seam_error_before": 0.01123,
+      "seam_error_after": 0.01119
+    },
+    "water": {
+      "file": "textures/water.png",
+      "origin": "hue/value regrade of a supplied painted sheet",
+      "size": 1024,
+      "tiles": "both",
+      "healed": false,
+      "seam_error_before": 0.00557,
+      "seam_error_after": 0.00553
+    },
+    "driftwood": {
+      "file": "textures/driftwood.png",
+      "origin": "hue/value regrade of a supplied painted sheet",
+      "size": 1024,
+      "tiles": "both",
+      "healed": false,
+      "seam_error_before": 0.01459,
+      "seam_error_after": 0.01461
+    },
+    "sand": {
+      "file": "textures/sand.png",
+      "origin": "authored procedurally in this script; periodic, exactly tiling",
+      "size": 1024,
+      "tiles": "both",
+      "seam_error_after": 0.00072
+    },
+    "boat_wood": {
+      "file": "textures/boat_wood.png",
+      "origin": "authored procedurally in this script; periodic, exactly tiling",
+      "size": 1024,
+      "tiles": "both",
+      "seam_error_after": 0.02044
+    }
+  }
+}

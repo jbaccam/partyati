@@ -4,6 +4,11 @@ build/
 *.rbxm
 *.rbxmx
 !facility-blockout/assets/*.rbxmx
+!roguelite-planning/**/*.rbxmx
 facility-blockout/production/blender/*.blend1
 .DS_Store
 *.log
+*.blend1
+*.blend2
+__pycache__/
+*.pyc

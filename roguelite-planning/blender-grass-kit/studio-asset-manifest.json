@@ -1,0 +1,19 @@
+{
+  "placeId": 107877054949326,
+  "studioPath": "ServerStorage.RogueliteGrassKit",
+  "textureId": "rbxassetid://99818531704492",
+  "grassTufts": {
+    "01_SmallTuft": "rbxassetid://110168534353607",
+    "02_TallTuft": "rbxassetid://92648337456617",
+    "03_WideTuft": "rbxassetid://81317394061775",
+    "04_MeadowClump": "rbxassetid://80099292262267",
+    "05_LargePatch": "rbxassetid://136277923787667",
+    "06_SpreadingPatch": "rbxassetid://90147509601760"
+  },
+  "groundPatches": {
+    "GroundPatch_Small": "rbxassetid://89605926976093",
+    "GroundPatch_Round": "rbxassetid://84840389989113",
+    "GroundPatch_Broad": "rbxassetid://116038108210182",
+    "GroundPatch_Long": "rbxassetid://85688855488443"
+  }
+}

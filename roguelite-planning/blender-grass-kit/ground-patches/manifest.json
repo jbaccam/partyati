@@ -1,0 +1,42 @@
+[
+  {
+    "name": "GroundPatch_Small",
+    "dimensions": [
+      9.171031951904297,
+      6.225787162780762,
+      0.7122583389282227
+    ],
+    "triangles": 2601,
+    "origin": "ground center"
+  },
+  {
+    "name": "GroundPatch_Round",
+    "dimensions": [
+      13.047187805175781,
+      9.724671363830566,
+      0.713351845741272
+    ],
+    "triangles": 5715,
+    "origin": "ground center"
+  },
+  {
+    "name": "GroundPatch_Broad",
+    "dimensions": [
+      19.113494873046875,
+      11.963153839111328,
+      0.6977369785308838
+    ],
+    "triangles": 8798,
+    "origin": "ground center"
+  },
+  {
+    "name": "GroundPatch_Long",
+    "dimensions": [
+      22.98843765258789,
+      8.78083324432373,
+      0.6975592970848083
+    ],
+    "triangles": 7542,
+    "origin": "ground center"
+  }
+]

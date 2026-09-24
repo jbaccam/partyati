@@ -1,0 +1,68 @@
+[
+  {
+    "name": "01_SmallTuft",
+    "triangles": 154,
+    "vertices": 91,
+    "dimensions": [
+      0.5614573955535889,
+      0.4491632878780365,
+      0.9518022537231445
+    ],
+    "ground_origin": true
+  },
+  {
+    "name": "02_TallTuft",
+    "triangles": 242,
+    "vertices": 143,
+    "dimensions": [
+      1.3070704936981201,
+      1.5503013134002686,
+      1.94544517993927
+    ],
+    "ground_origin": true
+  },
+  {
+    "name": "03_WideTuft",
+    "triangles": 286,
+    "vertices": 169,
+    "dimensions": [
+      1.5451607704162598,
+      0.897255539894104,
+      1.1988883018493652
+    ],
+    "ground_origin": true
+  },
+  {
+    "name": "04_MeadowClump",
+    "triangles": 572,
+    "vertices": 338,
+    "dimensions": [
+      2.2454686164855957,
+      2.0400848388671875,
+      1.9065736532211304
+    ],
+    "ground_origin": true
+  },
+  {
+    "name": "05_LargePatch",
+    "triangles": 1100,
+    "vertices": 650,
+    "dimensions": [
+      3.722383737564087,
+      2.50683331489563,
+      1.8200262784957886
+    ],
+    "ground_origin": true
+  },
+  {
+    "name": "06_SpreadingPatch",
+    "triangles": 1320,
+    "vertices": 780,
+    "dimensions": [
+      4.725271224975586,
+      2.5944983959198,
+      1.5917352437973022
+    ],
+    "ground_origin": true
+  }
+]

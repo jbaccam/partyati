@@ -1,0 +1,30 @@
+{
+  "Idle": {
+    "frames": 97,
+    "maxArmOverreach": 0
+  },
+  "Walk": {
+    "frames": 82,
+    "maxArmOverreach": 0
+  },
+  "Slam": {
+    "frames": 51,
+    "maxArmOverreach": 0
+  },
+  "Swing": {
+    "frames": 55,
+    "maxArmOverreach": 0
+  },
+  "Spin": {
+    "frames": 67,
+    "maxArmOverreach": 0
+  },
+  "Hit": {
+    "frames": 19,
+    "maxArmOverreach": 0
+  },
+  "Death": {
+    "frames": 85,
+    "maxArmOverreach": 0
+  }
+}

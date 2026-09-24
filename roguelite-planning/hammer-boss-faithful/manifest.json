@@ -1,0 +1,21 @@
+{
+  "sections": 15,
+  "triangles": 10616,
+  "vertices": 5444,
+  "height": 11.61,
+  "shoulderSpan": 8.868,
+  "bellyDepth": 3.626,
+  "headWidth": 2.06,
+  "hammerSpan": 11.605,
+  "gripSeparation": 5.374,
+  "hammerHeadSize": [
+    3.42,
+    1.94,
+    3.96
+  ],
+  "haftRadius": 0.375,
+  "ferrules": 6,
+  "atlas": 4096,
+  "front": "Blender -Y",
+  "studsPerReferencePixel": 0.01078
+}

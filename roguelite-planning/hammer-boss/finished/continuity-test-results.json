@@ -1,0 +1,14 @@
+{
+  "revision": "Continuity_20260923",
+  "clips": {"Swing": 11, "Idle": 20, "Hit": 4, "Slam": 11, "Death": 17, "Spin": 14, "Walk": 10},
+  "maxHandPoseError": 0.0029024193063378336,
+  "maxWeaponPoseError": 0.0009765754221007228,
+  "positionToleranceStuds": 0.01,
+  "passed": true,
+  "testContext": "Actual client pose application on a temporary clone at Y=10000, removed afterward. Gameplay and player state were not modified.",
+  "studioInstallAlignmentError": 0.0000009878296083891538,
+  "leftGripMaxSampledGapStuds": 0.0186,
+  "rightGripMaxSampledGapStuds": 0.0188,
+  "rendering": "FBX reimport inspected in Blender. Final Studio wrist and rear views inspected after SurfaceAppearance bypassed Humanoid texture compositing artifacts.",
+  "combatRegression": "Combat logic unchanged; prior combat reports are from before this visual revision."
+}

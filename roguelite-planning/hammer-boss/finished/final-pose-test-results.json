@@ -1,0 +1,18 @@
+{
+  "results": {
+    "Slam": {
+      "recovery": 979.5999755859375,
+      "passed": true,
+      "after": 979.5999755859375,
+      "beforeActive": 1000
+    },
+    "Spin": {
+      "recovery": 981.2999877929688,
+      "passed": true,
+      "after": 981.2999877929688,
+      "beforeActive": 1000
+    },
+    "spinDegrees": 359.99999999999994
+  },
+  "runtimeErrors": []
+}

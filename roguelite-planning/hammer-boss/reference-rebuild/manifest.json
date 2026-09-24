@@ -1,0 +1,22 @@
+{
+  "height": 11.92,
+  "hammerHandleLength": 9.05,
+  "gripSeparation": 5.33,
+  "groups": [
+    "Torso",
+    "Head",
+    "Hips",
+    "RightLeg",
+    "LeftLeg",
+    "Hammer",
+    "RightHand",
+    "LeftHand",
+    "RightUpperArm",
+    "RightForearm",
+    "LeftUpperArm",
+    "LeftForearm"
+  ],
+  "objects": 105,
+  "referencePose": true,
+  "animationStatus": "Rebuild requires fresh animation retargeting; prior clips are not validated for this mesh"
+}

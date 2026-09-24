@@ -1,0 +1,38 @@
+{
+  "singleClient": true,
+  "Slam": {
+    "before": 1000,
+    "after": 979.5999755859375,
+    "started": true,
+    "healthAfterRecovery": 979.5999755859375,
+    "hits": 1,
+    "damage": 20.4000244140625,
+    "beforeActive": 1000
+  },
+  "Swing": {
+    "before": 1000,
+    "after": 984.7000122070312,
+    "started": true,
+    "healthAfterRecovery": 984.7000122070312,
+    "hits": 2,
+    "damage": 15.29998779296875,
+    "beforeActive": 1000
+  },
+  "Spin": {
+    "before": 1000,
+    "after": 981.2999877929688,
+    "started": true,
+    "healthAfterRecovery": 981.2999877929688,
+    "hits": 3,
+    "damage": 18.70001220703125,
+    "beforeActive": 1000
+  },
+  "death": {
+    "attacking": false,
+    "practiceDrops": 0,
+    "damageAfterDeath": 0,
+    "destroyed": true,
+    "marked": true,
+    "stillVisible": true
+  }
+}

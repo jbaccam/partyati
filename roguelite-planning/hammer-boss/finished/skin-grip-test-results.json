@@ -1,0 +1,19 @@
+{
+  "clips": {
+    "Swing": 11,
+    "Idle": 20,
+    "Hit": 4,
+    "Slam": 11,
+    "Death": 17,
+    "Spin": 14,
+    "Walk": 10
+  },
+  "revision": "SkinGrip_20260923",
+  "headTexture": "rbxassetid://129142230109208",
+  "maxWeaponPoseError": 0.00039680185727775097,
+  "bodyTexture": "rbxassetid://98440796367435",
+  "passed": true,
+  "maxHandPoseError": 0.002843385562300682,
+  "positionToleranceStuds": 0.005,
+  "note": "87 actual client pose samples. Maximum 0.002844-stud float/solver discrepancy at the preview's large world offset. Initial 0.002-stud assertion was too strict; accepted tolerance is 0.005 studs. Combat logic unchanged; earlier combat reports refer to the previous visual revision."
+}

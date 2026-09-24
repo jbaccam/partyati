@@ -1,0 +1,226 @@
+{
+  "sections": 16,
+  "bones": 17,
+  "triangles": 3704,
+  "height": 10.89,
+  "shoulderSpan": 7.346,
+  "bellyDepth": 3.12,
+  "hammerSpan": 9.603,
+  "gripSeparation": 2.07,
+  "armReach": 4.601,
+  "restShoulderToGrip": 3.974,
+  "restReachUsed": 0.864,
+  "front": "Blender -Y; Roblox -Z",
+  "rootHeight": 4.45,
+  "joints": {
+    "LowerTorso": {
+      "parent": "HumanoidRootPart",
+      "head": [
+        0,
+        0,
+        4.45
+      ],
+      "tail": [
+        0,
+        0,
+        5.55
+      ]
+    },
+    "UpperTorso": {
+      "parent": "LowerTorso",
+      "head": [
+        0,
+        0,
+        5.55
+      ],
+      "tail": [
+        0,
+        0,
+        8.6
+      ]
+    },
+    "Head": {
+      "parent": "UpperTorso",
+      "head": [
+        0,
+        -0.1,
+        8.92
+      ],
+      "tail": [
+        0,
+        -0.1,
+        10.8
+      ]
+    },
+    "RightUpperArm": {
+      "parent": "UpperTorso",
+      "head": [
+        -2.3,
+        0.05,
+        8.22
+      ],
+      "tail": [
+        -2.95,
+        -1.15,
+        6.3
+      ]
+    },
+    "RightLowerArm": {
+      "parent": "RightUpperArm",
+      "head": [
+        -2.95,
+        -1.15,
+        6.3
+      ],
+      "tail": [
+        -1.45,
+        -2.45,
+        5.25
+      ]
+    },
+    "RightHand": {
+      "parent": "RightLowerArm",
+      "head": [
+        -1.45,
+        -2.45,
+        5.25
+      ],
+      "tail": [
+        -1.3499999999999999,
+        -2.87,
+        4.91
+      ]
+    },
+    "RightUpperLeg": {
+      "parent": "LowerTorso",
+      "head": [
+        -1.18,
+        0,
+        4.3
+      ],
+      "tail": [
+        -1.298,
+        0,
+        2.52
+      ]
+    },
+    "RightLowerLeg": {
+      "parent": "RightUpperLeg",
+      "head": [
+        -1.298,
+        0,
+        2.52
+      ],
+      "tail": [
+        -1.3687999999999998,
+        -0.02,
+        0.78
+      ]
+    },
+    "RightFoot": {
+      "parent": "RightLowerLeg",
+      "head": [
+        -1.3687999999999998,
+        -0.02,
+        0.78
+      ],
+      "tail": [
+        -1.3687999999999998,
+        -0.85,
+        0.3
+      ]
+    },
+    "LeftUpperArm": {
+      "parent": "UpperTorso",
+      "head": [
+        2.3,
+        0.05,
+        8.22
+      ],
+      "tail": [
+        2.95,
+        -1.15,
+        6.3
+      ]
+    },
+    "LeftLowerArm": {
+      "parent": "LeftUpperArm",
+      "head": [
+        2.95,
+        -1.15,
+        6.3
+      ],
+      "tail": [
+        0.62,
+        -2.45,
+        5.25
+      ]
+    },
+    "LeftHand": {
+      "parent": "LeftLowerArm",
+      "head": [
+        0.62,
+        -2.45,
+        5.25
+      ],
+      "tail": [
+        0.52,
+        -2.87,
+        4.91
+      ]
+    },
+    "LeftUpperLeg": {
+      "parent": "LowerTorso",
+      "head": [
+        1.18,
+        0,
+        4.3
+      ],
+      "tail": [
+        1.298,
+        0,
+        2.52
+      ]
+    },
+    "LeftLowerLeg": {
+      "parent": "LeftUpperLeg",
+      "head": [
+        1.298,
+        0,
+        2.52
+      ],
+      "tail": [
+        1.3687999999999998,
+        -0.02,
+        0.78
+      ]
+    },
+    "LeftFoot": {
+      "parent": "LeftLowerLeg",
+      "head": [
+        1.3687999999999998,
+        -0.02,
+        0.78
+      ],
+      "tail": [
+        1.3687999999999998,
+        -0.85,
+        0.3
+      ]
+    },
+    "Hammer": {
+      "parent": "HumanoidRootPart",
+      "head": [
+        -0.415,
+        -2.45,
+        5.25
+      ],
+      "tail": [
+        0.585,
+        -2.45,
+        5.25
+      ]
+    }
+  },
+  "animationStatus": "Stage 1 rig only; no clips authored yet"
+}

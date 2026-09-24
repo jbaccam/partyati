@@ -29,14 +29,15 @@ def attack_pose(clip,f,chest):
  center=7.30
  if clip=='Slam':
   # Pitch lifts the head over the shoulder, then drives its lower end into ground.
-  pitch,hy,hz=keyed([(0,[35,-2.8,8.4]),(12,[145,-1.5,13.5]),(18,[160,-1.0,14.3]),(20,[64,-4.2,11.5]),(23,[-55,-5.5,8.0]),(29,[-55,-5.5,8.0]),(39,[-55,-4.5,7.5]),(46,[-25,-3.5,6.0]),(50,[35,-2.8,8.4])],f)
+  pitch,hy,hz=keyed([(0,[35,-2.8,8.4]),(12,[145,-1.5,13.5]),(18,[160,-1.0,14.3]),(20,[64,-4.2,11.5]),(23,[0,-5.5,3.0]),(29,[0,-5.5,3.0]),(39,[0,-4.5,4.0]),(46,[10,-3.5,6.0]),(50,[35,-2.8,8.4])],f)
+  if 20<f<23:pitch=99*(23-f)/3
   rotation=R(z=90,y=pitch)
   centerWorld=Vector((-.15,hy,hz))
  else:
   yaw=attack_yaw(clip,f)
   # Roll a quarter turn around the shaft: the long head's striking end leads
   # tangential travel, rather than sweeping with the broad side of the block.
-  rotation=R(z=90+yaw,y=-40,x=90)
+  rotation=R(z=90+yaw,y=-40*(1-ease(14,19,f)*(1-ease(31,48,f))) if clip=="Swing" else -40,x=90)
   centerWorld=R(z=yaw)@Vector((0,-3.45,6.75))
  target=T(centerWorld)@rotation@T((-center,0,0))
  H=blend_frame(HT,target,weight)
@@ -45,7 +46,7 @@ def attack_pose(clip,f,chest):
  if clip=='Slam':orientation=R(z=90*weight,y=-13+(pitch+13)*weight)
  else:
   unwind=yaw-360 if clip=='Spin' and f>=43 else yaw
-  orientation=R(z=(90+unwind)*weight,x=90*weight,y=-13*(1-weight)-40*weight)
+  orientation=R(z=(90+unwind)*weight,x=90*weight,y=-13*(1-weight)-(40*(1-ease(14,19,f)*(1-ease(31,48,f))) if clip=="Swing" else 40)*weight)
  # Rotate about the held end, rather than interpolating the distant head
  # position and sweeping the wrists through a large unintended arc.
  H=T((HT@Vector((center,0,0))).lerp(centerWorld,weight))@orientation@T((-center,0,0))
@@ -112,3 +113,6 @@ def attack_pose(clip,f,chest):
  inward=chest@Vector((0,0,7))-wrists;inward.z=0
  if inward.length>.001:weapon.translation+=inward.normalized()*CHEST_PULL*ease(12,19,f)*(1-ease(last-18,last,f))
  return weapon,handOffsets
+
+
+

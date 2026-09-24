@@ -30,6 +30,7 @@ for _,clip in {'Swing','Spin'} do
  for f=0,math.ceil((a.finish-a.active)*120) do
   local head=M.head(CFrame.identity,clip,math.min(a.finish,a.active+f/120))
   assert(math.abs(head.Y+D.rootHeight-4.6)<.001,'Sweep lifted above avatar height: '..clip)
+  if clip=='Swing' then assert(math.abs(head.RightVector.Y)<.0001,'Swing handle tilted between frames') end
  end
 end
 for phase=0,7 do
@@ -42,6 +43,8 @@ for phase=0,7 do
  end
 end
 local idle=M.sample('Idle',0)
+local slamContact=M.head(CFrame.identity,'Slam',M.Attacks.Slam.active)
+assert(slamContact.UpVector.Y>.9999,'Slam hit with the wrong head face')
 for _,clip in {'Slam','Swing','Spin'} do
  local a=M.Attacks[clip]
  for step=0,math.ceil((a.finish-a.active)*120) do

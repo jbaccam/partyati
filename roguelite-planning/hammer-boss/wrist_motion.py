@@ -58,13 +58,13 @@ def grip_arm(side,weapon,offset,chest,previous=None):
   if best is None or score<best[0]:best=(score,hand,elbow,err,math.degrees(bend),degrees)
  return best[1:]
 
-def solve_grips(weapon,offsets,chest,history,grounded=False,sweepWeight=0,extensionWeight=0,carryWeight=1,overheadWeight=0,isSweep=False,heightTarget=4.6,tiltAllowed=True):
+def solve_grips(weapon,offsets,chest,history,grounded=False,sweepWeight=0,extensionWeight=0,carryWeight=1,overheadWeight=0,isSweep=False,heightTarget=4.6,tiltAllowed=True,flightHeight=None):
  """Solve weapon placement and both wrist rolls together, with continuity."""
  inv=chest.inverted();cuff=HT.to_3x3()@Vector((0,0,1))
  baseline=globals().get("carryBase",[0.]*8)
  def evaluate(values):
   actual=[baseline[i]*(1-carryWeight)+values[i]*carryWeight for i in range(8)]
-  if not tiltAllowed:actual[7]=0
+  actual[7]*=float(tiltAllowed)
   W=weapon.copy();baseH=W@HT
   tiltAxis=baseH.to_3x3()@Vector((0,1-carryWeight,carryWeight)).normalized() if isSweep else baseH.to_3x3()@Vector((0,1,0))
   W=around(baseH@Vector((7.3,0,0)),Matrix.Rotation(actual[7],4,tiltAxis))@W
@@ -72,7 +72,8 @@ def solve_grips(weapon,offsets,chest,history,grounded=False,sweepWeight=0,extens
   if grounded:shift.z=0
   W.translation+=shift;H=W@HT
   if grounded:
-   if isSweep:W.translation.z+=heightTarget-H.translation.z
+   if flightHeight is not None:W.translation.z+=flightHeight-H.translation.z
+   elif isSweep:W.translation.z+=heightTarget-H.translation.z
    else:W.translation.z+=.005-min((H@Vector((x,y,z))).z for x in [-1.55,1.55] for y in [-1.155,1.155] for z in [-2.21,2.21])
    H=W@HT
   axis=(H.to_3x3()@Vector((1,0,0))).normalized();solutions={};score=sum(x*x for x in values[:3])*3.0

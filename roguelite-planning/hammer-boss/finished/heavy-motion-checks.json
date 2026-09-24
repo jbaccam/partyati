@@ -1,11 +1,11 @@
 {
   "Slam": {
-    "minArmExtension": 0.974641124899926,
-    "maxArmExtension": 0.9760541763755627
+    "minArmExtension": 0.9743821888552173,
+    "maxArmExtension": 0.9753281051695852
   },
   "Swing": {
-    "minArmExtension": 0.9729205196088777,
-    "maxArmExtension": 0.9752103049086562
+    "minArmExtension": 0.9657183618616529,
+    "maxArmExtension": 0.9801601359841466
   },
   "Spin": {
     "minArmExtension": 0.9740515138785758,

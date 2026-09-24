@@ -73,7 +73,7 @@ exec(compile((HERE/'polish_hinges.py').read_text(),str(HERE/'polish_hinges.py'),
 wristHistory={}
 neutral=[0,0,0,0,0,0,0]
 KEYS={
- 'Slam':[(0,neutral),(5,neutral),(12,[-8,-12,.3,-7,12,92,3.8]),(18,[-8,-12,.38,-8,15,112,4.1]),(20,[-2,-4,.45,0,20,75,3.2]),(23,[5,5,1.0,18,25,0,0]),(26,[6,6,1.08,20,25,0,0]),(31,[6,7,1.02,18,25,0,0]),(41,[2,4,.45,8,15,15,1.1]),(50,neutral)],
+ 'Slam':[(0,neutral),(5,neutral),(12,[-8,-12,.3,-7,12,92,3.8]),(18,[-8,-12,.38,-8,15,112,4.1]),(20,[-2,-4,.45,0,20,75,3.2]),(23,[5,0,.5,40,25,0,0]),(26,[6,0,.55,43,25,0,0]),(31,[6,0,.55,38,25,0,0]),(41,[2,4,.45,8,15,15,1.1]),(50,neutral)],
  'Swing':[(0,neutral),(6,neutral),(13,[-20,-35,.35,-3,-35,13,1.15]),(18,[-25,-42,.40,-3,-42,13,1.15]),(21,[0,-12,.42,4,0,13,1.15]),(23,[20,23,.48,8,75,13,1.15]),(25,[60,80,.53,10,155,13,1.15]),(30,[80,100,.62,11,185,10,1.0]),(37,[65,80,.45,7,164,0,.65]),(45,[24,30,.23,3,70,0,.3]),(54,neutral)],
  'Spin':[(0,neutral),(6,neutral),(14,[-32,-47,.50,4,-47,13,1.15]),(20,[-38,-54,.57,5,-54,13,1.15]),(21,[-32,-50,.54,5,-50,13,1.15]),(25,[56,41,.42,6,41,13,1.15]),(29,[148,133,.40,8,133,13,1.15]),(33,[240,225,.46,10,225,13,1.15]),(37,[325,310,.55,12,310,13,1.15]),(42,[371,375,.65,13,375,10,.9]),(51,[366,370,.40,7,370,0,.4]),(60,[360,363,.1,2,363,0,.05]),(66,[360,360,0,0,360,0,0])]
 }
@@ -112,7 +112,9 @@ def pose(clip,f):
   follow=attack_yaw(clip,f)
   if clip=='Spin' and f>=43:follow-=360
   last=54 if clip=='Swing' else 66
-  torso=(follow+20)*ease(0,16,f)*(1-ease(last-18,last,f))
+  torso=(follow+(20-5*ease(12,16,f)*(1-ease(40,50,f)) if clip=='Swing' else 20))*ease(0,16,f)*(1-ease(last-18,last,f))
+  if clip=='Swing':
+   upright=ease(12,16,f)*(1-ease(40,50,f));crouch*=1-upright;lean*=1-upright
  hips=T((sway,0,-crouch))@around((0,.1,4.45),R(y=roll*.65,z=hip))
  chest=T((sway,0,-crouch))@around((0,.1,5.2),R(x=lean,y=roll,z=torso))
  D={'LowerTorso':hips,'UpperTorso':chest,'Head':chest@around(joints['Head']['head'],R(x=-lean*.18,z=-((torso-hip+180)%360-180)*.2))}
@@ -129,7 +131,8 @@ def pose(clip,f):
   corners=[weapon@HT@Vector((x,y,z)) for x in [-1.55,1.55] for y in [-1.155,1.155] for z in [-2.21,2.21]]
   weapon.translation.z+=max(0,-min(p.z for p in corners))
  if clip in KEYS:
-  sweepWeight=0;fixedHeight=clip=='Slam' and 23<=f<=29;heightTarget=4.6
+  sweepWeight=0;fixedHeight=clip=='Slam' and 21<=f<=29;heightTarget=4.6
+  flightHeight=keyed([(20,[19.01449]),(21,[14.0]),(22,[8.0]),(23,[2.215])],f)[0] if clip=='Slam' and 20<f<23 else None
   if clip in ('Swing','Spin'):
    start,end=(19,25) if clip=='Swing' else (21,37)
    fixedHeight=True;last=54 if clip=='Swing' else 66
@@ -138,7 +141,7 @@ def pose(clip,f):
    sweepWeight=ease(14,start,f)*(1-ease(end,end+10,f))
    if start<=f<=end:
     weapon.translation.z+=4.6-(weapon@HT).translation.z;fixedHeight=True
-  weapon,gripSolutions=solve_grips(weapon,handOffsets,chest,wristHistory,fixedHeight,sweepWeight,ease(5,12,f)*(1-ease({"Slam":36,"Swing":38,"Spin":48}[clip],{"Slam":46,"Swing":50,"Spin":62}[clip],f)),ease(0,8,f)*(1-ease({"Slam":40,"Swing":44,"Spin":56}[clip],{"Slam":50,"Swing":54,"Spin":66}[clip],f)),ease(5,17,f)*(1-ease(18,23,f)) if clip=="Slam" else 0,clip in ("Swing","Spin"),heightTarget,True)
+  weapon,gripSolutions=solve_grips(weapon,handOffsets,chest,wristHistory,fixedHeight,sweepWeight,ease(5,12,f)*(1-ease({"Slam":36,"Swing":26,"Spin":48}[clip],{"Slam":46,"Swing":36,"Spin":62}[clip],f)),ease(0,8,f)*(1-ease({"Slam":40,"Swing":44,"Spin":56}[clip],{"Slam":50,"Swing":54,"Spin":66}[clip],f)),ease(5,17,f)*(1-ease(18,23,f)) if clip=="Slam" else 0,clip in ("Swing","Spin"),heightTarget,(1-ease(20,21,f)*(1-ease(29,41,f))) if clip=="Slam" else ((1-ease(15,19,f)*(1-ease(31,48,f))) if clip=="Swing" else True),flightHeight)
  elif not death:
   weapon,gripSolutions=solve_grips(weapon,handOffsets,chest,wristHistory)
   if clip=='Idle' and f==0:carryBase=wristHistory['_values'].copy();carryHeight=(weapon@HT).translation.z
@@ -220,3 +223,12 @@ scene.render.resolution_x=700;scene.render.resolution_y=700;scene.render.resolut
 for clip,frame in [('Slam',18),('Slam',23),('Swing',23),('Spin',29),('Death',84)]:
  rig.animation_data.action=bpy.data.actions['Boss_'+clip];scene.frame_set(frame+1);scene.render.filepath=str(OUT/(clip+'_'+str(frame)+'.png'));bpy.ops.render.render(write_still=True)
 print('FINISHED_REFERENCE_BOSS',json.dumps(checks))
+
+
+
+
+
+
+
+
+

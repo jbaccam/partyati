@@ -18,22 +18,22 @@
     "maxSwivelStepDegrees": 1.5001805409421038
   },
   "Slam": {
-    "minSignedFlexion": 12.05730122513572,
-    "maxSignedFlexion": 39.52392537292643,
-    "maxHingeAxisMismatch": 1.3194050563084277e-06,
-    "maxJointGap": 6.921837551519117e-06,
-    "minimumBendSideDot": 0.2588295638561249,
-    "maxElbowStep": 1.7124158185956793,
-    "maxSwivelStepDegrees": 8.999794759141821
+    "minSignedFlexion": 12.057264319968903,
+    "maxSignedFlexion": 39.523937630946676,
+    "maxHingeAxisMismatch": 1.6238847644120786e-06,
+    "maxJointGap": 7.42550444717285e-06,
+    "minimumBendSideDot": 0.25881319493055344,
+    "maxElbowStep": 1.471508246487172,
+    "maxSwivelStepDegrees": 7.999818876288099
   },
   "Swing": {
-    "minSignedFlexion": 12.057320104794565,
-    "maxSignedFlexion": 48.15463716000713,
-    "maxHingeAxisMismatch": 1.5237120427088996e-06,
-    "maxJointGap": 7.364008527508021e-06,
+    "minSignedFlexion": 12.05719083750421,
+    "maxSignedFlexion": 101.57361966903855,
+    "maxHingeAxisMismatch": 1.4447980242581381e-06,
+    "maxJointGap": 7.089696264838818e-06,
     "minimumBendSideDot": 0.2588295638561249,
-    "maxElbowStep": 2.5723958833309175,
-    "maxSwivelStepDegrees": 15.000069275893622
+    "maxElbowStep": 2.5655621166630884,
+    "maxSwivelStepDegrees": 17.999882428018033
   },
   "Spin": {
     "minSignedFlexion": 12.05728720176588,

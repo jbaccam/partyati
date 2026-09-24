@@ -146,3 +146,11 @@ Both the root CopyTheScene package and the roguelite combat package build succes
 Run `reference_rebuild.py`, then `finish_reference.py` with Blender 5.2. `revise_motion.py` rebuilds motion and previews from the finished baked model without rebaking textures. The combat Rojo project includes the boss template and scripts.
 
 The supplied image is preserved unchanged as `source/boss-reference.png`, SHA256 `B401488FE31019B7D2179CBCF652D17082BA92E1B5ED7AD2BF2D5A64736CA6F6`. Body, clothing, hands, facial features and hammer are authored Blender geometry. Clothing and weapon materials are procedural and baked. Skin uses the established local `baby-mutant-zombies/source-art/MutantTexture.png`; the face uses newly modeled features baked into its own map, rather than the Tank face tile. No Creator Store character or external character model was used. The impact uses Roblox's bundled `impact_explosion_03.mp3` and smoke particle texture.
+
+## Flat-face slam follow-through and level swing (September 24)
+
+The slam keeps its approved overhead and middle weapon path through frame 20, then continues the rotation into a horizontal shaft and flat lower striking-face contact. The torso follows the hands down. The horizontal swing eases from its carry windup into a level shaft for the entire active window; recovery releases extension progressively to avoid forcing the wrists as the grip returns. Spin is unchanged.
+
+Updated separate review videos are in `finished/attack-videos/`: Slam.mp4, Swing.mp4 and Spin.mp4. Each shows normal speed followed by half speed. These are Blender renders of the exported animation data, not gameplay recordings.
+
+All authored wrist, hinge, grip, reach, ground-contact and walking checks passed. Studio checked 2,307 interpolated poses/transitions with signed elbow flexion 12–101.574 degrees and maximum joint gap 0.00000267 studs. All 87 actual client pose samples passed (maximum position error 0.003913 studs; basis-vector error 0.001184). Both Rojo packages built. Combat damage logic is unchanged; the earlier damage-window tests were not rerun for this animation-only revision. The full multiplayer loop was not tested.

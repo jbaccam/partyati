@@ -1,29 +1,29 @@
 {
   "Slam": {
     "maxWristBendDegrees": [
-      33.96007621370775,
+      33.32843397964331,
       [
         9,
         "Right"
       ]
     ],
-    "maxWristGap": 5.185261528714072e-06,
-    "maxGripRadialDrift": 6.248723535445518e-06,
-    "torsoClearanceSquared": 1.8723142646309572,
-    "maxElbowStep": 1.7124158185956793
+    "maxWristGap": 6.1678568459875726e-06,
+    "maxGripRadialDrift": 5.461780435985767e-06,
+    "torsoClearanceSquared": 1.9716925358973871,
+    "maxElbowStep": 1.471508246487172
   },
   "Swing": {
     "maxWristBendDegrees": [
-      34.98346736271285,
+      34.98045866438346,
       [
         9,
         "Left"
       ]
     ],
-    "maxWristGap": 7.037387916157456e-06,
-    "maxGripRadialDrift": 5.203110535637316e-06,
-    "torsoClearanceSquared": 1.4761695748480703,
-    "maxElbowStep": 2.5723958833309175
+    "maxWristGap": 5.541629457077722e-06,
+    "maxGripRadialDrift": 5.5211608856619665e-06,
+    "torsoClearanceSquared": 1.8151315571104334,
+    "maxElbowStep": 2.5655621166630884
   },
   "Spin": {
     "maxWristBendDegrees": [

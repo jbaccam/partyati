@@ -1,0 +1,164 @@
+{
+  "kit": "LobbyLeaderboardsV1",
+  "front": "-Y",
+  "up": "+Z",
+  "units": "studs (final size)",
+  "studio_local": "(x, z, -y); front faces local +Z",
+  "contract": {
+    "display": {
+      "center": [
+        0,
+        -0.06,
+        4.4
+      ],
+      "size": [
+        7.7,
+        5.7
+      ]
+    },
+    "sign": {
+      "center": [
+        0,
+        -0.53,
+        8.1
+      ],
+      "size": [
+        6.6,
+        0.87
+      ]
+    },
+    "emblem": [
+      0,
+      -2.1,
+      10.85
+    ],
+    "lanterns": [
+      [
+        -5.87,
+        0.3,
+        6.6
+      ],
+      [
+        5.87,
+        0.3,
+        6.6
+      ]
+    ]
+  },
+  "meshes": [
+    {
+      "name": "LB_Frame_Details",
+      "texture": "textures/LeaderboardsV1_Details.png",
+      "family": "Details",
+      "center": [
+        0.0,
+        0.14250004291534424,
+        5.004999749362469
+      ],
+      "size": [
+        12.34000015258789,
+        4.515000104904175,
+        10.029999509453773
+      ],
+      "triangles": 2424,
+      "vertices": 1340,
+      "zero_area_triangles": 0,
+      "fbx": "exports/fbx/LB_Frame_Details.fbx"
+    },
+    {
+      "name": "LB_Frame_Timber",
+      "texture": "textures/LeaderboardsV1_Timber.png",
+      "family": "Timber",
+      "center": [
+        -4.76837158203125e-07,
+        0.20000004768371582,
+        6.37279486656189
+      ],
+      "size": [
+        12.867999076843262,
+        5.099999904632568,
+        11.91441011428833
+      ],
+      "triangles": 2088,
+      "vertices": 1140,
+      "zero_area_triangles": 0,
+      "fbx": "exports/fbx/LB_Frame_Timber.fbx"
+    },
+    {
+      "name": "LB_Frame_Roof",
+      "texture": "textures/LeaderboardsV1_Roof.png",
+      "family": "Roof",
+      "center": [
+        0.0,
+        0.2099999189376831,
+        6.854131698608398
+      ],
+      "size": [
+        12.66308879852295,
+        4.819999933242798,
+        10.60826301574707
+      ],
+      "triangles": 770,
+      "vertices": 412,
+      "zero_area_triangles": 0,
+      "fbx": "exports/fbx/LB_Frame_Roof.fbx"
+    },
+    {
+      "name": "LB_Emblem_Kills",
+      "texture": "textures/LeaderboardsV1_Details.png",
+      "family": "Details",
+      "center": [
+        0.0,
+        -2.1449999809265137,
+        10.850000381469727
+      ],
+      "size": [
+        2.0399999618530273,
+        0.2500004768371582,
+        2.0400009155273438
+      ],
+      "triangles": 832,
+      "vertices": 452,
+      "zero_area_triangles": 0,
+      "fbx": "exports/fbx/LB_Emblem_Kills.fbx"
+    },
+    {
+      "name": "LB_Emblem_Wave",
+      "texture": "textures/LeaderboardsV1_Details.png",
+      "family": "Details",
+      "center": [
+        0.0,
+        -2.1674998998641968,
+        10.850000381469727
+      ],
+      "size": [
+        2.0399999618530273,
+        0.2950003147125244,
+        2.0400009155273438
+      ],
+      "triangles": 784,
+      "vertices": 420,
+      "zero_area_triangles": 0,
+      "fbx": "exports/fbx/LB_Emblem_Wave.fbx"
+    },
+    {
+      "name": "LB_Emblem_Time",
+      "texture": "textures/LeaderboardsV1_Details.png",
+      "family": "Details",
+      "center": [
+        0.0,
+        -2.2920626401901245,
+        10.850000381469727
+      ],
+      "size": [
+        2.0399999618530273,
+        0.5441257953643799,
+        2.0400009155273438
+      ],
+      "triangles": 848,
+      "vertices": 454,
+      "zero_area_triangles": 0,
+      "fbx": "exports/fbx/LB_Emblem_Time.fbx"
+    }
+  ]
+}
